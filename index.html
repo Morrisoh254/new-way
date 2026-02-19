@@ -135,6 +135,37 @@ footer {
     font-size: 1.3rem;
     letter-spacing: 1px;
     color: var(--gold);
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        text-shadow: 
+            0 0 5px rgba(212, 175, 55, 0.4),
+            0 0 10px rgba(212, 175, 55, 0.3);
+        transform: scale(1);
+    }
+    25% {
+        text-shadow: 
+            0 0 10px rgba(212, 175, 55, 0.7),
+            0 0 20px rgba(212, 175, 55, 0.5),
+            0 0 30px rgba(212, 175, 55, 0.3);
+        transform: scale(1.02);
+    }
+    50% {
+        text-shadow: 
+            0 0 15px rgba(212, 175, 55, 0.9),
+            0 0 30px rgba(212, 175, 55, 0.6),
+            0 0 45px rgba(212, 175, 55, 0.4);
+        transform: scale(1.05);
+    }
+    75% {
+        text-shadow: 
+            0 0 10px rgba(212, 175, 55, 0.7),
+            0 0 20px rgba(212, 175, 55, 0.5),
+            0 0 30px rgba(212, 175, 55, 0.3);
+        transform: scale(1.02);
+    }
 }
 
 .donate-btn {
@@ -438,7 +469,62 @@ footer {
 .scroll-btn.right {
     right: 10px;
 }
+/* Desktop subtitle under heading */
+.global-testimonies h2::after {
+    content: "Real stories of faith and transformation";
+    display: block;
+    font-size: 1rem;
+    color: var(--muted);
+    font-weight: 400;
+    margin-top: 10px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.5px;
+}
 
+/* Desktop swipe hint (subtle) */
+.testimony-wrapper::after {
+    content: "← Swipe or drag →";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.85rem;
+    color: var(--gold);
+    opacity: 0.7;
+    letter-spacing: 2px;
+    transition: opacity 0.3s ease;
+}
+
+/* Hide hint when user starts scrolling */
+.testimony-row:hover ~ .testimony-wrapper::after,
+.testimony-row:active ~ .testimony-wrapper::after {
+    opacity: 0;
+}
+/* Desktop swipe hint with glow animation */
+.testimony-wrapper::after {
+    content: "← Swipe or drag →";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.85rem;
+    color: var(--gold);
+    opacity: 0.7;
+    letter-spacing: 2px;
+    animation: pulse 2s infinite;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        opacity: 0.4;
+        text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+    }
+    50% { 
+        opacity: 0.9;
+        text-shadow: 0 0 15px rgba(212, 175, 55, 0.8), 0 0 25px rgba(212, 175, 55, 0.4);
+    }
+}
 
 
 /* ============================================
@@ -640,9 +726,10 @@ footer {
     }
     
     .logo {
-        font-size: 0.9rem;
-        line-height: 1.2;
-    }
+    font-size: 0.9rem;
+    line-height: 1.2;
+    animation: heartbeat 2s ease-in-out infinite; /* Keep animation on mobile */
+}
     
     .donate-btn {
         padding: 6px 14px;
