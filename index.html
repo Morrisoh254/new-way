@@ -6,14 +6,17 @@
 <title>Becoming | A Call Higher</title>
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-    --bg: #0f0f0f;
+    --bg: #0a0a0a;
+    --bg-light: #121212;
     --gold: #d4af37;
+    --gold-light: #e8d5a3;
     --text: #f5f5f5;
-    --muted: #aaaaaa;
+    --text-muted: #a0a0a0;
+    --red: #B11226;
 }
 
 * {
@@ -22,83 +25,337 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: var(--bg);
     color: var(--text);
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
+    line-height: 1.6;
 }
 
-section {
-    padding: 120px 0;
-    text-align: center;
-}
-
-h1, h2 {
-    font-family: 'Playfair Display', serif;
-    letter-spacing: 1px;
-}
-
-h1 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-}
-
-h2 {
-    font-size: 2.2rem;
-    margin-bottom: 30px;
-    color: var(--gold);
-}
-
-p {
-    max-width: 700px;
-    margin: 0 auto 20px auto;
-    line-height: 1.8;
-    color: var(--muted);
-}
-
-.hero {
-    height: 100vh;
+/* ========== NAVBAR ========== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 5%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    background: radial-gradient(circle at center, #1a1a1a, #0f0f0f);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
+    z-index: 1000;
+    transition: all 0.4s ease;
 }
 
-.hero h1 {
-    font-size: 4rem;
-    opacity: 0;
-    transform: translateY(20px);
+.navbar.scrolled {
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px 5%;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
 }
 
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.btn {
-    padding: 12px 28px;
-    border: 1px solid var(--gold);
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
     color: var(--gold);
-    text-decoration: none;
-    transition: 0.3s ease;
+    animation: heartbeat 2.5s ease-in-out infinite;
+    max-width: 70%;
+    line-height: 1.3;
 }
 
-.btn:hover {
+@keyframes heartbeat {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(177, 18, 38, 0.4);
+        transform: scale(1);
+    }
+    25% {
+        text-shadow: 0 0 15px rgba(177, 18, 38, 0.6);
+        transform: scale(1.02);
+    }
+    50% {
+        text-shadow: 0 0 25px rgba(177, 18, 38, 0.8);
+        transform: scale(1.05);
+    }
+}
+
+.donate-btn {
+    border: 1px solid var(--gold);
+    color: #ffffff;
+    padding: 10px 24px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.donate-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
     background: var(--gold);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.donate-btn:hover::before {
+    left: 0;
+}
+
+.donate-btn:hover {
     color: #000;
 }
 
-.fade {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s ease;
+/* ========== HERO SECTION ========== */
+.hero-split {
+    min-height: 100vh;
+    display: flex;
+    position: relative;
 }
 
-.fade.visible {
+.hero-image {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent 0%, rgba(10,10,10,0.4) 100%);
+    pointer-events: none;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    animation: slowZoom 20s ease-in-out infinite alternate;
+}
+
+@keyframes slowZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+.hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 8%;
+    position: relative;
+    background: radial-gradient(circle at 30% 50%, rgba(212,175,55,0.03) 0%, transparent 50%);
+}
+
+.glow-orb {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    top: 20%;
+    right: -100px;
+    animation: float 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.1); }
+}
+
+#heroTitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    color: var(--gold-light);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+#heroTitle.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#heroTitle:hover {
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+    letter-spacing: 6px;
+}
+
+#heroText {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 600px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+#heroText.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.intro-text {
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    line-height: 2;
+    color: var(--text);
+    font-weight: 300;
+    position: relative;
+}
+
+.intro-text::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--gold);
+    opacity: 0.3;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    line-height: 1;
+}
+
+.bible-verse {
+    font-size: clamp(0.9rem, 1vw, 1.1rem);
+    line-height: 1.9;
+    color: var(--gold);
+    font-style: italic;
+    border-left: 3px solid var(--gold);
+    padding-left: 25px;
+    text-align: left;
+    position: relative;
+    background: linear-gradient(to right, rgba(212,175,55,0.05) 0%, transparent 100%);
+    padding: 20px 20px 20px 25px;
+    border-radius: 0 8px 8px 0;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    animation: fadeInUp 1s ease 2s forwards;
+    cursor: pointer;
+}
+
+.scroll-indicator span {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.scroll-arrow {
+    width: 30px;
+    height: 50px;
+    border: 2px solid var(--gold);
+    border-radius: 15px;
+    position: relative;
+    opacity: 0.6;
+}
+
+.scroll-arrow::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: scrollBounce 2s infinite;
+}
+
+@keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+    50% { transform: translateX(-50%) translateY(15px); opacity: 0.3; }
+}
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+}
+
+/* ========== MISSION SECTION ========== */
+.mission-section {
+    padding: 120px 5%;
+    background: var(--bg-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.mission-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+    z-index: 1;
+}
+
+.section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--gold);
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.section-header h2.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease 0.2s;
+}
+
+.section-subtitle.visible {
     opacity: 1;
     transform: translateY(0);
 }
@@ -107,877 +364,859 @@ p {
     width: 60px;
     height: 2px;
     background: var(--gold);
-    margin: 40px auto;
-}
-
-footer {
-    padding: 60px 10%;
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--muted);
-    border-top: 1px solid #222;
-}
-/* NAVBAR */
-.navbar {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    padding: 20px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: transparent;
-    z-index: 1000;
-}
-
-.logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    letter-spacing: 1px;
-    color: var(--gold)
-;        /* RED */
-    animation: heartbeat 2s ease-in-out infinite;
-}
-
-@keyframes heartbeat {
-    0%, 100% {
-        text-shadow: 
-            0 0 5px rgba(231, 76, 60, 0.4),
-            0 0 10px rgba(231, 76, 60, 0.3);
-        transform: scale(1);
-    }
-    25% {
-        text-shadow: 
-            0 0 10px rgba(231, 76, 60, 0.7),
-            0 0 20px rgba(231, 76, 60, 0.5),
-            0 0 30px rgba(231, 76, 60, 0.3);
-        transform: scale(1.02);
-    }
-    50% {
-        text-shadow: 
-            0 0 15px rgba(231, 76, 60, 0.9),
-            0 0 30px rgba(231, 76, 60, 0.6),
-            0 0 45px rgba(231, 76, 60, 0.4);
-        transform: scale(1.05);
-    }
-    75% {
-        text-shadow: 
-            0 0 10px rgba(231, 76, 60, 0.7),
-            0 0 20px rgba(231, 76, 60, 0.5),
-            0 0 30px rgba(231, 76, 60, 0.3);
-        transform: scale(1.02);
-    }
-}
-
-.donate-btn {
-    border: 1px solid var(--gold);
-    color: #ffffff !important;  /* WHITE text */
-}
-
-/* HERO SPLIT */
-.hero-split {
-    height: 100vh;
-    display: flex;
-}
-
-.hero-image {
-    flex: 1.2;
-    overflow: hidden;
-}
-
-.hero-image {
-    flex: 1.2;
-    overflow: hidden;
-    height: 100vh;
-}
-
-.hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-
-.hero-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 8%;
-}
-
-.hero-content h1 {
-    opacity: 0;
-    transform: translateX(60px);
-    transition: all 1s cubic-bezier(.2,.8,.2,1);
-}
-
-.hero-content p {
-    opacity: 0;
-    transform: translate(-40px, 30px);
-    transition: all 1.2s cubic-bezier(.2,.8,.2,1);
-}
-
-.hero-content h1.visible,
-.hero-content p.visible {
-    opacity: 1;
-    transform: translate(0);
-}
-
-.hero-content h1 {
+    margin: 30px auto;
     position: relative;
-    display: inline-block;
-    cursor: default;
-    transition: 
-        letter-spacing 0.4s ease,
-        transform 0.4s ease,
-        text-shadow 0.4s ease;
 }
 
-.hero-content h1:hover {
-    transform: scale(1.05);
-    text-shadow:
-        0 0 10px rgba(212, 175, 55, 0.6),
-        0 0 25px rgba(212, 175, 55, 0.5),
-        0 0 50px rgba(212, 175, 55, 0.3);
+.divider::before,
+.divider::after {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold);
+    font-size: 12px;
 }
 
-/* Ministry title - smaller and gold */
-#heroTitle {
-    font-size: 2rem;           /* Smaller than 4rem */
-    color: #efe3b8;        /* Gold color */
-    letter-spacing: 3px;       /* Elegant spacing */
-    text-transform: uppercase; /* All caps */
-    font-weight: 500;
-    margin-bottom: 30px;
-    text-shadow: 
-        0 0 10px rgba(212, 175, 55, 0.3),
-        0 0 20px rgba(212, 175, 55, 0.2);
+.divider::before { left: -20px; }
+.divider::after { right: -20px; }
+
+/* ========== TESTIMONIES SECTION ========== */
+.testimonies-section {
+    padding: 100px 0;
+    background: var(--bg);
+    position: relative;
 }
 
-#heroTitle:hover {
-    text-shadow:
-        0 0 15px rgba(212, 175, 55, 0.6),
-        0 0 30px rgba(212, 175, 55, 0.4),
-        0 0 45px rgba(212, 175, 55, 0.3);
-}
-/* Hero text container */
-#heroText {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;              /* Space between message and verse */
-    max-width: 600px;
+.testimonies-header {
     text-align: center;
+    padding: 0 5%;
+    margin-bottom: 60px;
 }
 
-/* Main intro message */
-.intro-text {
-    font-size: 1.1rem;
-    line-height: 1.9;
-    color: var(--text);
-    font-style: normal;
+.testimonies-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: var(--gold);
+    margin-bottom: 15px;
 }
 
-/* Bible verse - slanted/italic */
-.bible-verse {
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: var(--gold);     /* Gold color */
-    font-style: italic;     /* Slanted text */
-    opacity: 0.9;
-    border-left: 2px solid var(--gold);  /* Elegant left border */
-    padding-left: 20px;     /* Space from border */
-    margin-top: 10px;       /* Extra gap from main text */
-    text-align: left;       /* Left-aligned for quote style */
+.testimonies-header p {
+    color: var(--text-muted);
+    font-size: 1rem;
 }
-
-
-/* ADD THIS BELOW */
-.hero-content h1.visible,
-.hero-content p.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* GLOBAL TESTIMONIES SECTION */
-.global-testimonies {
-    background: #121212;
-    padding-top: 180px;
-    padding-left: 10%;   /* ADD - move content from edge */
-    padding-right: 10%;  /* ADD - move content from edge */
-}
-
-/* HORIZONTAL TESTIMONY SLIDER */
 
 .testimony-wrapper {
     position: relative;
-    overflow: visible;  /* CHANGED - allows card to escape container */
-    padding: 20px;      /* Space for hover expansion */
-    margin: -20px;      /* ADD THIS - counteracts padding for alignment */
+    padding: 20px 0;
 }
 
 .testimony-row {
     display: flex;
-    gap: 25px;
+    gap: 30px;
     overflow-x: auto;
-    overflow-y: visible;
     scroll-behavior: smooth;
-    padding-bottom: 40px;
-    padding-top: 20px;
-    padding-right: 100px; 
-    padding-left: 20px; /* ADD - fake extra space at end */
+    padding: 40px 5%;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
 }
 
 .testimony-row::-webkit-scrollbar {
     display: none;
 }
 
+.testimony-row:active {
+    cursor: grabbing;
+}
+
 .testimony-card {
-     min-width: 320px;  /* Reduced from 520px */
-    max-width: 520px;  /* ADD THIS - prevents stretching */
+    min-width: 380px;
+    max-width: 380px;
     background: linear-gradient(145deg, #f8f6f0, #efe3b8);
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    border-radius: 12px;
+    flex-direction: row;
+    padding: 25px;
+    border-radius: 16px;
     text-decoration: none;
     color: #1a1a1a;
-    transition: all 0.4s ease;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     position: relative;
-    
-    flex-shrink: 0;  /* ADD THIS - prevents card from shrinking */
+    flex-shrink: 0;
+    border: 1px solid rgba(212,175,55,0.1);
+    overflow: hidden;
 }
-/* Optional glow effect on hover for luxury feel */
+
 .testimony-card::before {
-    content: "";
+    content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, transparent 50%);
     opacity: 0;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    transform: scale(0.8);
-    pointer-events: none; /* so it doesn’t block clicks */
-    border-radius: 50%;
+    transition: opacity 0.4s ease;
 }
 
 .testimony-card:hover::before {
     opacity: 1;
-    transform: scale(1);
 }
 
-
-
-.testimony-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 
-        0 20px 50px rgba(212,175,55,0.4),
-        0 0 0 2px rgba(212,175,55,0.8),
-        0 0 20px rgba(212,175,55,0.6),
-        0 0 40px rgba(212,175,55,0.4),
-        0 0 60px rgba(212,175,55,0.2);
-    border: 1px solid rgba(212,175,55,0.9);
-    z-index: 10;
-}
-/* Two gold stars at corners on hover */
-.testimony-card {
-    position: relative;
-}
-
-.testimony-card .corner-star {
+.corner-star {
     position: absolute;
-    font-size: 28px;
+    font-size: 24px;
     color: var(--gold);
     opacity: 0;
     transform: scale(0) rotate(-180deg);
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    text-shadow: 0 0 15px rgba(212,175,55,1), 0 0 30px rgba(212,175,55,0.8);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    text-shadow: 0 0 15px rgba(212,175,55,1);
     pointer-events: none;
-    z-index: 100;
+    z-index: 10;
 }
 
-.testimony-card .star-tl { top: -10px; left: -10px; }
-.testimony-card .star-tr { top: -10px; right: -10px; transition-delay: 0.05s; }
-.testimony-card .star-bl { bottom: -10px; left: -10px; transition-delay: 0.1s; }
-.testimony-card .star-br { bottom: -10px; right: -10px; transition-delay: 0.15s; }
+.star-tl { top: -5px; left: -5px; }
+.star-tr { top: -5px; right: -5px; transition-delay: 0.05s; }
+.star-bl { bottom: -5px; left: -5px; transition-delay: 0.1s; }
+.star-br { bottom: -5px; right: -5px; transition-delay: 0.15s; }
+
+.testimony-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 
+        0 25px 60px rgba(212,175,55,0.3),
+        0 0 0 2px rgba(212,175,55,0.5),
+        0 0 30px rgba(212,175,55,0.2);
+    border-color: rgba(212,175,55,0.5);
+}
 
 .testimony-card:hover .corner-star {
     opacity: 1;
     transform: scale(1) rotate(0deg);
 }
 
-
 .testimony-text {
     flex: 1;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
 }
 
 .testimony-text h3 {
-    color: var(--gold);
+    color: #8b6914;
     font-family: 'Playfair Display', serif;
-    margin-bottom: 10px;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    font-weight: 600;
 }
 
 .catch {
-    font-weight: 500;
-    margin-bottom: 10px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #2c2c2c;
+    font-size: 1rem;
+    line-height: 1.3;
 }
 
 .brief {
     font-size: 0.9rem;
-    color: #5a4630; /* soft brown-gold, elegant and warm */
+    color: #5a4a3a;
+    line-height: 1.5;
 }
 
 .testimony-img {
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
     margin-left: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    flex-shrink: 0;
+    position: relative;
+}
+
+.testimony-img::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(212,175,55,0.3);
+    border-radius: 12px;
+    pointer-events: none;
 }
 
 .testimony-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 3px;
+    transition: transform 0.4s ease;
+}
+
+.testimony-card:hover .testimony-img img {
+    transform: scale(1.1);
 }
 
 .scroll-btn {
     position: absolute;
-    top: 45%;
+    top: 50%;
     transform: translateY(-50%);
-    background: var(--gold);
-    color: black;
+    background: rgba(212,175,55,0.9);
+    color: #000;
     border: none;
-    font-size: 20px;
-    padding: 12px 16px;
-    cursor: pointer;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    transition: 0.3s ease;
-    z-index: 10;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(212,175,55,0.4);
 }
 
 .scroll-btn:hover {
+    background: var(--gold);
     transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 30px rgba(212,175,55,0.6);
 }
 
-.scroll-btn.left {
-    left: 10px;
-}
+.scroll-btn.left { left: 20px; }
+.scroll-btn.right { right: 20px; }
 
-.scroll-btn.right {
-    right: 10px;
-}
-/* Desktop subtitle under heading */
-.global-testimonies h2::after {
-    content: "Real stories of faith and transformation";
-    display: block;
-    font-size: 1rem;
-    color: var(--muted);
-    font-weight: 400;
-    margin-top: 10px;
-    font-family: 'Inter', sans-serif;
-    letter-spacing: 0.5px;
-}
-
-/* Desktop swipe hint (subtle) */
-.testimony-wrapper::after {
-    content: "← Swipe or drag →";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.85rem;
-    color: var(--gold);
-    opacity: 0.7;
-    letter-spacing: 2px;
-    transition: opacity 0.3s ease;
-}
-
-/* Hide hint when user starts scrolling */
-.testimony-row:hover ~ .testimony-wrapper::after,
-.testimony-row:active ~ .testimony-wrapper::after {
+.scroll-btn.hidden {
     opacity: 0;
+    pointer-events: none;
 }
-/* Desktop swipe hint with glow animation */
-.testimony-wrapper::after {
-    content: "← Swipe or drag →";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+
+.swipe-hint {
+    text-align: center;
+    margin-top: 20px;
     font-size: 0.85rem;
     color: var(--gold);
-    opacity: 0.7;
+    opacity: 0.6;
     letter-spacing: 2px;
     animation: pulse 2s infinite;
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
 @keyframes pulse {
-    0%, 100% { 
-        opacity: 0.4;
-        text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
-    }
-    50% { 
-        opacity: 0.9;
-        text-shadow: 0 0 15px rgba(212, 175, 55, 0.8), 0 0 25px rgba(212, 175, 55, 0.4);
-    }
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
 }
 
+/* ========== CALL TO ACTION SECTION ========== */
+.cta-section {
+    padding: 120px 5%;
+    background: linear-gradient(to bottom, var(--bg-light), var(--bg));
+    text-align: center;
+    position: relative;
+}
 
-/* ============================================
-   MOBILE RESPONSIVE FIXES
-   ============================================ */
+.cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
 
-/* ============================================
-   MOBILE RESPONSIVE FIXES
-   ============================================ */
+.cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--text);
+    margin-bottom: 30px;
+    line-height: 1.3;
+}
 
-@media (max-width: 768px) {
-    
-    /* Hero section */
+.cta-section p {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    line-height: 1.8;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: var(--gold);
+    color: #000;
+    padding: 16px 40px;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212,175,55,0.4);
+}
+
+.btn-secondary {
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    padding: 16px 40px;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.btn-secondary:hover {
+    background: var(--gold);
+    color: #000;
+    transform: translateY(-3px);
+}
+
+/* ========== FOOTER ========== */
+footer {
+    padding: 60px 5%;
+    text-align: center;
+    border-top: 1px solid #222;
+    background: var(--bg);
+}
+
+.footer-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+footer p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.social-links a {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.social-links a:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(212,175,55,0.2);
+}
+
+/* ========== MOBILE RESPONSIVE ========== */
+@media (max-width: 968px) {
     .hero-split {
         flex-direction: column;
-        height: auto;
-        min-height: 100vh;
     }
     
     .hero-image {
-        height: 35vh;
+        height: 45vh;
         flex: none;
-        width: 100%;
+    }
+    
+    .hero-image::after {
+        background: linear-gradient(to bottom, transparent 0%, rgba(10,10,10,0.8) 100%);
     }
     
     .hero-content {
-        padding: 25px 5%;
+        padding: 60px 5%;
         text-align: center;
-        width: 100%;
+        min-height: 55vh;
     }
     
-    /* Ministry title */
-    #heroTitle {
-        font-size: 1.2rem;
-        letter-spacing: 2px;
-        margin-bottom: 15px;
-        line-height: 1.3;
+    .glow-orb {
+        width: 300px;
+        height: 300px;
+        top: 10%;
+        right: -50px;
+        opacity: 0.6;
     }
     
-    /* Text spacing */
-    #heroText {
-        gap: 12px;
-        padding: 0 5px;
-        max-width: 100%;
-    }
-    
-    .intro-text {
-        font-size: 0.9rem;
-        line-height: 1.6;
+    .intro-text::before {
+        left: 50%;
+        transform: translateX(-50%);
+        top: -40px;
     }
     
     .bible-verse {
-        font-size: 0.75rem;
-        padding-left: 10px;
-        margin-top: 5px;
-        border-left-width: 1.5px;
+        text-align: center;
+        border-left: none;
+        border-top: 3px solid var(--gold);
+        padding: 20px;
+        margin-top: 10px;
     }
     
-    /* Section with subtitle */
-    .global-testimonies {
-        padding-top: 60px;
-        padding-left: 4%;
-        padding-right: 4%;
+    #heroText {
+        align-items: center;
     }
     
-    h2 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        letter-spacing: 1px;
-        margin-bottom: 15px;
-        line-height: 1.3;
-    }
-    
-    /* Subtitle - KEPT */
-    .global-testimonies h2::after {
-        content: "Real stories of faith and transformation";
-        display: block;
-        font-size: 0.85rem;
-        color: var(--muted);
-        font-weight: 400;
-        margin-top: 8px;
-        font-family: 'Inter', sans-serif;
-        letter-spacing: 0.5px;
-    }
-    
-    /* Wrapper */
-    .testimony-wrapper {
-        padding: 10px;
-        margin: -10px;
-    }
-    
-    /* Row */
-    .testimony-row {
-        padding-left: 10px;
-        padding-right: 10px;
-        gap: 12px;
-    }
-    
-    /* Card - SINGLE CLEAN DEFINITION */
     .testimony-card {
-        min-width: 290px;
-        max-width: 92vw;
-        padding: 18px;
-        background: linear-gradient(145deg, #fdfcf8, #f5f0e1);
-        border-radius: 14px;
-        box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-        border: 1px solid rgba(212,175,55,0.12);
-        animation: slideIn 0.6s ease-out both;
+        min-width: 320px;
+        max-width: 85vw;
+        padding: 20px;
     }
     
-    .testimony-card:nth-child(1) { animation-delay: 0.1s; }
-    .testimony-card:nth-child(2) { animation-delay: 0.2s; }
-    .testimony-card:nth-child(3) { animation-delay: 0.3s; }
-    .testimony-card:nth-child(4) { animation-delay: 0.4s; }
-    
-    @keyframes slideIn {
-        from {
-            opacity: 0;
-            transform: translateX(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-    
-    /* Text - left aligned */
-    .testimony-text {
-        text-align: left;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    
-    .testimony-text h3 {
-        font-size: 1.15rem;
-        margin-bottom: 5px;
-        color: #b8941f;
-        font-weight: 600;
-    }
-    
-    .catch {
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: #2c2c2c;
-        margin-bottom: 6px;
-        line-height: 1.25;
-    }
-    
-    .brief {
-        font-size: 0.8rem;
-        color: #666;
-        line-height: 1.4;
-    }
-    
-    /* Image - SINGLE DEFINITION */
     .testimony-img {
         width: 100px;
         height: 100px;
-        margin-left: 12px;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-        flex-shrink: 0;
     }
     
-    /* Stars */
-    .corner-star {
-        font-size: 18px;
-    }
-    
-    /* Hide scroll buttons */
     .scroll-btn {
         display: none;
     }
     
-    /* Swipe hint - KEPT with animation */
-    .testimony-wrapper::after {
-        content: "← Swipe →";
-        position: absolute;
-        bottom: 5px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 0.7rem;
-        color: var(--gold);
-        opacity: 0.6;
-        letter-spacing: 2px;
-        animation: pulse 2s infinite;
+    .testimony-row {
+        padding: 30px 5%;
+        gap: 20px;
     }
-    
-    @keyframes pulse {
-        0%, 100% { opacity: 0.4; }
-        50% { opacity: 0.8; }
-    }
-    
-    /* Navbar */
+}
+
+@media (max-width: 480px) {
     .navbar {
-        padding: 12px 4%;
+        padding: 15px 4%;
     }
     
     .logo {
-    font-size: 0.9rem;
-    line-height: 1.2;
-    animation: heartbeat 2s ease-in-out infinite;/* Keep animation on mobile */
-    color: var(--gold);  /* RED on mobile too */ 
-}
+        font-size: 0.9rem;
+        max-width: 60%;
+    }
     
     .donate-btn {
-        padding: 6px 14px;
-        font-size: 0.85rem;
-        color: #ffffff !important;  /* WHITE on mobile too */
+        padding: 8px 16px;
+        font-size: 0.8rem;
     }
-}
-
-/* Extra small phones */
-@media (max-width: 480px) {
+    
     .hero-image {
-        height: 30vh;
+        height: 40vh;
+    }
+    
+    .hero-content {
+        padding: 40px 4%;
     }
     
     #heroTitle {
-        font-size: 1.1rem;
+        letter-spacing: 2px;
     }
     
-    .testimony-card {
-        min-width: 270px;
+    .intro-text {
+        font-size: 0.95rem;
+    }
+    
+    .bible-verse {
+        font-size: 0.85rem;
         padding: 15px;
     }
     
+    .testimony-card {
+        min-width: 280px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .testimony-text {
+        text-align: center;
+        order: 2;
+    }
+    
     .testimony-img {
-        width: 90px;
-        height: 90px;
+        margin: 0 0 15px 0;
+        width: 100%;
+        height: 180px;
+        order: 1;
     }
     
     .testimony-text h3 {
-        font-size: 1.05rem;
+        font-size: 1.2rem;
     }
     
     .catch {
-        font-size: 0.85rem;
+        font-size: 0.95rem;
     }
     
     .brief {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        max-width: 280px;
     }
 }
+
+/* ========== ANIMATION CLASSES ========== */
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
 </style>
 </head>
 
-
 <body>
 
-<!-- TOP NAV -->
-<nav class="navbar">
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
     <div class="logo">Become the Lion you were meant to be.</div>
-    <a href="#donate" class="btn donate-btn">Donate</a>
+    <a href="#donate" class="donate-btn">Donate</a>
 </nav>
 
-<!-- HERO SPLIT SECTION -->
+<!-- HERO SECTION -->
 <section class="hero-split">
-    
-    <!-- LEFT SIDE (IMAGE) -->
     <div class="hero-image">
-        <!-- Replace with your real image -->
-        <img src="./images/portrait.jpeg">
-
-
-
-
-
-
+        <img src="./images/portrait.jpeg" alt="Cross against golden sky">
     </div>
-
-    <!-- RIGHT SIDE (TEXT) -->
-   <!-- RIGHT SIDE (TEXT) -->
-<div class="hero-content">
-    <h1 id="heroTitle">LIGHT TO THE WORLD MINISTRIES</h1>
-    <p id="heroText">
-    <span class="intro-text">In the quiet moments of struggle, light finds us. These are true stories of ordinary people who discovered something extraordinary within themselves—through faith, perseverance, and grace. May their journey illuminate yours.</span>
     
-    <span class="bible-verse">'For God, who said, "Let light shine out of darkness," made his light shine in our hearts to give us the light of the knowledge of God's glory displayed in the face of Christ.'<br>— 2 Corinthians 4:6</span>
-</p>
-    
-</div>
-<script>
-window.addEventListener('DOMContentLoaded', () => {
-    const heroTitle = document.getElementById('heroTitle');
-    const heroText = document.getElementById('heroText');
-
-    setTimeout(() => heroTitle.classList.add('visible'), 200);
-    setTimeout(() => heroText.classList.add('visible'), 700);
-});
-</script>
-
-
-
+    <div class="hero-content">
+        <div class="glow-orb"></div>
+        <h1 id="heroTitle">Light to the World Ministries</h1>
+        <div id="heroText">
+            <p class="intro-text">
+                In the quiet moments of struggle, light finds us. These are true stories of ordinary people who discovered something extraordinary within themselves—through faith, perseverance, and grace. May their journey illuminate yours.
+            </p>
+            <p class="bible-verse">
+                "For God, who said, 'Let light shine out of darkness,' made his light shine in our hearts to give us the light of the knowledge of God's glory displayed in the face of Christ."
+                <br><span style="display: block; margin-top: 10px; font-weight: 500;">— 2 Corinthians 4:6</span>
+            </p>
+        </div>
+        
+        <div class="scroll-indicator" onclick="document.getElementById('mission').scrollIntoView({behavior: 'smooth'})">
+            <span>Discover</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </div>
 </section>
-<section class="global-testimonies">
-    <h2>Stories of Transformation/Testimonies</h2>
-    <div class="divider"></div>
 
-    <div class="testimony-wrapper">
-
-    <div class="testimony-row" id="testimonyRow">
-
-        <a href="story1.html" class="testimony-card">
-            <span class="corner-star star-tl">✦</span>
-    <span class="corner-star star-tr">✦</span>
-    <span class="corner-star star-bl">✦</span>
-    <span class="corner-star star-br">✦</span>
-            <div class="testimony-text">
-                <h3>Michael A.</h3>
-                <div class="catch">Freedom From Hidden Struggles</div>
-                <div class="brief">
-                    After years of silent battles, he discovered
-                    discipline, faith, and restoration.
-                </div>
-            </div>
-            <div class="testimony-img">
-                <img src="images/Michaela.jpeg">
-            </div>
-
-        </a>
-
-        <a href="story2.html" class="testimony-card">
-            <span class="corner-star star-tl">✦</span>
-    <span class="corner-star star-tr">✦</span>
-    <span class="corner-star star-bl">✦</span>
-    <span class="corner-star star-br">✦</span>
-            <div class="testimony-text">
-                <h3>Sarah L.</h3>
-                <div class="catch">From Depression to Purpose</div>
-                <div class="brief">
-                    What seemed like darkness became the
-                    foundation of her calling.
-                </div>
-            </div>
-            <div class="testimony-img">
-                <img src="images/sarahl.jpeg">
-            </div>
-        </a>
-        <a href="story2.html" class="testimony-card">
-            <span class="corner-star star-tl">✦</span>
-    <span class="corner-star star-tr">✦</span>
-    <span class="corner-star star-bl">✦</span>
-    <span class="corner-star star-br">✦</span>
-            <div class="testimony-text">
-                <h3>Sarah L.</h3>
-                <div class="catch">From Depression to Purpose</div>
-                <div class="brief">
-                    What seemed like darkness became the
-                    foundation of her calling.
-                </div>
-            </div>
-            <div class="testimony-img">
-                <img src="images/sarahl.jpeg">
-            </div>
-        </a>
-        <a href="story2.html" class="testimony-card">
-            <span class="corner-star star-tl">✦</span>
-    <span class="corner-star star-tr">✦</span>
-    <span class="corner-star star-bl">✦</span>
-    <span class="corner-star star-br">✦</span>
-            <div class="testimony-text">
-                <h3>Betty B..</h3>
-                <div class="catch">From addiction to Purpose</div>
-                <div class="brief">
-                    What seemed imposible God restored.
-                </div>
-            </div>
-            <div class="testimony-img">
-                <img src="images/Bettyy.jpeg">
-            </div>
-        </a>
-
+<!-- MISSION SECTION -->
+<section class="mission-section" id="mission">
+    <div class="section-header">
+        <h2 class="fade-up">Our Mission</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle fade-up stagger-1">
+            We exist to illuminate the path from darkness to light, helping broken hearts find healing, purpose, and the courage to become who they were created to be.
+        </p>
     </div>
+</section>
 
-    <button id="scrollLeftBtn" class="scroll-btn left" onclick="scrollCardsLeft()"><</button>
-<button id="scrollRightBtn" class="scroll-btn right" onclick="scrollCardsRight()">></button>
+<!-- TESTIMONIES SECTION -->
+<section class="testimonies-section">
+    <div class="testimonies-header">
+        <h2>Stories of Transformation</h2>
+        <p>Real testimonies of faith, struggle, and redemption</p>
+        <div class="divider"></div>
+    </div>
+    
+    <div class="testimony-wrapper">
+        <div class="testimony-row" id="testimonyRow">
+            
+            <a href="story1.html" class="testimony-card fade-up">
+                <span class="corner-star star-tl">✦</span>
+                <span class="corner-star star-tr">✦</span>
+                <span class="corner-star star-bl">✦</span>
+                <span class="corner-star star-br">✦</span>
+                <div class="testimony-text">
+                    <h3>Michael A.</h3>
+                    <div class="catch">Freedom From Hidden Struggles</div>
+                    <div class="brief">
+                        After years of silent battles, he discovered discipline, faith, and restoration through community and prayer.
+                    </div>
+                </div>
+                <div class="testimony-img">
+                    <img src="images/Michaela.jpeg" alt="Michael A.">
+                </div>
+            </a>
 
+            <a href="story2.html" class="testimony-card fade-up stagger-1">
+                <span class="corner-star star-tl">✦</span>
+                <span class="corner-star star-tr">✦</span>
+                <span class="corner-star star-bl">✦</span>
+                <span class="corner-star star-br">✦</span>
+                <div class="testimony-text">
+                    <h3>Sarah L.</h3>
+                    <div class="catch">From Depression to Purpose</div>
+                    <div class="brief">
+                        What seemed like endless darkness became the very foundation of her calling to help others find hope.
+                    </div>
+                </div>
+                <div class="testimony-img">
+                    <img src="images/sarahl.jpeg" alt="Sarah L.">
+                </div>
+            </a>
 
-</div>
+            <a href="story3.html" class="testimony-card fade-up stagger-2">
+                <span class="corner-star star-tl">✦</span>
+                <span class="corner-star star-tr">✦</span>
+                <span class="corner-star star-bl">✦</span>
+                <span class="corner-star star-br">✦</span>
+                <div class="testimony-text">
+                    <h3>David K.</h3>
+                    <div class="catch">Rebuilding After Loss</div>
+                    <div class="brief">
+                        When everything was stripped away, he found that faith was the one foundation that could not be shaken.
+                    </div>
+                </div>
+                <div class="testimony-img">
+                    <img src="images/davidk.jpeg" alt="David K.">
+                </div>
+            </a>
+
+            <a href="story4.html" class="testimony-card fade-up stagger-3">
+                <span class="corner-star star-tl">✦</span>
+                <span class="corner-star star-tr">✦</span>
+                <span class="corner-star star-bl">✦</span>
+                <span class="corner-star star-br">✦</span>
+                <div class="testimony-text">
+                    <h3>Betty B.</h3>
+                    <div class="catch">From Addiction to Purpose</div>
+                    <div class="brief">
+                        What seemed impossible, God restored. Her story proves that no one is beyond the reach of grace.
+                    </div>
+                </div>
+                <div class="testimony-img">
+                    <img src="images/Bettyy.jpeg" alt="Betty B.">
+                </div>
+            </a>
+
+        </div>
+
+        <button class="scroll-btn left" id="scrollLeft" onclick="scrollTestimonies('left')">‹</button>
+        <button class="scroll-btn right" id="scrollRight" onclick="scrollTestimonies('right')">›</button>
+    </div>
+    
+    <p class="swipe-hint">← Swipe to explore →</p>
+</section>
+
+<!-- CALL TO ACTION SECTION -->
+<section class="cta-section" id="donate">
+    <div class="cta-content">
+        <h2 class="fade-up">Be Part of the Light</h2>
+        <p class="fade-up stagger-1">
+            Every story of transformation is made possible through the generosity of people like you. Your support helps us reach more hearts, restore more lives, and spread light into the darkest places.
+        </p>
+        <div class="cta-buttons fade-up stagger-2">
+            <a href="#donate-form" class="btn-primary">Donate Now</a>
+            <a href="#contact" class="btn-secondary">Share Your Story</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">Light to the World Ministries</div>
+        <p>"Let your light shine before others, that they may see your good deeds and glorify your Father in heaven."</p>
+        <p style="font-size: 0.8rem; margin-top: 20px; opacity: 0.6;">© 2026 Light to the World Ministries. All rights reserved.</p>
+        
+        <div class="social-links">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="YouTube">▶</a>
+            <a href="#" aria-label="Email">✉</a>
+        </div>
+    </div>
+</footer>
+
 <script>
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// Hero animations on load
 window.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById("testimonyRow");
-    const leftBtn = document.getElementById("scrollLeftBtn");
-    const rightBtn = document.getElementById("scrollRightBtn");
+    setTimeout(() => {
+        document.getElementById('heroTitle').classList.add('visible');
+    }, 300);
+    
+    setTimeout(() => {
+        document.getElementById('heroText').classList.add('visible');
+    }, 800);
+});
 
-    const card = container.querySelector(".testimony-card");
-    const gap = 25;
-    const scrollAmount = card.offsetWidth + gap;
+// Intersection Observer for scroll animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
 
-    function updateArrows() {
-        const leftPos = container.scrollLeft;
-        const rightPos = container.scrollLeft + container.offsetWidth;
-        leftBtn.style.display = leftPos <= 1 ? "none" : "block";
-        rightBtn.style.display = rightPos >= container.scrollWidth - 1 ? "none" : "block";
-    }
-
-    // ⚡ Attach to global window so onclick works
-    window.scrollCardsRight = function() {
-        container.scrollBy({ left: scrollAmount, behavior: "smooth" });
-        setTimeout(updateArrows, 350);
-    }
-
-    window.scrollCardsLeft = function() {
-        container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-        setTimeout(updateArrows, 350);
-    }
-
-    // Drag scroll logic
-    let isDragging = false;
-    let startX;
-    let scrollStart;
-
-    container.addEventListener("mousedown", (e) => {
-        isDragging = true;
-        startX = e.pageX;
-        scrollStart = container.scrollLeft;
-        container.style.cursor = "grabbing";
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
     });
+}, observerOptions);
 
-    container.addEventListener("mouseup", () => {
-        isDragging = false;
-        container.style.cursor = "grab";
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Testimony scroll functionality
+const testimonyRow = document.getElementById('testimonyRow');
+const scrollLeftBtn = document.getElementById('scrollLeft');
+const scrollRightBtn = document.getElementById('scrollRight');
+
+function updateScrollButtons() {
+    const maxScroll = testimonyRow.scrollWidth - testimonyRow.clientWidth;
+    const currentScroll = testimonyRow.scrollLeft;
+    
+    scrollLeftBtn.classList.toggle('hidden', currentScroll <= 0);
+    scrollRightBtn.classList.toggle('hidden', currentScroll >= maxScroll - 10);
+}
+
+function scrollTestimonies(direction) {
+    const cardWidth = testimonyRow.querySelector('.testimony-card').offsetWidth + 30;
+    const scrollAmount = direction === 'left' ? -cardWidth : cardWidth;
+    
+    testimonyRow.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
     });
+    
+    setTimeout(updateScrollButtons, 400);
+}
 
-    container.addEventListener("mouseleave", () => {
-        isDragging = false;
-        container.style.cursor = "grab";
-    });
+// Drag to scroll functionality
+let isDown = false;
+let startX;
+let scrollLeft;
 
-    container.addEventListener("mousemove", (e) => {
-        if (!isDragging) return;
+testimonyRow.addEventListener('mousedown', (e) => {
+    isDown = true;
+    testimonyRow.style.cursor = 'grabbing';
+    startX = e.pageX - testimonyRow.offsetLeft;
+    scrollLeft = testimonyRow.scrollLeft;
+});
+
+testimonyRow.addEventListener('mouseleave', () => {
+    isDown = false;
+    testimonyRow.style.cursor = 'grab';
+});
+
+testimonyRow.addEventListener('mouseup', () => {
+    isDown = false;
+    testimonyRow.style.cursor = 'grab';
+    updateScrollButtons();
+});
+
+testimonyRow.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - testimonyRow.offsetLeft;
+    const walk = (x - startX) * 2;
+    testimonyRow.scrollLeft = scrollLeft - walk;
+});
+
+testimonyRow.addEventListener('scroll', updateScrollButtons);
+
+// Touch events for mobile swipe
+let touchStartX = 0;
+let touchEndX = 0;
+
+testimonyRow.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+}, {passive: true});
+
+testimonyRow.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}, {passive: true});
+
+function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+            scrollTestimonies('right');
+        } else {
+            scrollTestimonies('left');
+        }
+    }
+}
+
+// Initialize
+updateScrollButtons();
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const walk = e.pageX - startX;
-        container.scrollLeft = scrollStart + walk;
-        updateArrows();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     });
-
-    container.addEventListener("scroll", updateArrows);
-
-    updateArrows();
-    container.style.cursor = "grab";
 });
 </script>
-
-
-
-
 
 </body>
-
 </html>
