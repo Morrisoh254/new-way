@@ -453,6 +453,12 @@ footer {
         height: auto;
         min-height: 100vh;
     }
+    .testimony-text {
+    text-align: left !important;  /* Force left alignment */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
     
     .hero-image {
         height: 40vh;
@@ -522,11 +528,113 @@ footer {
     }
     
     .testimony-img {
-        width: 90px;
-        height: 90px;
-        margin-left: 10px;
+    width: 110px;      /* Bigger */
+    height: 110px;
+    margin-left: 15px;
+    border-radius: 8px; /* Modern rounded corners */
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Depth */
+}
+/* Modern card styling */
+.testimony-card {
+    min-width: 300px;      /* Slightly wider */
+    max-width: 92vw;       /* Use more screen width */
+    padding: 20px;
+    background: linear-gradient(145deg, #fdfcf8, #f5f0e1); /* Warmer cream */
+    border-radius: 16px;   /* More rounded */
+    box-shadow: 
+        0 4px 20px rgba(0,0,0,0.08),
+        0 1px 3px rgba(0,0,0,0.1);
+    border: 1px solid rgba(212,175,55,0.15);
+    backdrop-filter: blur(10px); /* Glass effect */
+}
+
+/* Better typography hierarchy */
+.testimony-text h3 {
+    font-size: 1.25rem;
+    margin-bottom: 6px;
+    color: #b8941f; /* Deeper gold */
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.catch {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #2c2c2c;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.brief {
+    font-size: 0.85rem;
+    color: #5a5a5a;
+    line-height: 1.5;
+    font-weight: 400;
+}
+/* Smooth entrance animation */
+.testimony-card {
+    animation: slideIn 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.testimony-card:nth-child(1) { animation-delay: 0.1s; }
+.testimony-card:nth-child(2) { animation-delay: 0.2s; }
+.testimony-card:nth-child(3) { animation-delay: 0.3s; }
+.testimony-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
     }
-    
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.global-testimonies h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+/* Smaller subtitle */
+.global-testimonies h2::after {
+    content: "Real stories of faith and transformation";
+    display: block;
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 400;
+    margin-top: 8px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.5px;
+}
+/* Hide default buttons, use swipe hint */
+.scroll-btn {
+    display: none; /* Hide on mobile - use swipe */
+}
+
+/* Add swipe hint */
+.testimony-wrapper::after {
+    content: "← Swipe →";
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: var(--gold);
+    opacity: 0.6;
+    letter-spacing: 2px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+}
     .testimony-text h3 {
         font-size: 1.1rem;
     }
