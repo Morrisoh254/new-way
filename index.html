@@ -160,6 +160,7 @@ body {
     padding: 0 8%;
     position: relative;
     background: radial-gradient(circle at 30% 50%, rgba(212,175,55,0.03) 0%, transparent 50%);
+    padding-bottom: 120px;
 }
 
 .glow-orb {
@@ -257,7 +258,8 @@ body {
     bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
-    display: none;
+    display: flex;
+    z-index: 10;
     flex-direction: column;
     align-items: center;
     gap: 10px;
@@ -421,6 +423,9 @@ body {
     scrollbar-width: none;
     -ms-overflow-style: none;
     cursor: grab;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-left: 5%;
 }
 
 .testimony-row::-webkit-scrollbar {
@@ -447,6 +452,8 @@ body {
     flex-shrink: 0;
     border: 1px solid rgba(212,175,55,0.1);
     overflow: hidden;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
 }
 
 .testimony-card::before {
@@ -770,6 +777,7 @@ footer p {
         padding: 60px 5%;
         text-align: center;
         min-height: 55vh;
+        padding-bottom: 100px;
     }
     
     .glow-orb {
@@ -868,7 +876,22 @@ footer p {
         display: none;
     }
 }
+.navbar {
+    /* ADD this */
+    gap: 20px;
+}
 
+.logo {
+    /* ADD these */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.donate-btn {
+    /* ADD this */
+    flex-shrink: 0;
+}
 @media (max-width: 480px) {
     .navbar {
         padding: 15px 4%;
