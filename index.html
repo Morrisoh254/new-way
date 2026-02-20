@@ -710,7 +710,30 @@ body {
     color: #000;
     transform: translateY(-3px);
 }
-
+/* ========== PRAYER WIDGET ========== */
+.prayer-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #d4af37, #8b6914);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(212,175,55,0.4);
+    z-index: 9999;
+    transition: all 0.3s ease;
+}
+.prayer-widget:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 15px 40px rgba(212,175,55,0.6);
+}
+.prayer-widget span { font-size: 1.8rem; }
+.prayer-widget small { font-size: 0.65rem; color: #000; font-weight: 600; text-transform: uppercase; }
 /* ========== FOOTER ========== */
 footer {
     padding: 60px 5%;
@@ -845,6 +868,18 @@ footer p {
         width: fit-content;           /* Shrink to content width */
         align-self: center;           /* Center in flex container */
     }
+    .prayer-widget {
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+    }
+    .prayer-widget span {
+        font-size: 1.5rem;
+    }
+    .prayer-widget small {
+        font-size: 0.6rem;
+    }
 }
 /* Landscape mobile / small height screens */
 @media (max-width: 968px) and (max-height: 500px) {
@@ -892,22 +927,7 @@ footer p {
         display: none;
     }
 }
-.navbar {
-    /* ADD this */
-    gap: 20px;
-}
 
-.logo {
-    /* ADD these */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.donate-btn {
-    /* ADD this */
-    flex-shrink: 0;
-}
 @media (max-width: 480px) {
     .navbar {
         padding: 15px 4%;
@@ -1222,31 +1242,7 @@ footer p {
     </div>
 </div>
 
-<style>
-.prayer-widget {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 70px;
-    height: 70px;
-    background: linear-gradient(135deg, #d4af37, #8b6914);
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 10px 30px rgba(212,175,55,0.4);
-    z-index: 9999;
-    transition: all 0.3s ease;
-}
-.prayer-widget:hover {
-    transform: scale(1.1) translateY(-5px);
-    box-shadow: 0 15px 40px rgba(212,175,55,0.6);
-}
-.prayer-widget span { font-size: 1.8rem; }
-.prayer-widget small { font-size: 0.65rem; color: #000; font-weight: 600; text-transform: uppercase; }
-</style>
+
 <!-- FOOTER -->
 <footer>
     <div class="footer-content">
