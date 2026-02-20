@@ -49,6 +49,7 @@ body {
     background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
     z-index: 1000;
     transition: all 0.4s ease;
+    gap: 20px; 
 }
 
 .navbar.scrolled {
@@ -67,6 +68,9 @@ body {
     flex: 1;
     min-width: 0;
     line-height: 1.3;
+    white-space: nowrap;          /* ADD THIS LINE */
+    overflow: hidden;             /* ADD THIS LINE */
+    text-overflow: ellipsis; 
 }
 
 @keyframes heartbeat {
@@ -93,6 +97,8 @@ body {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    flex-shrink: 0;               /* ADD THIS LINE */
+    white-space: nowrap;
 }
 
 .donate-btn::before {
