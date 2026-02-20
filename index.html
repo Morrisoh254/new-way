@@ -1158,7 +1158,95 @@ footer p {
         </div>
     </div>
 </section>
+<!-- PRAYER WIDGET BUTTON -->
+<div class="prayer-widget" onclick="document.getElementById('prayerModal').style.display='flex'">
+    <span>🙏</span>
+    <small>Prayer</small>
+</div>
 
+<!-- PRAYER FORM MODAL -->
+<div id="prayerModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:10000;align-items:center;justify-content:center;">
+    
+    <div style="background:#0a0a0a;border:1px solid #d4af37;border-radius:20px;padding:30px;width:90%;max-width:500px;position:relative;">
+        
+        <button onclick="document.getElementById('prayerModal').style.display='none'" style="position:absolute;top:15px;right:15px;background:none;border:none;color:#d4af37;font-size:1.5rem;cursor:pointer;">✕</button>
+        
+        <h3 style="color:#d4af37;text-align:center;margin-bottom:20px;font-family:'Playfair Display',serif;">Send Prayer Request</h3>
+        
+        <!-- FORM - REPLACE URL AFTER DEPLOYMENT -->
+        <form action="https://script.google.com/macros/s/AKfycbz-XPN-1NiGNoS5e0So0YYQFNyBjjg9G_7Z0pTO4SfhZs9ObiIzNIjCAzaNdZACxnaHAg/exec" method="POST" target="_blank" onsubmit="setTimeout(function(){document.getElementById('prayerModal').style.display='none';},1000);">
+            
+            <input type="hidden" name="timestamp" id="ts">
+            <input type="hidden" name="date" id="dt">
+            
+            <div style="margin-bottom:15px;">
+                <label style="color:#d4af37;font-size:0.8rem;">Name *</label>
+                <input type="text" name="name" required style="width:100%;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(212,175,55,0.3);border-radius:8px;color:#fff;margin-top:5px;">
+            </div>
+            
+            <div style="margin-bottom:15px;">
+                <label style="color:#d4af37;font-size:0.8rem;">Email or Phone *</label>
+                <input type="text" name="contact" required style="width:100%;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(212,175,55,0.3);border-radius:8px;color:#fff;margin-top:5px;">
+            </div>
+            
+            <div style="margin-bottom:15px;">
+                <label style="color:#d4af37;font-size:0.8rem;">Category</label>
+                <select name="category" style="width:100%;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(212,175,55,0.3);border-radius:8px;color:#fff;margin-top:5px;">
+                    <option>Health & Healing</option>
+                    <option>Family & Relationships</option>
+                    <option>Financial Provision</option>
+                    <option>Spiritual Growth</option>
+                    <option>Career & Education</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            
+            <div style="margin-bottom:15px;">
+                <label style="color:#d4af37;font-size:0.8rem;">Prayer Request *</label>
+                <textarea name="prayer" required rows="4" style="width:100%;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(212,175,55,0.3);border-radius:8px;color:#fff;margin-top:5px;resize:vertical;"></textarea>
+            </div>
+            
+            <label style="display:flex;align-items:center;gap:10px;color:#a0a0a0;font-size:0.9rem;margin-bottom:20px;cursor:pointer;">
+                <input type="checkbox" name="private" value="true" style="width:18px;height:18px;">
+                <span>Keep my request private</span>
+            </label>
+            
+            <button type="submit" onclick="document.getElementById('ts').value=new Date().toLocaleString();document.getElementById('dt').value=new Date().toISOString().split('T')[0];" style="width:100%;padding:15px;background:linear-gradient(135deg,#d4af37,#8b6914);border:none;border-radius:10px;color:#000;font-weight:600;cursor:pointer;font-size:1rem;">
+                Submit Prayer
+            </button>
+            
+        </form>
+        
+        <p style="text-align:center;color:#666;font-size:0.8rem;margin-top:15px;font-style:italic;">"Where two or three gather..." — Matthew 18:20</p>
+        
+    </div>
+</div>
+
+<style>
+.prayer-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #d4af37, #8b6914);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(212,175,55,0.4);
+    z-index: 9999;
+    transition: all 0.3s ease;
+}
+.prayer-widget:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 15px 40px rgba(212,175,55,0.6);
+}
+.prayer-widget span { font-size: 1.8rem; }
+.prayer-widget small { font-size: 0.65rem; color: #000; font-weight: 600; text-transform: uppercase; }
+</style>
 <!-- FOOTER -->
 <footer>
     <div class="footer-content">
