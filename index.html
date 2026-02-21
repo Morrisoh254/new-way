@@ -768,6 +768,20 @@ body.modal-open {
     letter-spacing: 0.5px;
     text-align: center;
     line-height: 1.1;
+}
+    @media (min-width: 969px) {
+    .prayer-widget {
+        right: auto;
+        left: 89%;
+        transform: translateX(-50%);
+        bottom: 40px;
+        width: 85px;
+        height: 85px;
+    }
+    
+    .prayer-widget:hover {
+        transform: translateX(-7%) scale(1.1) translateY(-5px);
+    }
 }/* ========== FOOTER ========== */
 footer {
     padding: 60px 5%;
@@ -925,18 +939,7 @@ footer p {
         width: fit-content;           /* Shrink to content width */
         align-self: center;           /* Center in flex container */
     }
-        .prayer-widget {
-        width: 65px;
-        height: 65px;
-        bottom: 20px;
-        right: 20px;
-    }
-    .prayer-widget span {
-        font-size: 1.5rem;
-    }
-    .prayer-widget small {
-        font-size: 0.55rem;
-    }
+        
         /* SMOOTH MOBILE SCROLL - fixes shaky behavior */
     .testimony-row {
         cursor: default;
@@ -998,6 +1001,26 @@ footer p {
     .bible-verse {
         font-size: 0.8rem;
         padding: 15px;
+    }
+        .prayer-widget {
+        width: 65px;
+        height: 65px;
+        bottom: 20px;
+        right: 20px;
+        left: auto;
+        transform: none;
+    }
+    
+    .prayer-widget:hover {
+        transform: scale(1.1) translateY(-5px);
+    }
+    
+    .prayer-widget span {
+        font-size: 1.5rem;
+    }
+    
+    .prayer-widget small {
+        font-size: 0.55rem;
     }
     
     /* Hide scroll indicator in landscape to save space */
