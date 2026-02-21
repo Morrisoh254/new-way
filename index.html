@@ -59,6 +59,14 @@ body {
     padding: 15px 5%;
     box-shadow: 0 2px 20px rgba(0,0,0,0.3);
 }
+/* Add this to your CSS */
+body.modal-open {
+    overflow: hidden;
+    touch-action: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
 
 .logo {
     font-family: 'Playfair Display', serif;
@@ -787,7 +795,31 @@ footer p {
     transform: translateY(-3px);
     box-shadow: 0 5px 20px rgba(212,175,55,0.2);
 }
-
+/* ========== DESKTOP ONLY - Custom Image Sizes ========== */
+/* ========== DESKTOP ONLY - Larger Images ========== */
+@media (min-width: 969px) {
+    /* Make the card wider to accommodate larger image */
+    .testimony-card {
+        min-width: 420px;        /* Increased from 380px */
+        max-width: 420px;
+        padding: 25px;
+    }
+    
+    /* Make image container bigger */
+    .testimony-img {
+        width: 160px;            /* Increased from 120px */
+        height: 160px;           /* Increased from 120px */
+        margin-left: 20px;
+    }
+    
+    /* Ensure image fills the larger container */
+    .testimony-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+}
 /* ========== MOBILE RESPONSIVE ========== */
 @media (max-width: 968px) {
     .hero-split {
@@ -1059,6 +1091,45 @@ footer p {
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+
+/* Prayer modal glow animation */
+@keyframes pulseGlow {
+    0%, 100% { 
+        box-shadow: 0 0 60px rgba(212,175,55,0.3), 0 0 100px rgba(212,175,55,0.1), inset 0 0 60px rgba(212,175,55,0.05);
+    }
+    50% { 
+        box-shadow: 0 0 80px rgba(212,175,55,0.5), 0 0 140px rgba(212,175,55,0.2), inset 0 0 80px rgba(212,175,55,0.1);
+    }
+}
+
+#prayerModal > div {
+    animation: pulseGlow 4s ease-in-out infinite;
+
+}
+/* Fix for prayer form select dropdown visibility */
+#prayerModal select {
+    background-color: #1a1a1a !important;
+    color: #f5f5f5 !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23d4af37' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 35px;
+}
+
+#prayerModal select option {
+    background-color: #1a1a1a;
+    color: #f5f5f5;
+    padding: 10px;
+}
+
+#prayerModal select:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 10px rgba(212,175,55,0.3);
+}
 </style>
 </head>
 
@@ -1171,7 +1242,7 @@ footer p {
                     </div>
                 </div>
                 <div class="testimony-img">
-                    <img src="images/davidk.jpeg" alt="David K.">
+                    <img src="images/davidk.jpg" alt="David K.">
                 </div>
             </a>
 
@@ -1231,8 +1302,7 @@ footer p {
 <!-- PRAYER FORM MODAL -->
 <div id="prayerModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:10000;align-items:center;justify-content:center;">
     
-    <div style="background:#0a0a0a;border:1px solid #d4af37;border-radius:20px;padding:30px;width:90%;max-width:500px;position:relative;">
-        
+    <div style="background:#0a0a0a;border:2px solid #d4af37;border-radius:20px;padding:30px;width:90%;max-width:500px;position:relative;box-shadow:0 0 60px rgba(212,175,55,0.3),0 0 100px rgba(212,175,55,0.1),inset 0 0 60px rgba(212,175,55,0.05);">
         <button onclick="closePrayerModal()" style="position:absolute;top:15px;right:15px;background:none;border:none;color:#d4af37;font-size:1.5rem;cursor:pointer;">✕</button>
         
         <h3 style="color:#d4af37;text-align:center;margin-bottom:20px;font-family:'Playfair Display',serif;">Send Prayer Request</h3>
@@ -1423,14 +1493,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // ========== PRAYER WIDGET FUNCTIONS ==========
 
+let scrollY = 0; // Store scroll position
+
 function openPrayerModal() {
+    scrollY = window.scrollY; // Remember where we were
+    document.body.classList.add('modal-open');
+    document.body.style.top = `-${scrollY}px`; // Prevent jump
     document.getElementById('prayerModal').style.display = 'flex';
-    document.body.style.overflow = 'hidden';
 }
 
 function closePrayerModal() {
+    document.body.classList.remove('modal-open');
+    document.body.style.top = '';
     document.getElementById('prayerModal').style.display = 'none';
-    document.body.style.overflow = '';
+    window.scrollTo(0, scrollY); // Restore position
 }
 
 // Close modal when clicking outside
