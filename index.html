@@ -737,6 +737,9 @@ body.modal-open {
     z-index: 9999;
     transition: all 0.3s ease;
     animation: glow-pulse 2s ease-in-out infinite;
+    -webkit-tap-highlight-color: transparent;  /* ADD THIS LINE */
+    user-select: none;                         /* ADD THIS TOO - prevents text selection */
+    -webkit-user-select: none;
 }
 
 @keyframes glow-pulse {
