@@ -884,6 +884,17 @@ footer p {
         height: 100%;
         object-fit: cover;
     }
+    .hero-image {
+        flex: 0 0 60%;              /* Controls width: 40%, 45%, 50%, etc */
+    }
+    
+    .hero-image img {
+        object-position: center center;  /* Try: center top, center bottom, 30% 50% */
+    }
+    /* Push "Light to the World" lower on desktop */
+    #heroTitle {
+        margin-top: 80px;        /* Increase this number to move it down more */
+    }
 }
 
 /* ========== MOBILE RESPONSIVE ========== */
