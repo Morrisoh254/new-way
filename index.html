@@ -719,12 +719,13 @@ body.modal-open {
     transform: translateY(-3px);
 }
 /* ========== PRAYER WIDGET ========== */
+/* ========== PRAYER WIDGET ========== */
 .prayer-widget {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 70px;
-    height: 70px;
+    width: 75px;
+    height: 75px;
     background: linear-gradient(135deg, #d4af37, #8b6914);
     border-radius: 50%;
     display: flex;
@@ -732,17 +733,42 @@ body.modal-open {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 10px 30px rgba(212,175,55,0.4);
+    box-shadow: 0 0 20px rgba(212,175,55,0.6), 0 0 40px rgba(212,175,55,0.3);
     z-index: 9999;
     transition: all 0.3s ease;
+    animation: glow-pulse 2s ease-in-out infinite;
 }
+
+@keyframes glow-pulse {
+    0%, 100% { 
+        box-shadow: 0 0 20px rgba(212,175,55,0.6), 0 0 40px rgba(212,175,55,0.3);
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 0 0 30px rgba(212,175,55,0.9), 0 0 60px rgba(212,175,55,0.5), 0 0 80px rgba(212,175,55,0.3);
+        transform: scale(1.05);
+    }
+}
+
 .prayer-widget:hover {
+    animation: none;
     transform: scale(1.1) translateY(-5px);
-    box-shadow: 0 15px 40px rgba(212,175,55,0.6);
+    box-shadow: 0 15px 40px rgba(212,175,55,0.8), 0 0 60px rgba(212,175,55,0.5);
 }
-.prayer-widget span { font-size: 1.8rem; }
-.prayer-widget small { font-size: 0.65rem; color: #000; font-weight: 600; text-transform: uppercase; }
-/* ========== FOOTER ========== */
+
+.prayer-widget span { 
+    font-size: 1.8rem; 
+}
+
+.prayer-widget small { 
+    font-size: 0.6rem; 
+    color: #000; 
+    font-weight: 700; 
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    line-height: 1.1;
+}/* ========== FOOTER ========== */
 footer {
     padding: 60px 5%;
     text-align: center;
@@ -899,9 +925,9 @@ footer p {
         width: fit-content;           /* Shrink to content width */
         align-self: center;           /* Center in flex container */
     }
-    .prayer-widget {
-        width: 60px;
-        height: 60px;
+        .prayer-widget {
+        width: 65px;
+        height: 65px;
         bottom: 20px;
         right: 20px;
     }
@@ -909,7 +935,7 @@ footer p {
         font-size: 1.5rem;
     }
     .prayer-widget small {
-        font-size: 0.6rem;
+        font-size: 0.55rem;
     }
         /* SMOOTH MOBILE SCROLL - fixes shaky behavior */
     .testimony-row {
@@ -1295,7 +1321,7 @@ footer p {
 <!-- PRAYER WIDGET BUTTON -->
 <div class="prayer-widget" onclick="openPrayerModal()">
     <span>🙏</span>
-    <small>Prayer</small>
+    <small>Tap<br>Prayer</small>
 </div>
 
 <!-- PRAYER FORM MODAL -->
