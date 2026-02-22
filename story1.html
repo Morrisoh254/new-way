@@ -69,7 +69,7 @@ body{
     position:relative;
     font-family:'Playfair Display', serif;
     font-size:clamp(1.8rem,4vw,3rem);
-    color:#FFF8E7; /* Dark text for contrast on gold */
+    color:#000000; /* Dark text for contrast on gold */
     letter-spacing:3px;
     max-width:800px;
     padding:0 20px;
@@ -142,7 +142,7 @@ body{
 .label{
     text-align:center;
     margin-top:10px;
-    color:var(--gold);
+    color:#ffffff;
     font-weight:600;
 }
 
@@ -247,6 +247,21 @@ body{
 @media(max-width:768px){
     .before-after{
         grid-template-columns:1fr;
+    }
+}
+/* ===== MOBILE HERO FIX ===== */
+@media (max-width: 768px) {
+    .story-hero {
+        height: 18vh;        /* Reduced from 28vh */
+        min-height: 120px;   /* Prevent it from getting too small */
+    }
+    
+    .story-hero h1 {
+        font-size: clamp(1.2rem, 5vw, 1.6rem);  /* Smaller text */
+        letter-spacing: 1px;
+        padding: 0 15px;
+        color: #000000;                    /* ADD: Ensure black on mobile */
+        text-shadow: 0 1px 3px rgba(255,255,255,0.5);
     }
 }
 </style>
