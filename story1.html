@@ -252,7 +252,7 @@ body{
 /* ===== MOBILE HERO FIX ===== */
 @media (max-width: 768px) {
     .story-hero {
-        height: 18vh;        /* Reduced from 28vh */
+        height: 15vh;        /* Reduced from 28vh */
         min-height: 120px;   /* Prevent it from getting too small */
     }
     
@@ -262,6 +262,25 @@ body{
         padding: 0 15px;
         color: #000000;                    /* ADD: Ensure black on mobile */
         text-shadow: 0 1px 3px rgba(255,255,255,0.5);
+    }
+    .back-btn {
+        background: transparent;
+        border: 1px solid rgba(255,248,231,0.3);  /* Subtle border only */
+        backdrop-filter: none;  /* Remove blur effect */
+    }
+    
+    .back-btn:hover {
+        background: rgba(255,248,231,0.1);  /* Very subtle hover */
+        border-color: rgba(255,248,231,0.5);
+    }
+    .story-container {
+        margin-top: 40px;    /* CHANGE: Was 100px */
+        margin-bottom: 60px; /* Optional: reduce bottom too */
+    }
+    
+    /* Slightly reduce intro margin */
+    .story-intro {
+        margin-bottom: 30px; /* Was 45px */
     }
 }
 </style>
