@@ -57,9 +57,9 @@ body{
     position:absolute;
     inset:0;
     background: linear-gradient(135deg, 
-        rgba(198,168,74,0.85) 0%, 
-        rgba(232,217,168,0.8) 50%, 
-        rgba(198,168,74,0.85) 100%
+        rgba(198,168,74,0.25) 0%,      /* ← REDUCED from 0.6 */
+        rgba(232,217,168,0.15) 50%,    /* ← REDUCED from 0.5 */
+        rgba(198,168,74,0.25) 100%
     );
     z-index:2;
 }
@@ -69,7 +69,7 @@ body{
     position:relative;
     font-family:'Playfair Display', serif;
     font-size:clamp(1.8rem,4vw,3rem);
-    color:#1a1a1a; /* Dark text for contrast on gold */
+    color:#FFF8E7; /* Dark text for contrast on gold */
     letter-spacing:3px;
     max-width:800px;
     padding:0 20px;
@@ -96,12 +96,13 @@ body{
     text-align:center;
 
     /* Gradient gold */
-    background: linear-gradient(90deg, #e8d9a8, #c6a84a, #f5e6b3);
+    background: linear-gradient(90deg, #f5e6b3, #e8c87a, #d4a35a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
     /* Glow */
-    text-shadow: 0 0 15px rgba(198,168,74,0.4);
+   text-shadow: 0 0 20px rgba(212,163,90,0.3);
+    filter: drop-shadow(0 0 10px rgba(198,168,74,0.2));
 }
 
 /* ===== CONTENT ===== */
@@ -119,7 +120,7 @@ body{
 
 .story-container h2{
     font-family:'Playfair Display', serif;
-    color:var(--gold);
+    color: #d4a35a;
     margin:60px 0 20px 0;
     font-size:1.8rem;
 }
@@ -200,7 +201,7 @@ body{
     margin-top:30px;
     padding:30px 20px;
     text-align:center;
-    background:#faf6ea; /* Solid color, no gradient */
+    background:#f8f0e0; /* Solid color, no gradient */
     border-top:1px solid rgba(198,168,74,0.2);
 }
 
@@ -220,28 +221,28 @@ body{
 
 /* ===== BACK BUTTON ===== */
 /* ===== BACK BUTTON ===== */
-.back-btn{
-    position:fixed;
-    top:20px;
-    left:20px;
-    background:transparent; /* Transparent background */
-    color:var(--gold); /* Gold text */
-    padding:8px 16px; /* Smaller padding */
-    text-decoration:none;
-    font-weight:500; /* Lighter weight */
-    font-size:0.85rem; /* Smaller text */
-    border-radius:20px;
-    z-index:9999;
-    border:1px solid rgba(198,168,74,0.4); /* Subtle gold border */
-    backdrop-filter:blur(4px);
-    transition:all 0.3s ease;
-    letter-spacing:1px;
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(255,248,231,0.15);  /* ← CHANGE: Cream tint */
+    color: #FFF8E7;                       /* ← CHANGE: Cream text */
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    border-radius: 20px;
+    z-index: 9999;
+    border: 1px solid rgba(255,248,231,0.4);  /* ← Cream border */
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
 }
 
-.back-btn:hover{
-    background:rgba(198,168,74,0.15); /* Slight gold tint on hover */
-    border-color:var(--gold);
-    color:var(--gold-light);
+.back-btn:hover {
+    background: rgba(255,248,231,0.3);
+    border-color: #FFF8E7;
+    color: #fff;
 }
 @media(max-width:768px){
     .before-after{
