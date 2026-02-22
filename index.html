@@ -906,11 +906,13 @@ footer p {
     }
     .hero-split {
         flex-direction: column;
+        padding-top: 60px;
     }
     
     .hero-image {
         height: 45vh;
         flex: none;
+        order: 1;
     }
     
     .hero-image::after {
@@ -918,6 +920,7 @@ footer p {
     }
     
         .hero-content {
+        order: 2;
         padding: 60px 4%;        /* Reduce side padding */
         text-align: center;
         min-height: auto;        /* Remove fixed min-height */
