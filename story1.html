@@ -31,7 +31,7 @@ body{
 
 /* ===== HERO ===== */
 .story-hero{
-    height:28vh; /* reduced from 75vh */
+    height:28vh;
     position:relative;
     display:flex;
     align-items:center;
@@ -40,28 +40,53 @@ body{
     overflow:hidden;
 }
 
+/* Image as background */
 .story-hero img{
     position:absolute;
+    top:0;
+    left:0;
     width:100%;
     height:100%;
     object-fit:cover;
-    filter:brightness(35%); /* darker for elegant feel */
+    z-index:1;
+}
+
+/* GOLD overlay on top of image */
+.story-hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(135deg, 
+        rgba(198,168,74,0.85) 0%, 
+        rgba(232,217,168,0.8) 50%, 
+        rgba(198,168,74,0.85) 100%
+    );
+    z-index:2;
+}
+
+/* Text on top */
+.story-hero h1{
+    position:relative;
+    font-family:'Playfair Display', serif;
+    font-size:clamp(1.8rem,4vw,3rem);
+    color:#1a1a1a; /* Dark text for contrast on gold */
+    letter-spacing:3px;
+    max-width:800px;
+    padding:0 20px;
+    z-index:3; /* Above the gold overlay */
+    text-shadow: 0 2px 10px rgba(255,255,255,0.3);
+    font-weight:700;
 }
 .story-hero::after{
     content:"";
     position:absolute;
     inset:0;
-    background:linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.85));
-}
-
-.story-hero h1{
-    position:relative;
-    font-family:'Playfair Display', serif;
-    font-size:clamp(1.8rem,4vw,3rem);
-    color:#e8d9a8;
-    letter-spacing:3px;
-    max-width:800px;
-    padding:0 20px;
+    background: linear-gradient(135deg, 
+        rgba(198,168,74,0.6) 0%, 
+        rgba(232,217,168,0.5) 50%, 
+        rgba(198,168,74,0.6) 100%
+    );
+    z-index:2;
 }
 .story-intro{
     font-family:'Playfair Display', serif;
@@ -170,24 +195,27 @@ body{
     color:#000;
 }
 /* ===== MINISTRY ENDING ===== */
+/* ===== MINISTRY ENDING ===== */
 .ministry-ending{
-    margin-top:80px;
-    padding:100px 20px;
+    margin-top:30px;
+    padding:30px 20px;
     text-align:center;
-    background:linear-gradient(to bottom, #ffffff, #faf6ea);
+    background:#faf6ea; /* Solid color, no gradient */
+    border-top:1px solid rgba(198,168,74,0.2);
 }
 
 .ministry-ending h2{
     font-family:'Playfair Display', serif;
-    font-size:2.5rem;
+    font-size:1rem;
     color:var(--gold);
-    letter-spacing:4px;
+    letter-spacing:2px;
 }
 
 .ministry-ending p{
-    margin-top:20px;
+    margin-top:8px;
     color:var(--muted);
-    font-size:1.1rem;
+    font-size:0.8rem;
+    font-style:italic;
 }
 
 /* ===== BACK BUTTON ===== */
@@ -196,23 +224,25 @@ body{
     position:fixed;
     top:20px;
     left:20px;
-    background:rgba(198,168,74,0.95);
-    color:#000;
-    padding:10px 22px;
+    background:transparent; /* Transparent background */
+    color:var(--gold); /* Gold text */
+    padding:8px 16px; /* Smaller padding */
     text-decoration:none;
-    font-weight:600;
-    border-radius:30px;
-    z-index:9999; /* THIS FIXES IT */
-    box-shadow:0 8px 25px rgba(0,0,0,0.4);
-    backdrop-filter:blur(6px);
-    transition:0.3s ease;
+    font-weight:500; /* Lighter weight */
+    font-size:0.85rem; /* Smaller text */
+    border-radius:20px;
+    z-index:9999;
+    border:1px solid rgba(198,168,74,0.4); /* Subtle gold border */
+    backdrop-filter:blur(4px);
+    transition:all 0.3s ease;
+    letter-spacing:1px;
 }
 
 .back-btn:hover{
-    background:var(--gold-light);
-    color:#000;
+    background:rgba(198,168,74,0.15); /* Slight gold tint on hover */
+    border-color:var(--gold);
+    color:var(--gold-light);
 }
-
 @media(max-width:768px){
     .before-after{
         grid-template-columns:1fr;
