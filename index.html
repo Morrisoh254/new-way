@@ -1455,8 +1455,7 @@ footer p {
         <span class="dot" style="width:8px;height:8px;border-radius:50%;background:#333;transition:all 0.3s;"></span>
         <span class="dot" style="width:8px;height:8px;border-radius:50%;background:#333;transition:all 0.3s;"></span>
     </div>
-</section>
-
+ </section>
 <!-- CALL TO ACTION SECTION -->
 <section class="cta-section" id="donate">
     <div class="cta-content">
@@ -1466,7 +1465,8 @@ footer p {
         </p>
         <div class="cta-buttons fade-up stagger-2">
             <a href="#donate-form" class="btn-primary">Donate Now</a>
-            <a href="#contact" class="btn-secondary">Share Your Story</a>
+            <!-- CHANGE THIS LINE -->
+            <a href="#" class="btn-secondary" onclick="openStoryModal(); return false;">Share Your Story</a>
         </div>
     </div>
 </section>
@@ -1534,6 +1534,66 @@ footer p {
 </div>
 
 
+<!-- SHARE YOUR STORY MODAL - ADD THIS ENTIRE BLOCK -->
+<div id="storyModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:10001;align-items:center;justify-content:center;overflow-y:auto;">
+    <div style="background:#0a0a0a;border:2px solid #d4af37;border-radius:20px;padding:30px;width:90%;max-width:600px;position:relative;margin:20px auto;box-shadow:0 0 60px rgba(212,175,55,0.3);">
+        <button onclick="closeStoryModal()" style="position:absolute;top:15px;right:15px;background:none;border:none;color:#d4af37;font-size:1.5rem;cursor:pointer;">✕</button>
+        <h3 style="color:#d4af37;text-align:center;margin-bottom:10px;font-family:'Playfair Display',serif;font-size:1.8rem;">Share Your Story</h3>
+        <p style="color:#888;text-align:center;margin-bottom:25px;font-size:0.9rem;">Your testimony could inspire someone else's breakthrough</p>
+        
+        <form id="storyForm" action="https://script.google.com/macros/s/AKfycbycW4fKLOn_LUBKY6Y4oufL902G_mUFcqAwgUP7UaLLlFtLfs6wx8SlbrMAMIRRDGVDtw/exec" method="POST">
+            <input type="hidden" name="timestamp" id="storyTs">
+            <input type="hidden" name="date" id="storyDt">
+            
+            <div style="margin-bottom:15px;">
+                <label style="color:#d4af37;font-size:0.85rem;">Full Name *</label>
+                <input type="text" name="name" required style="width:100%;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(212,175,55,0.3);border-radius:8px;color:#fff;margin-top:5px;">
+            </div>
+            
+            <div style="margin-bottom:15px;">
+                <label style="color:#d4af37;font-size:0.85rem;">Email or Phone *</label>
+                <input type="text" name="contact" required style="width:100%;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(212,175,55,0.3);border-radius:8px;color:#fff;margin-top:5px;">
+            </div>
+            
+            <div style="margin-bottom:15px;">
+                <label style="color:#d4af37;font-size:0.85rem;">Story Title *</label>
+                <input type="text" name="title" required maxlength="60" style="width:100%;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(212,175,55,0.3);border-radius:8px;color:#fff;margin-top:5px;">
+            </div>
+            
+            <div style="margin-bottom:15px;">
+                <label style="color:#d4af37;font-size:0.85rem;">Your Testimony *</label>
+                <textarea name="testimony" required rows="6" style="width:100%;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(212,175,55,0.3);border-radius:8px;color:#fff;margin-top:5px;resize:vertical;"></textarea>
+            </div>
+            
+            <div style="margin-bottom:20px;">
+                <label style="color:#d4af37;font-size:0.85rem;">Category</label>
+                <select name="category" style="width:100%;padding:12px;background:#1a1a1a;border:1px solid rgba(212,175,55,0.3);border-radius:8px;color:#fff;margin-top:5px;">
+                    <option value="addiction">Addiction & Recovery</option>
+                    <option value="depression">Depression & Mental Health</option>
+                    <option value="loss">Loss & Grief</option>
+                    <option value="purpose">Finding Purpose</option>
+                    <option value="relationships">Relationships & Family</option>
+                    <option value="financial">Financial Breakthrough</option>
+                    <option value="health">Health & Healing</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <label style="display:flex;align-items:flex-start;gap:10px;color:#a0a0a0;font-size:0.85rem;margin-bottom:20px;cursor:pointer;">
+                <input type="checkbox" name="contact_ok" value="yes" id="contactOk" required style="width:18px;height:18px;margin-top:2px;">
+                <span>I agree to be contacted if my story is selected for a full interview. I understand my contact info will be kept private.</span>
+            </label>
+            
+            <button type="submit" id="submitStoryBtn" style="width:100%;padding:15px;background:linear-gradient(135deg,#d4af37,#8b6914);border:none;border-radius:10px;color:#000;font-weight:600;cursor:pointer;font-size:1rem;">
+                Submit My Story
+            </button>
+        </form>
+        
+        <p style="text-align:center;color:#666;font-size:0.8rem;margin-top:15px;font-style:italic;">"And they overcame by the blood of the Lamb and by the word of their testimony" — Revelation 12:11</p>
+    </div>
+</div>
+
+<!-- FOOTER -->
 <!-- FOOTER -->
 <footer>
     <div class="footer-content">
@@ -1751,12 +1811,104 @@ function showPrayerSuccess() {
     }, 5000);
 }
 
-// Close modal on Escape key
-document.addEventListener('keydown', function(e) {
+// ========== KEYBOARD HANDLING ==========
+function handleEscapeKey(e) {
     if (e.key === 'Escape') {
         closePrayerModal();
+        closeStoryModal();
     }
+}
+document.removeEventListener('keydown', handleEscapeKey);
+document.addEventListener('keydown', handleEscapeKey);
+
+// ========== SHARE STORY MODAL FUNCTIONS ==========
+let storyScrollY = 0;
+
+function openStoryModal() {
+    storyScrollY = window.scrollY;
+    document.body.classList.add('modal-open');
+    document.body.style.top = `-${storyScrollY}px`;
+    const modal = document.getElementById('storyModal');
+    modal.style.display = 'flex';
+    modal.style.alignItems = 'flex-start';
+    modal.style.paddingTop = '50px';
+}
+
+function closeStoryModal() {
+    document.body.classList.remove('modal-open');
+    document.body.style.top = '';
+    document.getElementById('storyModal').style.display = 'none';
+    window.scrollTo(0, storyScrollY);
+}
+
+// Close story modal when clicking outside
+document.getElementById('storyModal').addEventListener('click', function(e) {
+    if (e.target === this) closeStoryModal();
 });
+
+// Form submission - FIXED VERSION WITH CHECKBOX HANDLING
+document.getElementById('storyForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const submitBtn = document.getElementById('submitStoryBtn');
+    const form = this;
+    
+    // Set timestamps
+    document.getElementById('storyTs').value = new Date().toLocaleString();
+    document.getElementById('storyDt').value = new Date().toISOString().split('T')[0];
+    
+    // ✅ FIX: Handle checkbox - if unchecked, add hidden field with "no"
+    const contactOkCheckbox = form.querySelector('input[name="contact_ok"]');
+    if (!contactOkCheckbox.checked) {
+        // Remove any existing hidden contact_ok fields first
+        const existingHidden = form.querySelector('input[type="hidden"][name="contact_ok"]');
+        if (existingHidden) existingHidden.remove();
+        
+        // Add hidden field with "no" value
+        const hiddenField = document.createElement('input');
+        hiddenField.type = 'hidden';
+        hiddenField.name = 'contact_ok';
+        hiddenField.value = 'no';
+        form.appendChild(hiddenField);
+    }
+    
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="loading-spinner"></span> Sending...';
+    submitBtn.style.opacity = '0.7';
+    
+    fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        mode: 'no-cors'
+    })
+    .then(() => showStorySuccess())
+    .catch(() => showStorySuccess());
+});
+
+function showStorySuccess() {
+    const contentDiv = document.querySelector('#storyModal > div');
+    
+    contentDiv.innerHTML = `
+        <button onclick="closeStoryModal()" style="position:absolute;top:15px;right:15px;background:none;border:none;color:#d4af37;font-size:1.5rem;cursor:pointer;">✕</button>
+        
+        <div style="text-align:center;padding:40px 20px;">
+            <div style="width:80px;height:80px;background:linear-gradient(135deg,#d4af37,#8b6914);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 25px;box-shadow:0 10px 30px rgba(212,175,55,0.3);">
+                <span style="color:#000;font-size:2.5rem;">✓</span>
+            </div>
+            <h3 style="color:#d4af37;margin-bottom:15px;font-family:'Playfair Display',serif;font-size:1.5rem;">Story Received!</h3>
+            <p style="color:#f5f5f5;margin-bottom:30px;line-height:1.6;">Thank you for sharing your testimony. Our team will review your story and may contact you soon.</p>
+            <button onclick="closeStoryModal()" style="padding:12px 30px;background:linear-gradient(135deg,#d4af37,#8b6914);border:none;border-radius:8px;color:#000;cursor:pointer;font-weight:600;font-size:1rem;">
+                Close
+            </button>
+        </div>
+        
+        <p style="text-align:center;color:#666;font-size:0.8rem;margin-top:20px;font-style:italic;">"And they overcame by the blood of the Lamb and by the word of their testimony" — Revelation 12:11</p>
+    `;
+    
+    setTimeout(() => {
+        closeStoryModal();
+    }, 6000);
+}
+
 // Dot indicators for mobile
 (function initDots() {
     const dotsContainer = document.querySelector('.testimony-dots');
