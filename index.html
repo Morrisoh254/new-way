@@ -131,7 +131,7 @@ body.modal-open {
 }
 
 .donate-btn:hover {
-    color: gold;
+    color: black;
 }
 
 /* ========== HERO SECTION ========== */
@@ -731,12 +731,16 @@ body.modal-open {
     letter-spacing: 1px;
     transition: all 0.3s ease;
     background: transparent;
+    display: inline-block;      /* Ensure consistent display */
+    text-align: center;         /* Center text */
+    min-width: 180px; 
 }
 
 .btn-secondary:hover {
     background: var(--gold);
     color: #000;
     transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212,175,55,0.4);
 }
 /* ========== PRAYER WIDGET ========== */
 
@@ -1213,10 +1217,10 @@ footer p {
         min-width: 0;
     }
     
-    .donate-btn {
-        padding: 12px 25px;
-        font-size: 0.8rem;
-    }
+    .navbar .donate-btn {
+    padding: 8px 16px;     /* Keep navbar button small */
+    font-size: 0.8rem;
+}
     
     .hero-image {
         height: 40vh;
@@ -1655,7 +1659,7 @@ footer p {
             Every story of transformation is made possible through the generosity of people like you. Your support helps us reach more hearts, restore more lives, and spread light into the darkest places.
         </p>
         <div class="cta-buttons fade-up stagger-2">
-            <a href="#" class="donate-btn" onclick="openDonateModal(); return false;">Donate</a>
+            <a href="#" class="btn-secondary" onclick="openDonateModal(); return false;">Donate</a>
             <!-- CHANGE THIS LINE -->
             <a href="#" class="btn-secondary" onclick="openStoryModal(); return false;">Share Your Story</a>
         </div>
