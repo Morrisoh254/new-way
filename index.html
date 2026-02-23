@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,7 +5,7 @@
 <title>Becoming | A Call Higher</title>
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400 ;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -17,9 +16,8 @@
     --text: #f5f5f5;
     --text-muted: #a0a0a0;
     --red: #B11226;
-    --font-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    /* Remove --font-serif or set it to the same stack */
-    --font-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+--font-serif: 'Playfair Display', Georgia, serif;
 }
 
 * {
@@ -36,7 +34,7 @@ html {
 body {
     background: var(--bg);
     color: var(--text);
-    font-family: var(--font-iphone);  /* iPhone font everywhere */
+    font-family: var(--font-primary);  
     font-weight: 400;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;  /* Smooth iPhone-style rendering */
@@ -106,7 +104,7 @@ body.modal-open {
 .donate-btn {
     border: 1px solid var(--gold);
     color: #ffffff;
-    padding: 10px 24px;
+    padding: 7px 16px;
     text-decoration: none;
     font-size: 0.9rem;
     transition: all 0.3s ease;
@@ -217,6 +215,7 @@ body.modal-open {
     text-transform: uppercase;
     font-weight: 500;
     margin-bottom: 40px;
+
     opacity: 0;
     transform: translateY(30px);
     transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -816,10 +815,10 @@ body.modal-open {
     
     .prayer-widget {
         /* Position relative to content max-width, not viewport edge */
-        right: calc((100vw - min(90vw, 1400px)) / 2 + 0px);
+        right: 30px;
         bottom: 30px;
-        width: 85px;
-        height: 85px;
+        width: 73px;
+        height: 73px;
         transform: none;
     }
     .prayer-widget:hover {
@@ -887,15 +886,15 @@ footer p {
 @media (min-width: 969px) {
     /* Make the card wider to accommodate larger image */
     .testimony-card {
-        min-width: 420px;        /* Increased from 380px */
-        max-width: 420px;
+        min-width: 380px;        /* Increased from 380px */
+        max-width: 380px;
         padding: 25px;
     }
     
     /* Make image container bigger */
     .testimony-img {
-        width: 160px;            /* Increased from 120px */
-        height: 220px;           /* Increased from 120px */
+        width: 130px;            /* Increased from 120px */
+        height: 160px;           /* Increased from 120px */
         margin-left: 20px;
     }
     
@@ -914,7 +913,13 @@ footer p {
     }
     /* Push "Light to the World" lower on desktop */
     #heroTitle {
-        margin-top: 80px;        /* Increase this number to move it down more */
+        margin-top: 76px;          /* REMOVED the 80px push */
+        margin-bottom: 30px;
+        text-align: left;
+        width: 100%;
+        font-size: clamp(1.6rem, 2.2vw, 2rem);
+        letter-spacing: 3px;
+        line-height: 1.3;
     }
     .hero-content {
         flex: 0 0 50%;
@@ -924,16 +929,7 @@ footer p {
         padding-bottom: 0; /* Align text to left side */
     }
     
-    /* Push title down and align left */
-    #heroTitle {
-        margin-top: 0;          /* Remove the 80px push */
-        margin-bottom: 30px;
-        text-align: left;
-        width: 100%;
-        font-size: clamp(1.6rem, 2.2vw, 2rem); /* Slightly smaller, controlled */
-        letter-spacing: 3px;
-        line-height: 1.3;
-    }
+    
     #heroText {
         align-items: flex-start;
         text-align: left;
@@ -1290,7 +1286,7 @@ footer p {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23d4af37' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg ' width='12' height='12' fill='%23d4af37' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 12px center;
     padding-right: 35px;
@@ -1307,6 +1303,153 @@ footer p {
     border-color: #d4af37;
     box-shadow: 0 0 10px rgba(212,175,55,0.3);
 }
+/* ========== FOOTER WITH IMAGE ========== */
+footer {
+    padding: 0;
+    border-top: 1px solid #222;
+    background: var(--bg);
+    overflow: hidden;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    align-items: center;
+    gap: 40px;
+    padding: 60px 5%;
+}
+
+.footer-image-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: 1;
+}
+
+.footer-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+    transition: transform 0.4s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-image:hover {
+    transform: scale(1.02) translateY(-5px);
+}
+
+.image-glow {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(232, 184, 104, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 1;
+    animation: pulseGlowFooter 4s ease-in-out infinite;
+}
+
+@keyframes pulseGlowFooter {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.footer-content {
+    text-align: center;
+    order: 2;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+footer p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.social-links a {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.social-links a:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(212,175,55,0.2);
+}
+
+/* ========== MOBILE FOOTER ========== */
+@media (max-width: 968px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 40px 5%;
+    }
+    
+    .footer-image-wrapper {
+        order: 1;
+        margin-bottom: 10px;
+    }
+    
+    .footer-image {
+        max-width: 280px;
+    }
+    
+    .footer-content {
+        order: 2;
+        padding-bottom: 20px;
+    }
+    
+    .image-glow {
+        width: 60%;
+        height: 60%;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-image {
+        max-width: 220px;
+    }
+    
+    .footer-container {
+        padding: 30px 4%;
+    }
+    
+    .footer-logo {
+        font-size: 1.3rem;
+    }
+}
+
 </style>
 </head>
 
@@ -1315,7 +1458,7 @@ footer p {
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
     <div class="logo">BE THE LIGHT.</div>
-    <a href="#donate" class="donate-btn">Donate</a>
+    <a href="#" class="donate-btn" onclick="openDonateModal(); return false;">Donate</a>
 </nav>
 
 <!-- HERO SECTION -->
@@ -1464,7 +1607,7 @@ footer p {
             Every story of transformation is made possible through the generosity of people like you. Your support helps us reach more hearts, restore more lives, and spread light into the darkest places.
         </p>
         <div class="cta-buttons fade-up stagger-2">
-            <a href="#donate-form" class="btn-primary">Donate Now</a>
+            <a href="#" class="donate-btn" onclick="openDonateModal(); return false;">Donate</a>
             <!-- CHANGE THIS LINE -->
             <a href="#" class="btn-secondary" onclick="openStoryModal(); return false;">Share Your Story</a>
         </div>
@@ -1485,7 +1628,7 @@ footer p {
         <h3 style="color:#d4af37;text-align:center;margin-bottom:20px;font-family:'Playfair Display',serif;">Send Prayer Request</h3>
         
         <!-- FORM - REPLACE URL AFTER DEPLOYMENT -->
-        <form id="prayerForm" action="https://script.google.com/macros/s/AKfycbz-XPN-1NiGNoS5e0So0YYQFNyBjjg9G_7Z0pTO4SfhZs9ObiIzNIjCAzaNdZACxnaHAg/exec" method="POST">
+        <form id="prayerForm" action="https://script.google.com/macros/s/AKfycbz-XPN-1NiGNoS5e0So0YYQFNyBjjg9G_7Z0pTO4SfhZs9ObiIzNIjCAzaNdZACxnaHAg/exec " method="POST">
             
             <input type="hidden" name="timestamp" id="ts">
             <input type="hidden" name="date" id="dt">
@@ -1531,8 +1674,42 @@ footer p {
         <p style="text-align:center;color:#666;font-size:0.8rem;margin-top:15px;font-style:italic;">"Where two or three gather..." — Matthew 18:20</p>
         
     </div>
-</div>
+    <!-- DONATE MODAL -->
 
+</div>
+<div id="donateModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:10000;align-items:center;justify-content:center;">
+
+    <div style="background:#0a0a0a;border:2px solid #d4af37;border-radius:20px;padding:35px;width:90%;max-width:420px;position:relative;text-align:center;box-shadow:0 0 60px rgba(212,175,55,0.3),0 0 100px rgba(212,175,55,0.1),inset 0 0 60px rgba(212,175,55,0.05);">
+        
+        <button onclick="closeDonateModal()" style="position:absolute;top:15px;right:15px;background:none;border:none;color:#d4af37;font-size:1.5rem;cursor:pointer;">✕</button>
+        
+        <h3 style="color:#d4af37;margin-bottom:25px;font-family:'Playfair Display',serif;">Support The Mission</h3>
+
+        <div style="display:flex;flex-direction:column;gap:15px;">
+            
+            <!-- PAYPAL -->
+            <a href="https://www.paypal.com/donate/?hosted_button_id=4YJWHLZBVLYLY" target="_blank"
+               style="padding:15px;background:#d4af37;color:#000;text-decoration:none;border-radius:10px;font-weight:600;">
+               🌍 Donate with PayPal
+            </a>
+
+            <!-- MPESA -->
+            <button onclick="showMpesaDetails()" 
+                style="padding:15px;background:transparent;border:2px solid #d4af37;color:#d4af37;border-radius:10px;font-weight:600;cursor:pointer;">
+                🇰🇪 Donate with M-Pesa
+            </button>
+
+        </div>
+
+        <!-- MPESA DETAILS (HIDDEN FIRST) -->
+        <div id="mpesaDetails" style="display:none;margin-top:25px;color:#fff;font-size:0.95rem;line-height:1.6;">
+            <p><strong>Buy Goods Till:</strong> 123456</p>
+            <p><strong>Account Name:</strong> Light Ministries</p>
+            <p style="margin-top:10px;color:#a0a0a0;">Open M-Pesa → Lipa na M-Pesa → Buy Goods → Enter Till Number</p>
+        </div>
+
+    </div>
+</div>
 
 <!-- SHARE YOUR STORY MODAL - ADD THIS ENTIRE BLOCK -->
 <div id="storyModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:10001;align-items:center;justify-content:center;overflow-y:auto;">
@@ -1541,7 +1718,7 @@ footer p {
         <h3 style="color:#d4af37;text-align:center;margin-bottom:10px;font-family:'Playfair Display',serif;font-size:1.8rem;">Share Your Story</h3>
         <p style="color:#888;text-align:center;margin-bottom:25px;font-size:0.9rem;">Your testimony could inspire someone else's breakthrough</p>
         
-        <form id="storyForm" action="https://script.google.com/macros/s/AKfycbycW4fKLOn_LUBKY6Y4oufL902G_mUFcqAwgUP7UaLLlFtLfs6wx8SlbrMAMIRRDGVDtw/exec" method="POST">
+        <form id="storyForm" action="https://script.google.com/macros/s/AKfycbycW4fKLOn_LUBKY6Y4oufL902G_mUFcqAwgUP7UaLLlFtLfs6wx8SlbrMAMIRRDGVDtw/exec " method="POST">
             <input type="hidden" name="timestamp" id="storyTs">
             <input type="hidden" name="date" id="storyDt">
             
@@ -1594,18 +1771,26 @@ footer p {
 </div>
 
 <!-- FOOTER -->
-<!-- FOOTER -->
 <footer>
-    <div class="footer-content">
-        <div class="footer-logo">Light to the World Ministries</div>
-        <p>"Let your light shine before others, that they may see your good deeds and glorify your Father in heaven."</p>
-        <p style="font-size: 0.8rem; margin-top: 20px; opacity: 0.6;">© 2026 Light to the World Ministries. All rights reserved.</p>
+    <div class="footer-container">
+        <!-- Left Side: Image -->
+        <div class="footer-image-wrapper">
+            <img src="images/Kinywawakathi.png" alt="Share the light - Biblical figure with message" class="footer-image">
+            <div class="image-glow"></div>
+        </div>
         
-        <div class="social-links">
-            <a href="#" aria-label="Facebook">f</a>
-            <a href="#" aria-label="Instagram">📷</a>
-            <a href="#" aria-label="YouTube">▶</a>
-            <a href="#" aria-label="Email">✉</a>
+        <!-- Right Side: Content -->
+        <div class="footer-content">
+            <div class="footer-logo">Light to the World Ministries</div>
+            <p>"Let your light shine before others, that they may see your good deeds and glorify your Father in heaven."</p>
+            <p style="font-size: 0.8rem; margin-top: 20px; opacity: 0.6;">© 2026 Light to the World Ministries. All rights reserved.</p>
+            
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="Instagram">📷</a>
+                <a href="#" aria-label="YouTube">▶</a>
+                <a href="#" aria-label="Email">✉</a>
+            </div>
         </div>
     </div>
 </footer>
@@ -1937,8 +2122,22 @@ function showStorySuccess() {
         });
     }, { passive: true });
 })();
+
+function openDonateModal() {
+    document.getElementById("donateModal").style.display = "flex";
+    document.body.classList.add("modal-open");
+}
+
+function closeDonateModal() {
+    document.getElementById("donateModal").style.display = "none";
+    document.getElementById("mpesaDetails").style.display = "none";
+    document.body.classList.remove("modal-open");
+}
+
+function showMpesaDetails() {
+    document.getElementById("mpesaDetails").style.display = "block";
+}
 </script>
 
 </body>
 </html>
-
