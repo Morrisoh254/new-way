@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Betty B. | Testimony</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #0f0f0f;
+    --gold: #c6a84a;
+    --gold-light: #e8d9a8;
+    --text: #f5f5f5;
+    --muted: #aaaaaa;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height:1.9;
+}
+
+/* ===== HERO ===== */
+.story-hero{
+    height:28vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+}
+
+/* Image as background */
+.story-hero img{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:1;
+}
+
+/* GOLD overlay on top of image */
+.story-hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(135deg, 
+        rgba(198,168,74,0.25) 0%,      /* ← REDUCED from 0.6 */
+        rgba(232,217,168,0.15) 50%,    /* ← REDUCED from 0.5 */
+        rgba(198,168,74,0.25) 100%
+    );
+    z-index:2;
+}
+
+/* Text on top */
+.story-hero h1{
+    position:relative;
+    font-family:'Playfair Display', serif;
+    font-size:clamp(1.8rem,4vw,3rem);
+    color:#000000; /* Dark text for contrast on gold */
+    letter-spacing:3px;
+    max-width:800px;
+    padding:0 20px;
+    z-index:3; /* Above the gold overlay */
+    text-shadow: 0 2px 10px rgba(255,255,255,0.3);
+    font-weight:700;
+}
+.story-hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(135deg, 
+        rgba(198,168,74,0.6) 0%, 
+        rgba(232,217,168,0.5) 50%, 
+        rgba(198,168,74,0.6) 100%
+    );
+    z-index:2;
+}
+.story-intro{
+    font-family:'Playfair Display', serif;
+    font-size:1.3rem;
+    margin-bottom:45px;
+    letter-spacing:1px;
+    text-align:center;
+
+    /* Gradient gold */
+    background: linear-gradient(90deg, #f5e6b3, #e8c87a, #d4a35a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Glow */
+   text-shadow: 0 0 20px rgba(212,163,90,0.3);
+    filter: drop-shadow(0 0 10px rgba(198,168,74,0.2));
+}
+
+/* ===== CONTENT ===== */
+.story-container{
+    max-width:900px;
+    margin:100px auto;
+    padding:0 20px;
+}
+
+.story-container p{
+    margin-bottom:35px;
+    font-size:1.1rem;
+    color:var(--text);
+}
+
+.story-container h2{
+    font-family:'Playfair Display', serif;
+    color: #d4a35a;
+    margin:60px 0 20px 0;
+    font-size:1.8rem;
+}
+
+/* ===== BEFORE AFTER ===== */
+.before-after{
+    display:grid;
+    grid-template-columns:1fr 1fr;  /* Keep 2 columns always */
+    gap:30px;
+    margin:60px 0;
+    align-items:start;  /* ADD: Prevents stretching issues */
+}
+
+.before-after > div {
+    display:flex;
+    flex-direction:column;
+    align-items:center;  /* Centers image + label */
+}
+
+.before-after img{
+    width:100%;
+    height:450px;        /* ADD: Fixed height for equal sizing */
+    object-fit:cover;    /* ADD: Crops to fit without distortion */
+    border-radius:15px;
+    box-shadow:0 15px 40px rgba(198,168,74,0.2);
+}
+
+.label{
+    text-align:center;
+    margin-top:15px;     /* Increased slightly */
+    color:#ffffff;
+    font-weight:600;
+    font-size:0.9rem;
+    text-transform:uppercase;  /* ADD: Makes labels pop */
+    letter-spacing:1px;
+}
+
+/* ===== SOCIAL ===== */
+.social-section{
+    margin-top:100px;
+    padding-top:60px;
+    text-align:center;
+}
+
+.social-links{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    margin:30px 0;
+}
+
+.social-links a{
+    color:var(--gold);
+    text-decoration:none;
+    font-weight:600;
+    border:1px solid var(--gold-light);
+    padding:10px 20px;
+    border-radius:30px;
+    transition:0.3s ease;
+}
+
+.social-links a:hover{
+    background:var(--gold);
+    color:#fff;
+}
+
+.watch-link{
+    margin-top:40px;
+}
+
+.watch-link a{
+    display:inline-block;
+    color:var(--gold);
+    text-decoration:none;
+    font-weight:600;
+    border:1px solid var(--gold);
+    padding:12px 30px;
+    border-radius:40px;
+    letter-spacing:1px;
+    transition:0.3s ease;
+}
+
+.watch-link a:hover{
+    background:var(--gold);
+    color:#000;
+}
+/* ===== MINISTRY ENDING ===== */
+/* ===== MINISTRY ENDING ===== */
+.ministry-ending{
+    margin-top:30px;
+    padding:30px 20px;
+    text-align:center;
+    background:#f8f0e0; /* Solid color, no gradient */
+    border-top:1px solid rgba(198,168,74,0.2);
+}
+
+.ministry-ending h2{
+    font-family:'Playfair Display', serif;
+    font-size:1rem;
+    color:var(--gold);
+    letter-spacing:2px;
+}
+
+.ministry-ending p{
+    margin-top:8px;
+    color:var(--muted);
+    font-size:0.8rem;
+    font-style:italic;
+}
+
+/* ===== BACK BUTTON ===== */
+/* ===== BACK BUTTON ===== */
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(255,248,231,0.15);  /* ← CHANGE: Cream tint */
+    color: #FFF8E7;                       /* ← CHANGE: Cream text */
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    border-radius: 20px;
+    z-index: 9999;
+    border: 1px solid rgba(255,248,231,0.4);  /* ← Cream border */
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.back-btn:hover {
+    background: rgba(255,248,231,0.3);
+    border-color: #FFF8E7;
+    color: #fff;
+}
+
+/* ===== MOBILE HERO FIX ===== */
+@media (max-width: 768px) {
+    .story-hero {
+        height: 15vh;        /* Reduced from 28vh */
+        min-height: 120px;   /* Prevent it from getting too small */
+    }
+    
+    .story-hero h1 {
+        font-size: clamp(1.2rem, 5vw, 1.6rem);  /* Smaller text */
+        letter-spacing: 1px;
+        padding: 0 15px;
+        color: #000000;                    /* ADD: Ensure black on mobile */
+        text-shadow: 0 1px 3px rgba(255,255,255,0.5);
+    }
+    .back-btn {
+        background: transparent;
+        border: 1px solid rgba(255,248,231,0.3);  /* Subtle border only */
+        backdrop-filter: none;  /* Remove blur effect */
+    }
+    
+    .back-btn:hover {
+        background: rgba(255,248,231,0.1);  /* Very subtle hover */
+        border-color: rgba(255,248,231,0.5);
+    }
+    .story-container {
+        margin-top: 40px;    /* CHANGE: Was 100px */
+        margin-bottom: 60px; /* Optional: reduce bottom too */
+    }
+    
+    /* Slightly reduce intro margin */
+    .story-intro {
+        margin-bottom: 30px; /* Was 45px */
+    }
+     .before-after{
+        gap:15px;              /* Smaller gap */
+        margin:40px 0;
+    }
+    .before-after img{
+        height:280px;          /* Much shorter - balanced! */
+        border-radius:10px;
+    }
+    .label{
+        font-size:0.8rem;      /* Smaller labels */
+        margin-top:10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="back-btn">← Back</a>
+
+<!-- HERO -->
+<section class="story-hero">
+    <img src="images/Bettyy.jpeg" alt="Betty B.">
+    <h1>Betty B. — From Addiction to Purpose</h1>
+</section>
+
+<!-- STORY CONTENT -->
+<div class="story-container">
+    <p class="story-intro">
+    ✨ This is the story of <strong>Betty B.</strong> — At first, he thought she would return before dark. She had never liked the dark. As a child, she used to run into his room during storms, climbing into his bed and whispering, “Baba, keep the light on.”
+</p>
+
+    <p>
+        It wasn’t automatic. There was no smart system, no timer. It was a simple bulb with a yellow glow, switched on by a hand that had grown thinner each year. The neighbors across the street noticed it long ago. Some thought it was habit. Others assumed it was routine.
+
+But for Mr. Kamau, it was hope.
+
+Six years earlier, at exactly 6:17 p.m., his daughter Amina had walked out of that same door with a small suitcase and a heart too heavy for her age. They had argued that afternoon. The kind of argument that begins with small words and ends with permanent silence.
+
+He was disciplined. Focused. Intelligent. The kind of young man people trusted. The kind of son parents were proud of. The kind of friend others leaned on.
+
+But what no one saw… was the war inside him.
+
+Behind the achievements lived quiet battles — habits he could not break, thoughts he could not silence, and guilt he could not escape. Every time he promised himself, “This is the last time,” he would fall again.It wasn’t automatic. There was no smart system, no timer. It was a simple bulb with a yellow glow, switched on by a hand that had grown thinner each year. The neighbors across the street noticed it long ago. Some thought it was habit. Others assumed it was routine.
+
+But for Mr. Kamau, it was hope.
+
+Six years earlier, at exactly 6:17 p.m., his daughter Amina had walked out of that same door with a small suitcase and a heart too heavy for her age. They had argued that afternoon. The kind of argument that begins with small words and ends with permanent silence.
+    </p>
+
+    <p>
+       Days became weeks. Weeks became months. Months folded into years like letters never opened
+    </p>
+
+    <h2>The Breaking Point</h2>
+
+    <p>
+        At first, he tried calling. Her phone rang endlessly, then stopped working. He went to her friends. They had not heard from her. He visited the bus station, scanning faces in crowds until his eyes ached. He filed a missing person report. He prayed.
+
+Eventually, the world moved on.
+
+But he did not.
+
+The house became quieter than a graveyard. Dust settled where laughter once lived. The walls still held her childhood drawings — crooked houses under enormous suns, stick figures holding hands. He could not bring himself to remove them.
+
+Sometimes he sat at the kitchen table long after finishing his tea, staring at the empty chair across from him. In his mind, she was still there — rolling her eyes at his lectures, smiling secretly at his terrible jokes.
+
+Regret is a slow poison. It doesn’t kill quickly. It seeps into memories and rewrites them.
+
+He replayed that last argument every night.
+
+If only I had listened.
+
+If only I had softened my voice.
+
+If only I had said, “Stay.”
+
+But pride had been louder than love that day.
+
+The years aged him rapidly. His once straight back curved like a question mark. His hair thinned into silver threads. His hands trembled when he buttoned his shirt. The neighbors began helping with groceries. They greeted him kindly, but gently, as if he might break.
+
+They didn’t understand why he never missed 6:17 p.m.
+
+Rain or shine, sickness or strength, he stood up from wherever he was and switched on the light.
+
+One evening, a young boy from across the street asked him, “Grandpa, why do you always turn on your light at the same time?”
+
+Mr. Kamau smiled faintly.
+
+“So someone can find their way home.”
+
+The boy nodded, not fully understanding.
+
+Years passed. The city grew noisier. New buildings rose. Old neighbors moved away. The world modernized, digitized, accelerated.
+
+But inside that small house, time stood still.
+
+One cold July evening, the wind carried a sharp chill. Mr. Kamau felt it deep in his bones. He coughed as he shuffled toward the switch. His breathing had grown shallow recently, like waves retreating from the shore.
+    </p>
+
+    <!-- BEFORE AFTER SECTION -->
+    <div class="before-after">
+        <div>
+            <img src="images/betty-before.jpg" alt="Before Faith">
+            <div class="label">Before</div>
+        </div>
+        <div>
+            <img src="images/betty_after.jpg" alt="After Faith">
+            <div class="label">After</div>
+        </div>
+    </div>
+
+    <h2>Transformation</h2>
+
+    <p>
+       One cold July evening, the wind carried a sharp chill. Mr. Kamau felt it deep in his bones. He coughed as he shuffled toward the switch. His breathing had grown shallow recently, like waves retreating from the shore.
+
+6:16 p.m.
+
+He glanced at the clock.
+
+His chest tightened, but he forced himself upright.
+
+6:17 p.m.
+
+Click.
+
+The room filled with its familiar golden glow.
+
+He stood there a moment longer than usual, gripping the wall for support. The light hummed softly above him, steady and faithful.
+
+He whispered into the empty room, “Amina, I’m still here.”
+
+That night, he did not make it to his bed.
+
+The neighbors noticed something strange the next morning. The light was still on.
+
+It had never stayed on overnight before.
+
+They knocked. No answer.
+
+They called. Silence.
+
+When they finally entered, they found him resting peacefully on the living room floor, as if sleep had gently claimed him. His face was calm. His hand was stretched toward the door.
+    </p>
+
+    <p>
+        Today, Michael mentors young men facing similar struggles.
+        His story reminds us that no darkness is too deep for light to reach.
+    </p>
+
+    <!-- SOCIAL + VIDEO -->
+    <div class="social-section">
+        <h2>Connect & Watch Full Testimony</h2>
+
+        <div class="social-links">
+            <a href="https://instagram.com/" target="_blank">Instagram</a>
+            <a href="https://facebook.com/" target="_blank">Facebook</a>
+            <a href="https://twitter.com/" target="_blank">Twitter</a>
+        </div>
+
+        <div class="watch-link">
+    <a href="https://youtube.com/Yogotti" target="_blank">
+        ▶ Watch Full Testimony on YouTube
+    </a>
+</div>
+    </div>
+
+</div>
+<section class="ministry-ending">
+    <h2>LIGHT TO THE WORLD MINISTRIES</h2>
+    <p>
+        "You are the light of the world. A city set on a hill cannot be hidden." — Matthew 5:14
+    </p>
+</section>
+
+</body>
+</html>
