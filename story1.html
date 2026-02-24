@@ -652,6 +652,189 @@ body {
     background: rgba(248,246,243,0.08);
     border-color: var(--cream);
 }
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 40px;
+}
+
+.lightbox-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-container {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lightbox-overlay.active .lightbox-container {
+    transform: scale(1) translateY(0);
+}
+
+.lightbox-image {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+}
+
+.lightbox-caption {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.4s ease 0.2s;
+}
+
+.lightbox-overlay.active .lightbox-caption {
+    opacity: 1;
+}
+
+/* Close Button */
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border: 1px solid rgba(201,169,97,0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 100001;
+}
+
+.lightbox-close:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: rotate(90deg);
+}
+
+.lightbox-close::before,
+.lightbox-close::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 1px;
+    background: var(--gold);
+    transition: background 0.3s ease;
+}
+
+.lightbox-close::before {
+    transform: rotate(45deg);
+}
+
+.lightbox-close::after {
+    transform: rotate(-45deg);
+}
+
+.lightbox-close:hover::before,
+.lightbox-close:hover::after {
+    background: var(--bg);
+}
+
+/* Navigation Arrows (for multiple images) */
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    border: 1px solid rgba(201,169,97,0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.lightbox-overlay:hover .lightbox-nav {
+    opacity: 1;
+}
+
+.lightbox-nav:hover {
+    background: rgba(201,169,97,0.1);
+    border-color: var(--gold);
+}
+
+.lightbox-nav.prev { left: 30px; }
+.lightbox-nav.next { right: 30px; }
+
+.lightbox-nav::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-top: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+    transition: transform 0.3s ease;
+}
+
+.lightbox-nav.prev::before {
+    transform: rotate(-135deg);
+    margin-left: 4px;
+}
+
+.lightbox-nav.next::before {
+    transform: rotate(45deg);
+    margin-right: 4px;
+}
+
+/* Zoom cursor on story images */
+.small-image-single img,
+.before-after img,
+.small-image-left img,
+.profile-image {
+    cursor: zoom-in;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .lightbox-overlay {
+        padding: 20px;
+    }
+    
+    .lightbox-close {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .lightbox-nav {
+        display: none; /* Hide nav on mobile, use swipe */
+    }
+    
+    .lightbox-caption {
+        font-size: 0.7rem;
+        bottom: -40px;
+    }
+}
 
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
@@ -861,6 +1044,8 @@ body {
         backdrop-filter: blur(5px);
     }
 }
+/* ===== ELEGANT LIGHTBOX/ZOOM ===== */
+
 </style>
 </head>
 
@@ -985,7 +1170,18 @@ body {
         The same mouth that once begged for bread had spoken on radio. The same hands that slept on concrete now held a degree. The same boy who ran from poverty had run straight into his purpose.
     </p>
 </div>
-
+<!-- LIGHTBOX OVERLAY -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close"></button>
+    
+    <button class="lightbox-nav prev" onclick="changeImage(-1, event)" aria-label="Previous"></button>
+    <button class="lightbox-nav next" onclick="changeImage(1, event)" aria-label="Next"></button>
+    
+    <div class="lightbox-container" onclick="event.stopPropagation()">
+        <img src="" alt="" class="lightbox-image" id="lightbox-img">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+</div>
 <!-- CLASSIC FOOTER WITH SHARE -->
 <section class="footer-section">
     <div class="footer-divider"></div>
@@ -1044,7 +1240,147 @@ body {
 <div class="toast" id="toast">Link copied to clipboard!</div>
 
 <script>
-// Share Functions
+// ===== LIGHTBOX FUNCTIONALITY =====
+let currentImageIndex = 0;
+let storyImages = [];
+
+// Collect all story images on load
+function initLightbox() {
+    // Find all images in story sections that should be zoomable
+    const selectors = [
+        '.small-image-single img',
+        '.before-after img', 
+        '.small-image-left img',
+        '.profile-image'
+    ];
+    
+    storyImages = [];
+    selectors.forEach(selector => {
+        document.querySelectorAll(selector).forEach(img => {
+            // Add click handler
+            img.addEventListener('click', function(e) {
+                e.preventDefault();
+                openLightbox(this);
+            });
+            
+            // Store reference with metadata
+            storyImages.push({
+                element: img,
+                src: img.src,
+                caption: getImageCaption(img)
+            });
+        });
+    });
+}
+
+function getImageCaption(img) {
+    // Try to find associated caption/label
+    const parent = img.closest('.small-image-single, .before-after > div, .small-image-left, .story-hero');
+    
+    if (parent) {
+        const label = parent.querySelector('.label');
+        if (label) return label.textContent;
+        
+        const caption = parent.querySelector('.caption p');
+        if (caption) return caption.textContent;
+        
+        // For profile image
+        if (img.classList.contains('profile-image')) {
+            return document.querySelector('.story-hero h1')?.textContent || 'Profile';
+        }
+    }
+    
+    return img.alt || 'Image';
+}
+
+function openLightbox(imgElement) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    
+    // Find current index
+    currentImageIndex = storyImages.findIndex(item => item.element === imgElement);
+    
+    // Set content
+    lightboxImg.src = imgElement.src;
+    lightboxCaption.textContent = getImageCaption(imgElement);
+    
+    // Show with animation
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent background scroll
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', handleKeydown);
+}
+
+function closeLightbox(event) {
+    // Only close if clicking overlay or close button, not the image
+    if (event && event.target.closest('.lightbox-container') && !event.target.closest('.lightbox-close')) {
+        return;
+    }
+    
+    const lightbox = document.getElementById('lightbox');
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', handleKeydown);
+}
+
+function changeImage(direction, event) {
+    event.stopPropagation();
+    
+    currentImageIndex += direction;
+    
+    // Loop around
+    if (currentImageIndex < 0) currentImageIndex = storyImages.length - 1;
+    if (currentImageIndex >= storyImages.length) currentImageIndex = 0;
+    
+    const item = storyImages[currentImageIndex];
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    
+    // Fade effect
+    lightboxImg.style.opacity = '0';
+    
+    setTimeout(() => {
+        lightboxImg.src = item.src;
+        lightboxCaption.textContent = item.caption;
+        lightboxImg.style.opacity = '1';
+    }, 200);
+}
+
+function handleKeydown(e) {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') changeImage(-1, {stopPropagation: () => {}});
+    if (e.key === 'ArrowRight') changeImage(1, {stopPropagation: () => {}});
+}
+
+// Touch/swipe support for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleTouchStart(e) {
+    touchStartX = e.changedTouches[0].screenX;
+}
+
+function handleTouchEnd(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}
+
+function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+            changeImage(1, {stopPropagation: () => {}}); // Swipe left = next
+        } else {
+            changeImage(-1, {stopPropagation: () => {}}); // Swipe right = prev
+        }
+    }
+}
+
+// ===== SHARE FUNCTIONS (keep your existing ones) =====
 function shareToFacebook() {
     const url = encodeURIComponent(window.location.href);
     const text = encodeURIComponent("Read this powerful testimony of transformation and hope");
@@ -1073,7 +1409,6 @@ function copyLink() {
     navigator.clipboard.writeText(window.location.href).then(() => {
         showToast();
     }).catch(() => {
-        // Fallback for older browsers
         const textArea = document.createElement("textarea");
         textArea.value = window.location.href;
         document.body.appendChild(textArea);
@@ -1099,23 +1434,31 @@ function scrollToTop() {
     });
 }
 
-// Smooth reveal animation on scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe elements for animation
+// ===== INITIALIZATION =====
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize lightbox
+    initLightbox();
+    
+    // Add touch events for mobile swipe
+    const lightbox = document.getElementById('lightbox');
+    lightbox.addEventListener('touchstart', handleTouchStart, {passive: true});
+    lightbox.addEventListener('touchend', handleTouchEnd, {passive: true});
+    
+    // Existing scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
     const animatedElements = document.querySelectorAll('.share-btn, .copy-link-btn');
     animatedElements.forEach((el, index) => {
         el.style.opacity = '0';
@@ -1125,6 +1468,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 </script>
+
 
 </body>
 </html>
