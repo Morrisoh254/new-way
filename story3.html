@@ -3,304 +3,600 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>David K. | Testimony</title>
+<title>David.K | Testimony</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 :root {
-    --bg: #0f0f0f;
-    --gold: #c6a84a;
-    --gold-light: #e8d9a8;
-    --text: #f5f5f5;
-    --muted: #aaaaaa;
+    --bg: #0a0a0a;
+    --gold: #c9a961;
+    --gold-light: #e8d5b5;
+    --gold-muted: #8b7355;
+    --text: #f8f6f3;
+    --text-muted: #a8a5a0;
+    --cream: #faf8f5;
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
+body {
     background: var(--bg);
     color: var(--text);
     font-family: 'Inter', sans-serif;
-    line-height:1.9;
+    font-weight: 300;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
 }
 
-/* ===== HERO ===== */
-.story-hero{
-    height:28vh;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    overflow:hidden;
-}
-
-/* Image as background */
-.story-hero img{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    z-index:1;
-}
-
-/* GOLD overlay on top of image */
-.story-hero::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background: linear-gradient(135deg, 
-        rgba(198,168,74,0.25) 0%,      /* ← REDUCED from 0.6 */
-        rgba(232,217,168,0.15) 50%,    /* ← REDUCED from 0.5 */
-        rgba(198,168,74,0.25) 100%
+/* ===== COMPACT ELEGANT HERO ===== */
+.story-hero {
+    height: auto;
+    min-height: unset;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: linear-gradient(180deg, 
+        rgba(201,169,97,0.1) 0%, 
+        transparent 100%
     );
-    z-index:2;
+    border-bottom: 1px solid rgba(201,169,97,0.15);
 }
 
-/* Text on top */
-.story-hero h1{
-    position:relative;
-    font-family:'Playfair Display', serif;
-    font-size:clamp(1.8rem,4vw,3rem);
-    color:#000000; /* Dark text for contrast on gold */
-    letter-spacing:3px;
-    max-width:800px;
-    padding:0 20px;
-    z-index:3; /* Above the gold overlay */
-    text-shadow: 0 2px 10px rgba(255,255,255,0.3);
-    font-weight:700;
+.story-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--cream);
+    letter-spacing: 0.03em;
+    max-width: 600px;
+    line-height: 1.3;
+    margin-bottom: 15px;
 }
-.story-hero::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background: linear-gradient(135deg, 
-        rgba(198,168,74,0.6) 0%, 
-        rgba(232,217,168,0.5) 50%, 
-        rgba(198,168,74,0.6) 100%
-    );
-    z-index:2;
+
+.story-hero .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--gold);
+    font-weight: 500;
 }
-.story-intro{
-    font-family:'Playfair Display', serif;
-    font-size:1.3rem;
-    margin-bottom:45px;
-    letter-spacing:1px;
-    text-align:center;
 
-    /* Gradient gold */
-    background: linear-gradient(90deg, #f5e6b3, #e8c87a, #d4a35a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--gold);
+    margin: 25px 0 10px;
+    filter: grayscale(20%);
+    transition: all 0.4s ease;
+}
 
-    /* Glow */
-   text-shadow: 0 0 20px rgba(212,163,90,0.3);
-    filter: drop-shadow(0 0 10px rgba(198,168,74,0.2));
+.profile-image:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(201,169,97,0.3);
+}
+
+/* ===== INTRO DROP CAP ===== */
+.story-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    line-height: 1.7;
+    margin-bottom: 50px;
+    text-align: left;
+    color: var(--gold-light);
+    font-weight: 400;
+    position: relative;
+    padding-left: 25px;
+    border-left: 1px solid var(--gold-muted);
+}
+
+.story-intro::first-letter {
+    float: left;
+    font-size: 4rem;
+    line-height: 0.8;
+    padding-right: 12px;
+    padding-top: 8px;
+    color: var(--gold);
+    font-weight: 500;
 }
 
 /* ===== CONTENT ===== */
-.story-container{
-    max-width:900px;
-    margin:100px auto;
-    padding:0 20px;
+.story-container {
+    max-width: 680px;
+    margin: 60px auto;
+    padding: 0 25px;
 }
 
-.story-container p{
-    margin-bottom:35px;
-    font-size:1.1rem;
-    color:var(--text);
+.story-container p {
+    margin-bottom: 1.8em;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--text);
+    text-align: left;
 }
 
-.story-container h2{
-    font-family:'Playfair Display', serif;
-    color: #d4a35a;
-    margin:60px 0 20px 0;
-    font-size:1.8rem;
+.story-container h2 {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gold);
+    margin: 60px 0 25px 0;
+    font-size: 1.6rem;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.story-container h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+}
+
+.pull-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--gold-light);
+    text-align: center;
+    margin: 50px 0;
+    padding: 30px 20px;
+    position: relative;
+    line-height: 1.5;
+    border-top: 1px solid rgba(201,169,97,0.2);
+    border-bottom: 1px solid rgba(201,169,97,0.2);
 }
 
 /* ===== BEFORE AFTER ===== */
-.before-after{
-    display:grid;
-    grid-template-columns:1fr 1fr;  /* Keep 2 columns always */
-    gap:30px;
-    margin:60px 0;
-    align-items:start;  /* ADD: Prevents stretching issues */
+.before-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 60px 0;
+    align-items: start;
 }
 
 .before-after > div {
-    display:flex;
-    flex-direction:column;
-    align-items:center;  /* Centers image + label */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.before-after img{
-    width:100%;
-    height:450px;        /* ADD: Fixed height for equal sizing */
-    object-fit:cover;    /* ADD: Crops to fit without distortion */
-    border-radius:15px;
-    box-shadow:0 15px 40px rgba(198,168,74,0.2);
+.before-after img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 4px;
+    filter: grayscale(20%);
+    transition: filter 0.4s ease;
 }
 
-.label{
-    text-align:center;
-    margin-top:15px;     /* Increased slightly */
-    color:#ffffff;
-    font-weight:600;
-    font-size:0.9rem;
-    text-transform:uppercase;  /* ADD: Makes labels pop */
-    letter-spacing:1px;
+.before-after img:hover {
+    filter: grayscale(0%);
 }
 
-/* ===== SOCIAL ===== */
-.social-section{
-    margin-top:100px;
-    padding-top:60px;
-    text-align:center;
+.label {
+    text-align: center;
+    margin-top: 15px;
+    color: var(--gold);
+    font-weight: 400;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Inter', sans-serif;
 }
 
-.social-links{
-    display:flex;
-    justify-content:center;
-    gap:25px;
-    margin:30px 0;
+/* ===== CLASSIC FOOTER WITH SHARE ===== */
+.footer-section {
+    margin-top: 100px;
+    padding: 0;
+    position: relative;
 }
 
-.social-links a{
-    color:var(--gold);
-    text-decoration:none;
-    font-weight:600;
-    border:1px solid var(--gold-light);
-    padding:10px 20px;
-    border-radius:30px;
-    transition:0.3s ease;
+.footer-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-muted), transparent);
+    margin-bottom: 60px;
+    opacity: 0.5;
 }
 
-.social-links a:hover{
-    background:var(--gold);
-    color:#fff;
+.footer-content {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 25px 80px;
+    text-align: center;
 }
 
-.watch-link{
-    margin-top:40px;
+.share-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: var(--cream);
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
 }
 
-.watch-link a{
-    display:inline-block;
-    color:var(--gold);
-    text-decoration:none;
-    font-weight:600;
-    border:1px solid var(--gold);
-    padding:12px 30px;
-    border-radius:40px;
-    letter-spacing:1px;
-    transition:0.3s ease;
+.share-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    font-weight: 300;
 }
 
-.watch-link a:hover{
-    background:var(--gold);
-    color:#000;
-}
-/* ===== MINISTRY ENDING ===== */
-/* ===== MINISTRY ENDING ===== */
-.ministry-ending{
-    margin-top:30px;
-    padding:30px 20px;
-    text-align:center;
-    background:#f8f0e0; /* Solid color, no gradient */
-    border-top:1px solid rgba(198,168,74,0.2);
+/* Share Buttons Container */
+.share-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
 }
 
-.ministry-ending h2{
-    font-family:'Playfair Display', serif;
-    font-size:1rem;
-    color:var(--gold);
-    letter-spacing:2px;
+.share-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgba(201,169,97,0.3);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
 }
 
-.ministry-ending p{
-    margin-top:8px;
-    color:var(--muted);
-    font-size:0.8rem;
-    font-style:italic;
+.share-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
 }
 
-/* ===== BACK BUTTON ===== */
+.share-btn:hover::before {
+    transform: translateY(0);
+}
+
+.share-btn:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(201,169,97,0.2);
+}
+
+.share-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--gold);
+    position: relative;
+    z-index: 1;
+    transition: fill 0.3s ease;
+}
+
+.share-btn:hover svg {
+    fill: var(--bg);
+}
+
+/* Copy Link Button */
+.copy-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+    padding: 14px 32px;
+    border: 1px solid rgba(201,169,97,0.4);
+    background: transparent;
+    color: var(--gold);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.copy-link-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+    z-index: 0;
+}
+
+.copy-link-btn:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.copy-link-btn:hover {
+    color: var(--bg);
+    border-color: var(--gold);
+}
+
+.copy-link-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+.copy-link-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    position: relative;
+    z-index: 1;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--gold);
+    color: var(--bg);
+    padding: 16px 32px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 10000;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* Ministry Footer */
+.ministry-footer {
+    background: linear-gradient(180deg, transparent, rgba(201,169,97,0.03));
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(201,169,97,0.1);
+}
+
+.ministry-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.ministry-verse {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    font-style: italic;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+    position: relative;
+    padding: 0 20px;
+}
+
+.ministry-verse::before,
+.ministry-verse::after {
+    content: '"';
+    font-size: 2rem;
+    color: var(--gold-muted);
+    opacity: 0.3;
+    position: absolute;
+    font-family: Georgia, serif;
+}
+
+.ministry-verse::before {
+    top: -10px;
+    left: 0;
+}
+
+.ministry-verse::after {
+    content: '"';
+    bottom: -20px;
+    right: 0;
+}
+
+/* Social Links in Footer */
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.footer-socials a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.footer-socials a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+}
+
+.footer-socials a:hover {
+    color: var(--gold);
+}
+
+.footer-socials a:hover::after {
+    width: 100%;
+}
+
+/* Back to Top */
+.back-to-top {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(201,169,97,0.3);
+    margin-top: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.back-to-top:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: translateY(-5px);
+}
+
+.back-to-top svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--gold);
+    transition: fill 0.3s ease;
+}
+
+.back-to-top:hover svg {
+    fill: var(--bg);
+}
+
 /* ===== BACK BUTTON ===== */
 .back-btn {
     position: fixed;
     top: 20px;
     left: 20px;
-    background: rgba(255,248,231,0.15);  /* ← CHANGE: Cream tint */
-    color: #FFF8E7;                       /* ← CHANGE: Cream text */
+    background: transparent;
+    color: var(--cream);
     padding: 8px 16px;
     text-decoration: none;
-    font-weight: 500;
-    font-size: 0.85rem;
-    border-radius: 20px;
+    font-weight: 400;
+    font-size: 0.75rem;
     z-index: 9999;
-    border: 1px solid rgba(255,248,231,0.4);  /* ← Cream border */
-    backdrop-filter: blur(4px);
+    border: 1px solid rgba(248,246,243,0.15);
     transition: all 0.3s ease;
-    letter-spacing: 1px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .back-btn:hover {
-    background: rgba(255,248,231,0.3);
-    border-color: #FFF8E7;
-    color: #fff;
+    background: rgba(248,246,243,0.08);
+    border-color: var(--cream);
 }
 
-/* ===== MOBILE HERO FIX ===== */
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
     .story-hero {
-        height: 15vh;        /* Reduced from 28vh */
-        min-height: 120px;   /* Prevent it from getting too small */
+        padding: 50px 20px 30px;
     }
     
     .story-hero h1 {
-        font-size: clamp(1.2rem, 5vw, 1.6rem);  /* Smaller text */
-        letter-spacing: 1px;
-        padding: 0 15px;
-        color: #000000;                    /* ADD: Ensure black on mobile */
-        text-shadow: 0 1px 3px rgba(255,255,255,0.5);
-    }
-    .back-btn {
-        background: transparent;
-        border: 1px solid rgba(255,248,231,0.3);  /* Subtle border only */
-        backdrop-filter: none;  /* Remove blur effect */
+        font-size: 1.6rem;
     }
     
-    .back-btn:hover {
-        background: rgba(255,248,231,0.1);  /* Very subtle hover */
-        border-color: rgba(255,248,231,0.5);
+    .profile-image {
+        width: 100px;
+        height: 100px;
     }
+    
     .story-container {
-        margin-top: 40px;    /* CHANGE: Was 100px */
-        margin-bottom: 60px; /* Optional: reduce bottom too */
+        margin: 40px auto;
+        padding: 0 20px;
     }
     
-    /* Slightly reduce intro margin */
     .story-intro {
-        margin-bottom: 30px; /* Was 45px */
+        font-size: 1.15rem;
+        padding-left: 15px;
+        margin-bottom: 35px;
     }
-    .before-after{
-        gap:15px;              /* Smaller gap */
-        margin:40px 0;
+    
+    .story-intro::first-letter {
+        font-size: 3rem;
     }
-    .before-after img{
-        height:280px;          /* Much shorter - balanced! */
-        border-radius:10px;
+    
+    .story-container p {
+        font-size: 1rem;
     }
-    .label{
-        font-size:0.8rem;      /* Smaller labels */
-        margin-top:10px;
+    
+    .story-container h2 {
+        font-size: 1.4rem;
+        margin: 45px 0 20px 0;
+    }
+    
+    .pull-quote {
+        font-size: 1.2rem;
+        padding: 25px 15px;
+        margin: 40px 0;
+    }
+    
+    .before-after {
+        gap: 15px;
+        margin: 40px 0;
+    }
+    
+    .before-after img {
+        height: 200px;
+    }
+    
+    .share-container {
+        gap: 15px;
+    }
+    
+    .share-btn {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .share-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .share-title {
+        font-size: 1.5rem;
+    }
+    
+    .ministry-logo {
+        font-size: 1.2rem;
+    }
+    
+    .footer-socials {
+        gap: 20px;
+        flex-wrap: wrap;
     }
 }
 </style>
@@ -310,51 +606,63 @@ body{
 
 <a href="index.html" class="back-btn">← Back</a>
 
-<!-- HERO -->
+<!-- COMPACT HERO -->
 <section class="story-hero">
-    <img src="images/davidk.jpg" alt="davidk">
-    <h1>David K. — Rebuilding After Loss</h1>
+    <div class="subtitle">The Testimony of</div>
+    <h1>David.k.</h1>
+    <img src="images/davidk.jpg" alt="David" class="profile-image">
 </section>
 
 <!-- STORY CONTENT -->
 <div class="story-container">
     <p class="story-intro">
-    ✨ This is the story of <strong>David K.</strong> — a testimony of redemption, 
-    restoration, and the light that overcomes darkness. 
-    Read prayerfully and be encouraged.
-</p>
-
-    <p>
-        
-    First of all, I hope you are reading this from a large house with excellent Wi-Fi. If you are still buffering YouTube videos in 2026, then clearly something went wrong. We need to talk.
-But what no one saw… was the war inside him.
-
-Let me guess: you wake up early now? You jog? You drink water voluntarily? Incredible. Right now, I consider walking to the fridge a cardio session. Please tell me you’ve evolved beyond arguing with the snooze button every morning. That button and I are in a toxic relationship.
-
-Secondly, I truly hope you finally became organized. As I write this, my desk looks like a crime scene. There are papers everywhere. I found a notebook I thought I lost in 2023. It was under another notebook that I thought I lost in 2024. If archaeologists dig up this room, they’ll think it’s layers of civilization.
+        This is the story of DAVIDO L. — a journey from the depths of depression 
+        to discovering profound purpose. A testimony of how light finds us 
+        even in our darkest valleys.
     </p>
 
     <p>
-        “I felt trapped,” he says. “I knew who I wanted to become, but I didn’t know how to become him.”
+        Daniel had been in the army for eleven months. Long enough to learn how to clean his rifle blindfolded. Long enough to understand that bravery was not the absence of fear, but the decision to move while fear clawed at your chest.
+
+Their unit had been stationed near the outskirts of a shattered town—once lively, now reduced to broken walls and silent windows. The war had crept in like rust and devoured everything it touched. They were told the enemy would try to take the bridge at dawn. If the bridge fell, the supply route would collapse. If the supply route collapsed, the city behind them would starve.
+
+
+
+Daniel didn’t answer. He didn’t have words for that. Instead, he reached over briefly and squeezed Hassan’s shoulder. The gesture lasted less than a second, but it steadied them both.
+
+The enemy pressed forward relentlessly. They were close enough now that Daniel could see their faces—young, tired, determined. In that instant, the war stopped being an abstract idea. It became painfully human.
     </p>
+
+    <p>
+        So they waited in the half-light.
+
+“Positions!” Sergeant Otieno barked, his voice steady despite the chaos.
+
+Another explosion tore through the east side of their line. Daniel felt heat rush over his face. He wiped grime from his eyes and forced himself to look forward. Through the rising smoke, he could see movement—dark figures advancing in waves.
+
+The battle began not with a single sound but with a thousand. Gunfire cracked like splitting timber. Mortars thudded in the distance. The air tasted of metal and dust. Daniel raised his rifle, aimed at a shadow moving between broken concrete, and fired.
+
+
+    </p>
+
+    <div class="pull-quote">
+        I was drowning in plain sight, and nobody knew. Not because they didn't care, but because I had become so good at hiding.
+    </div>
 
     <h2>The Breaking Point</h2>
 
     <p>
-       Now let’s discuss money. Dear Future Me, if you are wealthy, kindly remember your humble beginnings. Remember when you Googled “how to become rich without doing anything” and were deeply disappointed by the results? Remember when you transferred money and prayed louder than you ever have in church? Those were character-building moments.
-
-If you are not rich yet, that’s fine — but at least tell me you stopped checking your account balance like it’s a live football score. “Maybe it increased in the last 10 minutes.” It never increases in 10 minutes. Never.
-
-Speaking of football, I hope you finally learned to stop shouting at the TV as if the players can hear you. They cannot. They are in another country. They are not waiting for your tactical advice. You yelling “PASS THE BALL!” changes nothing — except your blood pressure.
-
-Now let’s address food. Please tell me you learned to cook more than eggs. Currently, my cooking skills are limited to:he other day I tried to cook something “simple.” The smoke alarm responded like I was summoning dragons. If you can now cook a full meal without Googling every step, I am proud of you.
-
-Also, have you stopped laughing at your own jokes? Because right now, I do. Frequently. Sometimes I tell a joke, nobody laughs, and I continue laughing alone. It’s not awkward at all. Absolutely not.he other day I tried to cook something “simple.” The smoke alarm responded like I was summoning dragons. If you can now cook a full meal without Googling every step, I am proud of you.
-
-Also, have you stopped laughing at your own jokes? Because right now, I do. Frequently. Sometimes I tell a joke, nobody laughs, and I continue laughing alone. It’s not awkward at all. Absolutely not.he other day I tried to cook something “simple.” The smoke alarm responded like I was summoning dragons. If you can now cook a full meal without Googling every step, I am proud of you.
-
-Also, have you stopped laughing at your own jokes? Because right now, I do. Frequently. Sometimes I tell a joke, nobody laughs, and I continue laughing alone. It’s not awkward at all. Absolutely not.
+        The turning point came during an ordinary evening that suddenly became sacred. Sarah found herself by the village river, watching the water flow steadily beneath an amber sunset. The same river she had walked past a thousand times, but tonight it spoke differently — a whisper of peace that cut through the noise in her mind.
     </p>
+
+    <p>
+        An elderly woman approached, her presence gentle and unhurried. "You carry a heavy burden, child," she said. "But you don't have to carry it alone." That evening, Sarah heard about a love that pursues us even when we hide, a grace that meets us in our lowest moments, and a purpose that waits on the other side of our pain.
+    </p>
+    <p>The recoil grounded him. Training took over. Breathe. Aim. Fire. Move.
+
+To his left, Corporal Njoroge was shouting coordinates into a radio, trying to direct support fire. To his right, a young recruit named Hassan clutched his weapon with trembling hands.
+
+“They’re too many,” Hassan muttered.</p>
 
     <!-- BEFORE AFTER SECTION -->
     <div class="before-after">
@@ -371,49 +679,156 @@ Also, have you stopped laughing at your own jokes? Because right now, I do. Freq
     <h2>Transformation</h2>
 
     <p>
-       I hope you are still dreaming big. Right now, I have about 37 ideas written down. Half of them are brilliant. The other half were written at midnight and make no sense. One of them just says “create something revolutionary.” Very specific. Very helpful.
-
-Did you finally learn patience? Because currently, I order something online and check the tracking number every 12 minutes. “Has it moved?” It left the warehouse 30 seconds ago. Relax.
-
-Also, I sincerely hope you stopped saying, “I’ll start tomorrow.” Tomorrow is the most overbooked day in history. Diet starts tomorrow. Gym starts tomorrow. Saving money starts tomorrow. If tomorrow were a person, it would file a complaint for overwork.
-
-Let’s talk about confidence. I hope you grew into someone bold. Someone who doesn’t overthink simple messages like: “Hey.” Right now, I rewrite texts like I’m submitting them for a literature award. Delete. Rewrite. Add emoji. Remove emoji. Panic. Send.
-
-Oh, and please tell me you learned how to fold a fitted sheet. This has been my greatest enemy. I’m convinced fitted sheets were invented as a test of character. If you can fold one neatly, you deserve a trophy.
-
-Most importantly, I hope you are happy. Not just “smiling-for-Instagram” happy. Real happy. The kind where you wake up with peace. The kind where you look back at this letter and laugh at how dramatic I was.
+        Healing didn't arrive overnight. It came gradually — through early morning prayers when tears flowed freely, through community that sat with her in silence when words failed, through small victories that rebuilt her sense of worth. The depression didn't disappear instantly, but Sarah discovered she was no longer fighting alone.
     </p>
 
     <p>
-       And if you are reading this and thinking, “Wow, I was ridiculous,” remember — you needed this version of you. The one who tried. The one who failed. The one who laughed anyway.
-
-So, Future Me, wherever you are — keep going. Keep building. Keep believing. And if you are rich… please send money back in time. I don’t know how that works, but figure it out. You’re the advanced version.
+        Purpose began to emerge from the pain. She started sharing her story with other women who wore the same masks she once did — the high-functioning, the secretly struggling, the beautifully broken. Her testimony became a lifeline, proof that darkness doesn't have the final word.
     </p>
 
-    <!-- SOCIAL + VIDEO -->
-    <div class="social-section">
-        <h2>Connect & Watch Full Testimony</h2>
+    <p>
+        Today, Sarah mentors women navigating similar valleys. She speaks of a hope that anchors the soul, a peace that guards the mind, and a joy that returns softly but surely. The woman who once sat by the river in despair now stands as living proof that restoration is real, reminding others that no night is too long for morning to come.
+    </p>
 
-        <div class="social-links">
+</div>
+
+<!-- CLASSIC FOOTER WITH SHARE -->
+<section class="footer-section">
+    <div class="footer-divider"></div>
+    
+    <div class="footer-content">
+        <h3 class="share-title">Share This Story</h3>
+        <p class="share-subtitle">Spread hope by sharing Sarah's testimony</p>
+        
+        <div class="share-container">
+            <!-- Facebook -->
+            <button class="share-btn" onclick="shareToFacebook()" aria-label="Share on Facebook">
+                <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </button>
+            
+            <!-- Twitter/X -->
+            <button class="share-btn" onclick="shareToTwitter()" aria-label="Share on Twitter">
+                <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </button>
+            
+            <!-- WhatsApp -->
+            <button class="share-btn" onclick="shareToWhatsApp()" aria-label="Share on WhatsApp">
+                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            </button>
+            
+            <!-- Email -->
+            <button class="share-btn" onclick="shareViaEmail()" aria-label="Share via Email">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </button>
+        </div>
+        
+        <button class="copy-link-btn" onclick="copyLink()">
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            <span>Copy Link</span>
+        </button>
+    </div>
+    
+    <!-- Ministry Footer -->
+    <div class="ministry-footer">
+        <div class="ministry-logo">Light to the World</div>
+        <p class="ministry-verse">You are the light of the world. A city set on a hill cannot be hidden. — Matthew 5:14</p>
+        
+        <div class="footer-socials">
             <a href="https://instagram.com/" target="_blank">Instagram</a>
             <a href="https://facebook.com/" target="_blank">Facebook</a>
             <a href="https://twitter.com/" target="_blank">Twitter</a>
+            <a href="mailto:contact@lighttotheworld.org">Contact</a>
         </div>
-
-        <div class="watch-link">
-    <a href="https://youtube.com/YOUR_VIDEO_LINK" target="_blank">
-        ▶ Watch Full Testimony on YouTube
-    </a>
-</div>
+        
+        <button class="back-to-top" onclick="scrollToTop()" aria-label="Back to top">
+            <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+        </button>
     </div>
-
-</div>
-<section class="ministry-ending">
-    <h2>LIGHT TO THE WORLD MINISTRIES</h2>
-    <p>
-        "You are the light of the world. A city set on a hill cannot be hidden." — Matthew 5:14
-    </p>
 </section>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast">Link copied to clipboard!</div>
+
+<script>
+// Share Functions
+function shareToFacebook() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("Read this powerful testimony of transformation and hope");
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`, '_blank', 'width=600,height=400');
+}
+
+function shareToTwitter() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("A story of redemption that will inspire you ✨");
+    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'width=600,height=400');
+}
+
+function shareToWhatsApp() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("Check out this amazing testimony: ");
+    window.open(`https://wa.me/?text=${text}${url}`, '_blank');
+}
+
+function shareViaEmail() {
+    const subject = encodeURIComponent("A Testimony of Hope and Transformation");
+    const body = encodeURIComponent(`I thought you'd be encouraged by this story:\n\n${window.location.href}`);
+    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+}
+
+function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+        showToast();
+    }).catch(() => {
+        const textArea = document.createElement("textarea");
+        textArea.value = window.location.href;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+        showToast();
+    });
+}
+
+function showToast() {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Smooth reveal animation on scroll
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const animatedElements = document.querySelectorAll('.share-btn, .copy-link-btn');
+    animatedElements.forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = `all 0.6s ease ${index * 0.1}s`;
+        observer.observe(el);
+    });
+});
+</script>
 
 </body>
 </html>
