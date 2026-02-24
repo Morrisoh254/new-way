@@ -836,8 +836,6 @@ body {
     }
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
     /* ===== MOBILE ===== */
 @media (max-width: 768px) {
     /* Compact hero */
@@ -901,16 +899,21 @@ body {
         margin: 35px 0;
     }
     
-    /* Small single image */
-    .small-image-single {
-        max-width: 100%;
-        margin: 25px auto;
-    }
-    
-    .small-image-single img {
-        height: 160px;
-    }
-    
+    /* Small single image - FIXED FOR MOBILE */
+.small-image-single {
+    max-width: 100%;
+    margin: 25px auto;
+    padding: 0 15px; /* Add padding to prevent touching screen edges */
+    box-sizing: border-box;
+}
+
+.small-image-single img {
+    width: 100%;
+    height: auto; /* Change from fixed 160px to auto to maintain aspect ratio */
+    max-height: 250px; /* But cap the height so it doesn't get too tall */
+    display: block; /* Removes extra space below image */
+    border-radius: 4px;
+}
     /* BEFORE/AFTER - HORIZONTAL ON MOBILE */
     .before-after {
         display: flex;
