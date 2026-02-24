@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Michael A. | Testimony</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -89,28 +89,37 @@ body {
     box-shadow: 0 0 30px rgba(201,169,97,0.3);
 }
 
-/* ===== INTRO DROP CAP ===== */
+/* ===== ENHANCED INTRO - HEAVY WEIGHT ===== */
 .story-intro {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    line-height: 1.7;
-    margin-bottom: 50px;
-    text-align: left;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    margin-bottom: 60px;
+    text-align: center;
     color: var(--gold-light);
-    font-weight: 400;
+    font-weight: 500;
     position: relative;
-    padding-left: 25px;
-    border-left: 1px solid var(--gold-muted);
+    padding: 40px 30px;
+    border-left: none;
+    border-top: 2px solid var(--gold-muted);
+    border-bottom: 2px solid var(--gold-muted);
+    background: linear-gradient(180deg, 
+        rgba(201,169,97,0.05) 0%, 
+        transparent 50%,
+        rgba(201,169,97,0.05) 100%
+    );
 }
 
 .story-intro::first-letter {
-    float: left;
-    font-size: 4rem;
-    line-height: 0.8;
-    padding-right: 12px;
-    padding-top: 8px;
+    float: none;
+    font-size: 5rem;
+    line-height: 1;
+    padding: 0;
     color: var(--gold);
-    font-weight: 500;
+    font-weight: 600;
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 /* ===== CONTENT ===== */
@@ -120,51 +129,128 @@ body {
     padding: 0 25px;
 }
 
+/* Regular paragraphs - lighter weight */
 .story-container p {
     margin-bottom: 1.8em;
     font-size: 1.05rem;
     line-height: 1.9;
     color: var(--text);
     text-align: left;
+    font-weight: 300;
+    opacity: 0.95;
 }
 
+/* Gold strong text */
+.story-container strong {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+/* ===== UNIFIED HEADINGS - SAME STYLE ===== */
 .story-container h2 {
     font-family: 'Cormorant Garamond', serif;
-    color: var(--gold);
-    margin: 60px 0 25px 0;
-    font-size: 1.6rem;
-    font-weight: 500;
+    color: white;              /* SAME color for both */
+    margin: 80px 0 30px 0;
+    font-size: 2.2rem;               /* SAME size */
+    font-weight: 600;
     font-style: italic;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.05em;
     position: relative;
-    padding-bottom: 12px;
+    padding-bottom: 20px;
+    text-align: center;
 }
 
+/* Same underline for both */
 .story-container h2::after {
     content: "";
     position: absolute;
     bottom: 0;
-    left: 0;
-    width: 40px;
-    height: 1px;
-    background: var(--gold);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
+/* Same ornament for both */
+.story-container h2::before {
+    content: "✦";
+    display: block;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 15px;
+    font-style: normal;
+}
+
+/* Delete ALL other h2:nth-of-type() rules */
+
+/* Timeline markers in Transformation */
+.story-container h2:nth-of-type(2) ~ p strong {
+    color: var(--gold);
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: block;
+    margin: 40px 0 15px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(201,169,97,0.3);
+}
+
+.story-container h2:nth-of-type(2) ~ p:first-of-type strong {
+    margin-top: 20px;
+}
+
+/* Enhanced pull quote */
 .pull-quote {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-style: italic;
     color: var(--gold-light);
     text-align: center;
-    margin: 50px 0;
-    padding: 30px 20px;
+    margin: 60px 0;
+    padding: 40px 30px;
     position: relative;
     line-height: 1.5;
-    border-top: 1px solid rgba(201,169,97,0.2);
-    border-bottom: 1px solid rgba(201,169,97,0.2);
+    border-top: 2px solid rgba(201,169,97,0.3);
+    border-bottom: 2px solid rgba(201,169,97,0.3);
+    background: rgba(201,169,97,0.03);
+    font-weight: 500;
 }
 
-/* ===== BEFORE AFTER ===== */
+/* ===== SMALL SINGLE IMAGE (End of Breaking Point) ===== */
+.small-image-single {
+    max-width: 300px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.small-image-single img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    filter: grayscale(20%);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(201,169,97,0.2);
+}
+
+.small-image-single img:hover {
+    filter: grayscale(0%);
+    box-shadow: 0 10px 30px rgba(201,169,97,0.2);
+}
+
+.small-image-single .label {
+    margin-top: 12px;
+    color: var(--gold);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ===== BEFORE AFTER (Same Size Images) ===== */
 .before-after {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -181,26 +267,75 @@ body {
 
 .before-after img {
     width: 100%;
-    height: 320px;
+    height: 280px;
     object-fit: cover;
     border-radius: 4px;
     filter: grayscale(20%);
-    transition: filter 0.4s ease;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(201,169,97,0.2);
 }
 
 .before-after img:hover {
     filter: grayscale(0%);
+    box-shadow: 0 10px 30px rgba(201,169,97,0.2);
 }
 
-.label {
+.before-after .label {
     text-align: center;
     margin-top: 15px;
     color: var(--gold);
-    font-weight: 400;
+    font-weight: 600;
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 3px;
     font-family: 'Inter', sans-serif;
+}
+
+/* ===== SMALL LEFT IMAGE (After Graduation) ===== */
+.small-image-left {
+    display: flex;
+    gap: 25px;
+    margin: 50px 0;
+    align-items: flex-start;
+}
+
+.small-image-left img {
+    width: 180px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 4px;
+    filter: grayscale(20%);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(201,169,97,0.2);
+    flex-shrink: 0;
+}
+
+.small-image-left img:hover {
+    filter: grayscale(0%);
+    box-shadow: 0 10px 30px rgba(201,169,97,0.2);
+}
+
+.small-image-left .caption {
+    flex: 1;
+    padding-top: 10px;
+}
+
+.small-image-left .caption .label {
+    color: var(--gold);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.small-image-left .caption p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.7;
+    margin: 0;
 }
 
 /* ===== CLASSIC FOOTER WITH SHARE ===== */
@@ -529,13 +664,13 @@ body {
         margin-bottom: 10px;
     }
     .story-hero .subtitle {
-        font-size: 0.6rem;  /* ← ADDED: slightly smaller subtitle */
-        letter-spacing: 3px;  /* ← ADDED: tighter letter spacing */
+        font-size: 0.6rem;
+        letter-spacing: 3px;
     }
     .profile-image {
-        width: 80px;  /* ← REDUCED from 100px */
-        height: 80px;  /* ← REDUCED from 100px */
-        margin: 15px 0 5px;  /* ← REDUCED from 25px 0 10px */
+        width: 80px;
+        height: 80px;
+        margin: 15px 0 5px;
     }
     
     .story-container {
@@ -544,13 +679,13 @@ body {
     }
     
     .story-intro {
-        font-size: 1.15rem;
-        padding-left: 15px;
-        margin-bottom: 35px;
+        font-size: 1.25rem;
+        padding: 30px 20px;
+        margin-bottom: 40px;
     }
     
     .story-intro::first-letter {
-        font-size: 3rem;
+        font-size: 4rem;
     }
     
     .story-container p {
@@ -558,23 +693,64 @@ body {
     }
     
     .story-container h2 {
-        font-size: 1.4rem;
-        margin: 45px 0 20px 0;
+        font-size: 1.6rem;
+        margin: 60px 0 25px 0;
+    }
+    
+    .story-container h2:nth-of-type(1) {
+        font-size: 1.8rem;
+    }
+    
+    .story-container h2:nth-of-type(2) {
+        font-size: 1.8rem;
+        letter-spacing: 4px;
+    }
+    
+    .story-container h2:nth-of-type(2) ~ p strong {
+        margin: 30px 0 12px 0;
+        font-size: 0.75rem;
     }
     
     .pull-quote {
-        font-size: 1.2rem;
-        padding: 25px 15px;
+        font-size: 1.3rem;
+        padding: 30px 20px;
         margin: 40px 0;
     }
     
+    /* Mobile: Small single image full width */
+    .small-image-single {
+        max-width: 100%;
+        margin: 30px auto;
+    }
+    
+    .small-image-single img {
+        height: 180px;
+    }
+    
+    /* Mobile: Before/After stack */
     .before-after {
-        gap: 15px;
+        grid-template-columns: 1fr;
+        gap: 20px;
         margin: 40px 0;
     }
     
     .before-after img {
+        height: 220px;
+    }
+    
+    /* Mobile: Left image stacks above text */
+    .small-image-left {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .small-image-left img {
+        width: 100%;
         height: 200px;
+    }
+    
+    .small-image-left .caption {
+        padding-top: 0;
     }
     
     .share-container {
@@ -592,8 +768,8 @@ body {
         height: 18px;
     }
     .share-subtitle {
-        font-size: 0.75rem;          /* Reduced from 0.85rem */
-        margin-bottom: 25px;         /* Reduced from 40px */
+        font-size: 0.75rem;
+        margin-bottom: 25px;
     }
     
     .share-title {
@@ -601,25 +777,25 @@ body {
         margin-bottom: 10px;
     }
     .copy-link-btn {
-        margin-top: 20px;            /* Reduced from 30px */
-        padding: 12px 24px;          /* Reduced from 14px 32px */
-        font-size: 0.75rem;          /* Reduced from 0.8rem */
+        margin-top: 20px;
+        padding: 12px 24px;
+        font-size: 0.75rem;
     }
     
     .copy-link-btn svg {
-        width: 16px;                 /* Reduced from 18px */
-        height: 16px;                /* Reduced from 18px */
+        width: 16px;
+        height: 16px;
     }
      .ministry-footer {
-        padding: 40px 15px;          /* Reduced from 60px 20px */
+        padding: 40px 15px;
     }
     .ministry-logo {
         font-size: 1.1rem;
          margin-bottom: 15px;
     }
     .ministry-verse {
-        font-size: 0.95rem;          /* Reduced from 1.1rem */
-        padding: 0 15px;             /* Reduced from 0 20px */
+        font-size: 0.95rem;
+        padding: 0 15px;
     }
     
     .footer-socials {
@@ -628,25 +804,25 @@ body {
         flex-wrap: wrap;
     }
     .footer-socials a {
-        font-size: 0.7rem;           /* Reduced from 0.75rem */
+        font-size: 0.7rem;
     }
     .footer-section {
-        margin-top: 60px;            /* Reduced from 100px */
+        margin-top: 60px;
     }
     
     .footer-divider {
-        margin-bottom: 40px;         /* Reduced from 60px */
+        margin-bottom: 40px;
     }
     
     .footer-content {
-        padding: 0 20px 50px;        /* Reduced from 0 25px 80px */
+        padding: 0 20px 50px;
     }
     .toast {
-        padding: 12px 24px;          /* Reduced from 16px 32px */
-        font-size: 0.8rem;           /* Reduced from 0.9rem */
-        bottom: 20px;                /* Closer to bottom */
-        min-width: auto;             /* Allow natural width */
-        white-space: nowrap;         /* Keep text on one line */
+        padding: 12px 24px;
+        font-size: 0.8rem;
+        bottom: 20px;
+        min-width: auto;
+        white-space: nowrap;
     }
 }
 </style>
@@ -659,24 +835,24 @@ body {
 <!-- COMPACT HERO -->
 <section class="story-hero">
     <div class="subtitle">The Testimony of</div>
-    <h1>Michael A.</h1>
-    <img src="images/Michaela.jpeg" alt="Michael A" class="profile-image">
+    <h1>MCA Tricky{tricky sana}.</h1>
+    <img src="images/Mcatrickm.jpeg" alt="MCA-Tricky(Francis Munyao" class="profile-image">
 </section>
 
 <!-- STORY CONTENT -->
 <div class="story-container">
     <p class="story-intro">
-        This is the story of Michael A. — a testimony of redemption, 
+        This is the story of Mca Tricky. — a testimony of redemption, 
         restoration, and the light that overcomes darkness. 
         Read prayerfully and be encouraged.
     </p>
 
     <p>
-        For most of his life, Michael looked like he had everything together. He was disciplined. Focused. Intelligent. The kind of young man people trusted. The kind of son parents were proud of. The kind of friend others leaned on.
+        They say every great comedian has a painful past. For Francis Munyao (MCA-Tricky), the pain was the punchline. Born in 1993 in the dusty villages of Makueni County, Francis was the youngest of five children. His parents loved him deeply but had nothing to give—no money for school fees, no connections, no safety net. Just a roof that leaked and prayers that somehow, someone would notice their boy's sharp mind.
     </p>
-
+    
     <p>
-        But what no one saw was the war inside him. Behind the achievements lived quiet battles — habits he could not break, thoughts he could not silence, and guilt he could not escape. Every time he promised himself, "This is the last time," he would fall again.
+        By Class 7, Francis nearly dropped out. Only a miracle scholarship kept him in school. By Form 2, the miracle expired. He did what desperate boys do. He ran. "I thought Nairobi was the promised land," he remembers. "I found the streets."
     </p>
 
     <div class="pull-quote">
@@ -686,34 +862,92 @@ body {
     <h2>The Breaking Point</h2>
 
     <p>
-        The turning point came during a quiet evening when everything he relied on collapsed. What seemed like failure became the doorway to surrender. In that moment of brokenness, grace found him.
+        2010. Francis Munyao (MCA-Tricky), 17 years old, became a statistic. He slept in River Road alleyways, wrapped in newspaper against the cold. He learned which kibandas threw away food last. He discovered that cyber cafés let you sit for hours if you pretended to wait for an "important email from America." The hunger was constant. The shame was worse.
+    </p>
+    
+    <p>
+        One night, huddled under a shop veranda, an older street comedian looked at him and said: "Wewe, unajua utacheka hadi ukose usingizi, lakini hii maisha ya mtaa itakumaliza." ("You can laugh until you lose sleep, but this street life will finish you.")
+    </p>
+    
+    <p>
+        Something woke up in Francis—may God have intervened. He didn't want to die unseen. He didn't want his story to end in an alley. So he made a deal with God: "Give me a platform. I won't waste it on small jokes. I'll tell our story—the story of the unseen." He walked back to Makueni. Not to quit. To begin.
     </p>
 
-    <!-- BEFORE AFTER SECTION -->
-    <div class="before-after">
-        <div>
-            <img src="images/michael-before.jpg.jpg" alt="Before Faith">
-            <div class="label">Before</div>
-        </div>
-        <div>
-            <img src="images/michael-after.jpg.jpeg" alt="After Faith">
-            <div class="label">After</div>
-        </div>
+    <!-- SMALL SINGLE IMAGE AT END OF BREAKING POINT -->
+    <div class="small-image-single">
+        <img src="images/michael-breaking-point.jpeg" alt="The Turning Point">
+        <div class="label">MCA-surely God saves</div>
     </div>
 
     <h2>Transformation</h2>
 
     <p>
-        Through community, discipline, and prayer, restoration began. Slowly, the chains loosened. Freedom did not come overnight — but it came faithfully, meeting him in the early mornings and the late nights when no one else was watching.
-        It came without warning, a tearing shriek across the cold air before the earth erupted in fire. The ground shook beneath Private Daniel Mwangi’s boots, and for a brief second he forgot how to breathe. Dirt and smoke swallowed the trench. Men shouted—some in command, some in fear.
+        <strong>The First Show (2016)</strong>
+        January 16, 2016. Carnivore Grounds. Churchill Show auditions. Francis—now calling himself "MCA Tricky"—took the stage in second-hand shoes and borrowed confidence. No credits. No name. Just a boy who knew what hunger tasted like.
     </p>
-    <p>It came without warning, a tearing shriek across the cold air before the earth erupted in fire. The ground shook beneath Private Daniel Mwangi’s boots, and for a brief second he forgot how to breathe. Dirt and smoke swallowed the trench. Men shouted—some in command, some in fear.It came without warning, a tearing shriek across the cold air before the earth erupted in fire. The ground shook beneath Private Daniel Mwangi’s boots, and for a brief second he forgot how to breathe. Dirt and smoke swallowed the trench. Men shouted—some in command, some in fear.</p>
-    <p>It came without warning, a tearing shriek across the cold air before the earth erupted in fire. The ground shook beneath Private Daniel Mwangi’s boots, and for a brief second he forgot how to breathe. Dirt and smoke swallowed the trench. Men shouted—some in command, some in fear.</p>
 
     <p>
-        Today, Michael mentors young men facing similar struggles. His story reminds us that no darkness is too deep for light to reach, and that redemption writes better stories than perfection ever could.
+        His set? <em>"How to Survive Nairobi Without Money."</em> He demonstrated entering a matatu like you own it. Eating at a kibanda while complaining about "too much salt" to get extra meat. Sleeping in cyber cafés with fake "America emails."
     </p>
 
+    <p>
+        The crowd roared. Then he dropped the line that broke the internet:
+    </p>
+
+    <div class="pull-quote">
+        "Street boys don't beg. We negotiate with destiny."
+    </div>
+
+    <p>
+        A fan recorded it. Posted it. By morning, #MCATricky trended #1 in Kenya. By week's end: 2 million views. Churchill called personally. That <strong>first show changed everything</strong>. The boy who begged for bread was now getting paid to be himself.
+    </p>
+
+    <!-- BEFORE AFTER SECTION (SAME SIZE IMAGES) -->
+    <div class="before-after">
+        <div>
+            <img src="images/mca-before.jpeg" alt="Before Faith">
+            <div class="label">Before</div>
+        </div>
+        <div>
+            <img src="images/mca-after.jpg" alt="After Faith">
+            <div class="label">After</div>
+        </div>
+    </div>
+
+    <p>
+        <strong>The Fame (2016–2019)</strong>
+        From that viral moment, MCA Tricky became unstoppable. Churchill Show regular—every weekend, national TV. Corporate MC gigs paying more than his mother's yearly income. Radio stations fighting to book him. Social media explosion—Kenyans shared his clips like gospel.
+    </p>
+
+    <p>
+        But here's what fans didn't see: while trending on stage, MCA Tricky was still grinding in class. JKUAT. Mechanical Engineering. 8 AM lectures after 2 AM shows. Assignments between sound checks. Exams during tour season.
+    </p>
+
+    <p>
+        <em>"People thought I was just a comedian,"</em> he says. <em>"They didn't know I had a deadline: graduation."</em>
+    </p>
+
+    <p>
+        <strong>The Graduation (2019)</strong>
+        December 2019. Jomo Kenyatta University. Francis Munyao walked across that stage in graduation gown—while holding his Churchill Show award. The photos broke the internet again. This time, the caption wrote itself: <em>"From Street Boy to Graduate."</em>
+    </p>
+
+    <p>
+        Class of 2019. BSc Mechanical Engineering. <em>"I graduated not because I was special, but because I refused to choose between my gift and my degree. Comedy fed my spirit. Education secured my future."</em>
+    </p>
+
+    <!-- SMALL LEFT IMAGE AFTER GRADUATION -->
+    <div class="small-image-left">
+        <img src="images/mca-graduation-moment.jpeg" alt="Graduation Day">
+        <div class="caption">
+            <span class="label">Graduation Day</span>
+            <p>"The same hands that once begged for bread now held a degree. The same mouth that knew hunger now spoke on national radio. What God has transformed, no one can undo."</p>
+        </div>
+    </div>
+
+    <p>
+        The same mouth that once begged for bread had spoken on radio. The same hands that slept on concrete now held a degree. The same boy who ran from poverty had run straight into his purpose.
+    </p>
 </div>
 
 <!-- CLASSIC FOOTER WITH SHARE -->
