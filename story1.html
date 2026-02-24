@@ -812,7 +812,265 @@ body {
 .profile-image {
     cursor: zoom-in;
 }
-
+/* ===== DESKTOP ENHANCEMENTS (min-width: 769px) ===== */
+@media (min-width: 769px) {
+    
+    /* 1. SUBTLE PARALLAX HERO BACKGROUND */
+    .story-hero {
+        background: linear-gradient(180deg, 
+            rgba(201,169,97,0.15) 0%, 
+            rgba(201,169,97,0.05) 50%,
+            transparent 100%
+        );
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .story-hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle at 50% 50%, 
+            rgba(201,169,97,0.03) 0%, 
+            transparent 70%
+        );
+        animation: slowPulse 8s ease-in-out infinite;
+        pointer-events: none;
+    }
+    
+    @keyframes slowPulse {
+        0%, 100% { transform: scale(1); opacity: 0.5; }
+        50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    /* 2. FLOATING PROFILE IMAGE WITH DEPTH */
+    .profile-image {
+        width: 140px;
+        height: 140px;
+        border: 3px solid var(--gold);
+        box-shadow: 
+            0 0 0 1px rgba(201,169,97,0.3),
+            0 20px 40px rgba(0,0,0,0.4),
+            0 0 60px rgba(201,169,97,0.1);
+        animation: gentleFloat 6s ease-in-out infinite;
+    }
+    
+    @keyframes gentleFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    .profile-image:hover {
+        transform: scale(1.08) translateY(-5px);
+        box-shadow: 
+            0 0 0 2px var(--gold),
+            0 30px 60px rgba(0,0,0,0.5),
+            0 0 80px rgba(201,169,97,0.3);
+    }
+    
+    /* 3. INTRO WITH SIDE ORNAMENTS */
+    .story-intro {
+        position: relative;
+        padding: 50px 60px;
+        border-top: 1px solid rgba(201,169,97,0.2);
+        border-bottom: 1px solid rgba(201,169,97,0.2);
+    }
+    
+    .story-intro::before,
+    .story-intro::after {
+        content: '❧';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5rem;
+        color: var(--gold-muted);
+        opacity: 0.4;
+    }
+    
+    .story-intro::before {
+        left: 20px;
+    }
+    
+    .story-intro::after {
+        right: 20px;
+        transform: translateY(-50%) rotate(180deg);
+    }
+    
+    /* 4. ELEGANT SIDEBAR ACCENTS FOR CONTENT */
+    .story-container {
+        position: relative;
+    }
+    
+    .story-container::before {
+        content: '';
+        position: absolute;
+        left: -40px;
+        top: 200px;
+        bottom: 200px;
+        width: 1px;
+        background: linear-gradient(180deg, 
+            transparent 0%,
+            rgba(201,169,97,0.2) 20%,
+            rgba(201,169,97,0.2) 80%,
+            transparent 100%
+        );
+    }
+    
+    /* 5. PULL QUOTE WITH QUOTATION MARKS */
+    .pull-quote {
+        font-size: 2rem;
+        padding: 50px 60px;
+        position: relative;
+        border: none;
+        background: transparent;
+    }
+    
+    .pull-quote::before {
+        content: '"';
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 6rem;
+        color: var(--gold);
+        opacity: 0.15;
+        line-height: 1;
+    }
+    
+    .pull-quote::after {
+        content: '"';
+        position: absolute;
+        bottom: -20px;
+        right: 20px;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 6rem;
+        color: var(--gold);
+        opacity: 0.15;
+        line-height: 1;
+        transform: rotate(180deg);
+    }
+    
+    /* 6. IMAGE HOVER ZOOM EFFECT */
+    .small-image-single,
+    .before-after > div,
+    .small-image-left {
+        transition: transform 0.4s ease;
+    }
+    
+    .small-image-single:hover,
+    .before-after > div:hover,
+    .small-image-left:hover {
+        transform: translateY(-5px);
+    }
+    
+    .small-image-single img,
+    .before-after img,
+    .small-image-left img {
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .small-image-single:hover img,
+    .before-after > div:hover img,
+    .small-image-left:hover img {
+        transform: scale(1.03);
+        box-shadow: 0 20px 40px rgba(201,169,97,0.25);
+    }
+    
+    /* 7. HEADING WITH ANIMATED UNDERLINE */
+    .story-container h2 {
+        font-size: 2.6rem;
+    }
+    
+    .story-container h2::after {
+        width: 0;
+        animation: expandLine 1s ease forwards;
+        animation-delay: 0.3s;
+    }
+    
+    @keyframes expandLine {
+        to { width: 100px; }
+    }
+    
+    /* 8. PARAGRAPH FADE-IN ON SCROLL */
+    .story-container p {
+        opacity: 0.7;
+        transform: translateY(20px);
+        transition: all 0.6s ease;
+    }
+    
+    .story-container p.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* 9. BEFORE/AFTER WITH CONNECTING LINE */
+    .before-after {
+        position: relative;
+        gap: 40px;
+    }
+    
+    .before-after::before {
+        content: '→';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem;
+        color: var(--gold);
+        opacity: 0.5;
+        z-index: 10;
+        background: var(--bg);
+        padding: 0 15px;
+    }
+    
+    /* 10. GRADUATION IMAGE WITH GOLDEN FRAME */
+    .small-image-left img {
+        border: 2px solid var(--gold);
+        padding: 8px;
+        background: var(--bg);
+        box-shadow: 
+            inset 0 0 20px rgba(201,169,97,0.1),
+            0 15px 30px rgba(0,0,0,0.3);
+    }
+    
+    /* 11. PROGRESSIVE REVEAL FOR TIMELINE ITEMS */
+    .story-container h2:nth-of-type(2) ~ p strong {
+        position: relative;
+        padding-left: 20px;
+        border-left: 3px solid var(--gold);
+        border-bottom: none;
+        margin-left: -20px;
+    }
+    
+    /* 12. FOOTER WITH SUBTLE ANIMATION */
+    .ministry-footer {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .ministry-footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, 
+            transparent, 
+            var(--gold), 
+            transparent
+        );
+        animation: shimmer 3s infinite;
+    }
+    
+    @keyframes shimmer {
+        0% { left: -100%; }
+        100% { left: 100%; }
+    }
+}
 /* Mobile adjustments */
 @media (max-width: 768px) {
     .lightbox-overlay {
@@ -1447,6 +1705,20 @@ document.addEventListener('DOMContentLoaded', () => {
     lightbox.addEventListener('touchstart', handleTouchStart, {passive: true});
     lightbox.addEventListener('touchend', handleTouchEnd, {passive: true});
     
+    // Add this inside your DOMContentLoaded event listener, after initLightbox():
+
+// Scroll reveal for paragraphs
+const paragraphObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.story-container p').forEach(p => {
+    paragraphObserver.observe(p);
+});
     // Existing scroll animations
     const observerOptions = {
         threshold: 0.1,
@@ -1469,7 +1741,10 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.transition = `all 0.6s ease ${index * 0.1}s`;
         observer.observe(el);
     });
+
 });
+
+// Add this inside your DOMContentLoaded event listener, after initLightbox():
 </script>
 
 
