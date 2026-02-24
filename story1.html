@@ -521,16 +521,21 @@ body {
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
     .story-hero {
-        padding: 50px 20px 30px;
+        padding: 30px 20px 30px;
     }
     
     .story-hero h1 {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
     }
-    
+    .story-hero .subtitle {
+        font-size: 0.6rem;  /* ← ADDED: slightly smaller subtitle */
+        letter-spacing: 3px;  /* ← ADDED: tighter letter spacing */
+    }
     .profile-image {
-        width: 100px;
-        height: 100px;
+        width: 80px;  /* ← REDUCED from 100px */
+        height: 80px;  /* ← REDUCED from 100px */
+        margin: 15px 0 5px;  /* ← REDUCED from 25px 0 10px */
     }
     
     .story-container {
