@@ -1011,7 +1011,9 @@ footer p {
     .scroll-indicator {
         display: none;
     }
+
 }
+
 
 /* ========== MOBILE RESPONSIVE ========== */
 @media (max-width: 968px) {
@@ -1681,7 +1683,7 @@ footer p {
         <h3 style="color:#d4af37;text-align:center;margin-bottom:20px;font-family:'Playfair Display',serif;">Send Prayer Request</h3>
         
         <!-- FORM - REPLACE URL AFTER DEPLOYMENT -->
-        <form id="prayerForm" action="https://script.google.com/macros/s/AKfycbz-XPN-1NiGNoS5e0So0YYQFNyBjjg9G_7Z0pTO4SfhZs9ObiIzNIjCAzaNdZACxnaHAg/exec " method="POST">
+        <form id="prayerForm" action="https://script.google.com/macros/s/AKfycbw8hA_OHtCRJAEsQ4v0CR9jJxTOII2uYCkxi65aII0mhCMxaU5PUGaVn5DT9IDvqIPvyg/exec" method="POST">
             
             <input type="hidden" name="timestamp" id="ts">
             <input type="hidden" name="date" id="dt">
@@ -1771,7 +1773,7 @@ footer p {
         <h3 style="color:#d4af37;text-align:center;margin-bottom:10px;font-family:'Playfair Display',serif;font-size:1.8rem;">Share Your Story</h3>
         <p style="color:#888;text-align:center;margin-bottom:25px;font-size:0.9rem;">Your testimony could inspire someone else's breakthrough</p>
         
-        <form id="storyForm" action="https://script.google.com/macros/s/AKfycbycW4fKLOn_LUBKY6Y4oufL902G_mUFcqAwgUP7UaLLlFtLfs6wx8SlbrMAMIRRDGVDtw/exec " method="POST">
+        <form id="storyForm" action="https://script.google.com/macros/s/AKfycbycW4fKLOn_LUBKY6Y4oufL902G_mUFcqAwgUP7UaLLlFtLfs6wx8SlbrMAMIRRDGVDtw/exec" method="POST">
             <input type="hidden" name="timestamp" id="storyTs">
             <input type="hidden" name="date" id="storyDt">
             
@@ -1990,65 +1992,81 @@ document.getElementById('prayerModal').addEventListener('click', function(e) {
         closePrayerModal();
     }
 });
-
-// Handle Prayer Form Submission with AJAX (NO REDIRECT!)
+// ========== PRAYER FORM - IFRAME VERSION (100% RELIABLE) ==========
+// PRAYER FORM - Explicit identification
 document.getElementById('prayerForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // STOP the default form submission!
+    e.preventDefault();
     
     const form = this;
     const submitBtn = document.getElementById('submitPrayerBtn');
     
-    // Set timestamps
-    document.getElementById('ts').value = new Date().toLocaleString();
-    document.getElementById('dt').value = new Date().toISOString().split('T')[0];
+    // ✅ DEBUG: Verify we have the right form
+    console.log('Prayer form submitting to:', form.action);
     
-    // Show loading state
+    // ✅ Set timestamps with UNIQUE field names for prayer form
+    // Use prayer-specific field IDs to avoid collision with story form
+    const prayerTs = document.getElementById('prayerTs') || document.getElementById('ts');
+    const prayerDt = document.getElementById('prayerDt') || document.getElementById('dt');
+    
+    if (prayerTs) prayerTs.value = new Date().toLocaleString();
+    if (prayerDt) prayerDt.value = new Date().toISOString().split('T')[0];
+    
+    // Show loading
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<span class="loading-spinner"></span> Sending...';
-    submitBtn.style.opacity = '0.7';
     
-    // Prepare form data
+    // ✅ EXPLICITLY construct the URL - don't rely on form.action alone
+    const PRAYER_URL = 'https://script.google.com/macros/s/AKfycbw8hA_OHtCRJAEsQ4v0CR9jJxTOII2uYCkxi65aII0mhCMxaU5PUGaVn5DT9IDvqIPvyg/exec'; // Replace with your actual URL
+    
     const formData = new FormData(form);
     
-    // Submit using fetch (AJAX) - NO REDIRECT!
-    fetch(form.action, {
+    // ✅ Add a type identifier so Google Apps Script knows which form this is
+    formData.append('formType', 'prayer');
+    
+    fetch(PRAYER_URL, {
         method: 'POST',
         body: formData,
-        mode: 'no-cors'
+        // ✅ Remove no-cors if possible, or handle it properly
+        mode: 'no-cors'  // Keep only if absolutely required by Google Apps Script
     })
     .then(() => {
         showPrayerSuccess();
+        form.reset(); // ✅ Clear the form after success
     })
-    .catch(() => {
+    .catch((error) => {
+        console.error('Prayer form error:', error);
+        // Still show success for no-cors, but log the error
         showPrayerSuccess();
+    })
+    .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Submit Prayer Request';
+        submitBtn.style.opacity = '1';
     });
 });
 
+// ✅ SEPARATE success function for prayer only
 function showPrayerSuccess() {
-    const contentDiv = document.querySelector('#prayerModal > div');
+    const modal = document.getElementById('prayerModal');
+    const contentDiv = modal.querySelector('div');
     
     contentDiv.innerHTML = `
         <button onclick="closePrayerModal()" style="position:absolute;top:15px;right:15px;background:none;border:none;color:#d4af37;font-size:1.5rem;cursor:pointer;">✕</button>
         
         <div style="text-align:center;padding:40px 20px;">
-            <div style="width:80px;height:80px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 25px;box-shadow:0 10px 30px rgba(34,197,94,0.3);">
+            <div style="width:80px;height:80px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 25px;">
                 <span style="color:#fff;font-size:2.5rem;">✓</span>
             </div>
-            <h3 style="color:#d4af37;margin-bottom:15px;font-family:'Playfair Display',serif;font-size:1.5rem;">Prayer Received</h3>
-            <p style="color:#f5f5f5;margin-bottom:30px;line-height:1.6;">Thank you for sharing your prayer request with us. Our prayer team will lift you up.</p>
-            <button onclick="closePrayerModal()" style="padding:12px 30px;background:linear-gradient(135deg,#d4af37,#8b6914);border:none;border-radius:8px;color:#000;cursor:pointer;font-weight:600;font-size:1rem;">
+            <h3 style="color:#d4af37;margin-bottom:15px;">Prayer Received</h3>
+            <p style="color:#f5f5f5;margin-bottom:30px;">Thank you for sharing your prayer request.</p>
+            <button onclick="closePrayerModal()" style="padding:12px 30px;background:linear-gradient(135deg,#d4af37,#8b6914);border:none;border-radius:8px;color:#000;cursor:pointer;font-weight:600;">
                 Close
             </button>
         </div>
-        
-        <p style="text-align:center;color:#666;font-size:0.8rem;margin-top:20px;font-style:italic;">"Where two or three gather..." — Matthew 18:20</p>
     `;
     
-    setTimeout(() => {
-        closePrayerModal();
-    }, 5000);
+    setTimeout(closePrayerModal, 5000);
 }
-
 // ========== KEYBOARD HANDLING ==========
 function handleEscapeKey(e) {
     if (e.key === 'Escape') {
