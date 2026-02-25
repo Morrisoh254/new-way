@@ -1219,6 +1219,59 @@ footer p {
         flex: 1;
         min-width: 0;
     }
+    @media screen and (max-width: 480px) {
+  
+  /* Fix button separation */
+  .button-container,
+  .card-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 0 10px;
+  }
+  
+  .donate-btn,
+  .share-btn {
+    flex: 1;
+    max-width: 120px;
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+  
+  /* Fix broken testimony text */
+  .testimony-card {
+    width: 85%;
+    margin: 0 auto 15px;
+    padding: 15px;
+  }
+  
+  .testimony-text,
+  .card-description {
+    font-size: 13px;
+    line-height: 1.4;
+    max-height: none;
+    overflow: visible;
+    display: block;
+    -webkit-line-clamp: unset;
+  }
+  
+  /* Prevent text cutoff */
+  .testimony-title {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .testimony-subtitle {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  
+  /* Fix swipe indicator overlap */
+  .swipe-indicator {
+    margin-top: 15px;
+    font-size: 12px;
+  }
+
     
     .navbar .donate-btn {
     padding: 8px 16px;     /* Keep navbar button small */
