@@ -1250,8 +1250,8 @@ footer p {
     
     /* FIXED: Testimony card layout */
     .testimony-card {
-        min-width: 260px;
-        max-width: 85vw;
+        min-width: 280px;
+        max-width: 90vw;
         flex-direction: column;
         align-items: center;
         text-align: center;
@@ -1277,14 +1277,8 @@ footer p {
     }
     
     /* FIXED: Prevent text cutoff */
-    .brief {
-        font-size: 0.9rem;
-        line-height: 1.5;
-        max-height: none;
-        overflow: visible;
-        display: block;
-    }
-    
+  
+ 
     .testimony-img {
         margin: 0 0 15px 0;
         width: 100%;
@@ -1292,35 +1286,32 @@ footer p {
         order: 1;
     }
     
-    /* ========== FIXED: CTA Button separation ========== */
+    /* FIXED: Button separation in CTA */
     .cta-buttons {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 15px !important;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
     }
     
+    .btn-primary,
     .btn-secondary {
-        width: 100% !important;
-        max-width: 280px !important;
-        margin: 0 !important;
-        display: block !important;
+        width: 100%;
+        max-width: 280px;
+        margin: 0;
     }
-    
-    /* ========== FIXED: Donate modal button separation ========== */
     #donateModal > div > div {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 15px !important;
+        display: flex;
+        flex-direction: column;
+        gap: 12px !important;
     }
     
     #donateModal a,
     #donateModal button {
-        width: 100% !important;
+        width: 100%;
         margin: 0 !important;
-        display: block !important;
+        display: block;
+        text-align: center;
     }
-    
     /* FIXED: Swipe hint position */
     .swipe-hint {
         margin-top: 25px;
@@ -1779,7 +1770,7 @@ footer p {
         
         <h3 style="color:#d4af37;margin-bottom:25px;font-family:'Playfair Display',serif;">Support The Mission</h3>
 
-                <div style="display:flex;flex-direction:column;gap:15px;width:100%;padding:0 10px;box-sizing:border-box;">
+        <div style="display:flex;flex-direction:column;gap:15px;">
             
             <!-- PAYPAL -->
             <a href="https://www.paypal.com/donate/?hosted_button_id=4YJWHLZBVLYLY" target="_blank"
