@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sarah L. | Testimony</title>
+<title>Dora O. | Testimony</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -89,28 +89,37 @@ body {
     box-shadow: 0 0 30px rgba(201,169,97,0.3);
 }
 
-/* ===== INTRO DROP CAP ===== */
+/* ===== ENHANCED INTRO - HEAVY WEIGHT ===== */
 .story-intro {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    line-height: 1.7;
-    margin-bottom: 50px;
-    text-align: left;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    margin-bottom: 60px;
+    text-align: center;
     color: var(--gold-light);
-    font-weight: 400;
+    font-weight: 500;
     position: relative;
-    padding-left: 25px;
-    border-left: 1px solid var(--gold-muted);
+    padding: 40px 30px;
+    border-left: none;
+    border-top: 2px solid var(--gold-muted);
+    border-bottom: 2px solid var(--gold-muted);
+    background: linear-gradient(180deg, 
+        rgba(201,169,97,0.05) 0%, 
+        transparent 50%,
+        rgba(201,169,97,0.05) 100%
+    );
 }
 
 .story-intro::first-letter {
-    float: left;
-    font-size: 4rem;
-    line-height: 0.8;
-    padding-right: 12px;
-    padding-top: 8px;
+    float: none;
+    font-size: 5rem;
+    line-height: 1;
+    padding: 0;
     color: var(--gold);
-    font-weight: 500;
+    font-weight: 600;
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 /* ===== CONTENT ===== */
@@ -120,87 +129,173 @@ body {
     padding: 0 25px;
 }
 
+/* Regular paragraphs - lighter weight */
 .story-container p {
     margin-bottom: 1.8em;
     font-size: 1.05rem;
     line-height: 1.9;
     color: var(--text);
     text-align: left;
+    font-weight: 300;
+    opacity: 0.95;
 }
 
+/* Gold strong text */
+.story-container strong {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+/* ===== UNIFIED HEADINGS - SAME STYLE ===== */
 .story-container h2 {
     font-family: 'Cormorant Garamond', serif;
-    color: var(--gold);
-    margin: 60px 0 25px 0;
-    font-size: 1.6rem;
-    font-weight: 500;
+    color: white;              /* SAME color for both */
+    margin: 80px 0 30px 0;
+    font-size: 2.2rem;               /* SAME size */
+    font-weight: 600;
     font-style: italic;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.05em;
     position: relative;
-    padding-bottom: 12px;
+    padding-bottom: 20px;
+    text-align: center;
 }
 
+/* Same underline for both */
 .story-container h2::after {
     content: "";
     position: absolute;
     bottom: 0;
-    left: 0;
-    width: 40px;
-    height: 1px;
-    background: var(--gold);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
+/* Same ornament for both */
+.story-container h2::before {
+    content: "✦";
+    display: block;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 15px;
+    font-style: normal;
+}
+
+/* Delete ALL other h2:nth-of-type() rules */
+
+/* Timeline markers in Transformation */
+.story-container h2:nth-of-type(2) ~ p strong {
+    color: var(--gold);
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: block;
+    margin: 40px 0 15px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(201,169,97,0.3);
+}
+
+.story-container h2:nth-of-type(2) ~ p:first-of-type strong {
+    margin-top: 20px;
+}
+
+/* Enhanced pull quote */
 .pull-quote {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-style: italic;
     color: var(--gold-light);
     text-align: center;
-    margin: 50px 0;
-    padding: 30px 20px;
+    margin: 60px 0;
+    padding: 40px 30px;
     position: relative;
     line-height: 1.5;
-    border-top: 1px solid rgba(201,169,97,0.2);
-    border-bottom: 1px solid rgba(201,169,97,0.2);
+    border-top: 2px solid rgba(201,169,97,0.3);
+    border-bottom: 2px solid rgba(201,169,97,0.3);
+    background: rgba(201,169,97,0.03);
+    font-weight: 500;
 }
 
-/* ===== BEFORE AFTER ===== */
-.before-after {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin: 60px 0;
-    align-items: start;
+/* ===== SMALL SINGLE IMAGE (End of Breaking Point) ===== */
+.small-image-single {
+    max-width: 300px;
+    margin: 40px auto;
+    text-align: center;
 }
 
-.before-after > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.before-after img {
+.small-image-single img {
     width: 100%;
-    height: 320px;
+    height: 200px;
     object-fit: cover;
     border-radius: 4px;
     filter: grayscale(20%);
-    transition: filter 0.4s ease;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(201,169,97,0.2);
 }
 
-.before-after img:hover {
+.small-image-single img:hover {
     filter: grayscale(0%);
+    box-shadow: 0 10px 30px rgba(201,169,97,0.2);
 }
 
-.label {
-    text-align: center;
-    margin-top: 15px;
+.small-image-single .label {
+    margin-top: 12px;
     color: var(--gold);
-    font-weight: 400;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 3px;
     font-family: 'Inter', sans-serif;
+}
+
+
+/* ===== SMALL LEFT IMAGE (After Graduation) ===== */
+.small-image-left {
+    display: flex;
+    gap: 25px;
+    margin: 50px 0;
+    align-items: flex-start;
+}
+
+.small-image-left img {
+    width: 180px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 4px;
+    filter: grayscale(20%);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(201,169,97,0.2);
+    flex-shrink: 0;
+}
+
+.small-image-left img:hover {
+    filter: grayscale(0%);
+    box-shadow: 0 10px 30px rgba(201,169,97,0.2);
+}
+
+.small-image-left .caption {
+    flex: 1;
+    padding-top: 10px;
+}
+
+.small-image-left .caption .label {
+    color: var(--gold);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.small-image-left .caption p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.7;
+    margin: 0;
 }
 
 /* ===== CLASSIC FOOTER WITH SHARE ===== */
@@ -517,136 +612,671 @@ body {
     background: rgba(248,246,243,0.08);
     border-color: var(--cream);
 }
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 40px;
+}
 
-/* ===== MOBILE ===== */
+.lightbox-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-container {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lightbox-overlay.active .lightbox-container {
+    transform: scale(1) translateY(0);
+}
+
+.lightbox-image {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+}
+
+.lightbox-caption {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.4s ease 0.2s;
+}
+
+.lightbox-overlay.active .lightbox-caption {
+    opacity: 1;
+}
+
+/* Close Button */
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border: 1px solid rgba(201,169,97,0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 100001;
+}
+
+.lightbox-close:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: rotate(90deg);
+}
+
+.lightbox-close::before,
+.lightbox-close::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 1px;
+    background: var(--gold);
+    transition: background 0.3s ease;
+}
+
+.lightbox-close::before {
+    transform: rotate(45deg);
+}
+
+.lightbox-close::after {
+    transform: rotate(-45deg);
+}
+
+.lightbox-close:hover::before,
+.lightbox-close:hover::after {
+    background: var(--bg);
+}
+
+/* Navigation Arrows (for multiple images) */
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    border: 1px solid rgba(201,169,97,0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.lightbox-overlay:hover .lightbox-nav {
+    opacity: 1;
+}
+
+.lightbox-nav:hover {
+    background: rgba(201,169,97,0.1);
+    border-color: var(--gold);
+}
+
+.lightbox-nav.prev { left: 30px; }
+.lightbox-nav.next { right: 30px; }
+
+.lightbox-nav::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-top: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+    transition: transform 0.3s ease;
+}
+
+.lightbox-nav.prev::before {
+    transform: rotate(-135deg);
+    margin-left: 4px;
+}
+
+.lightbox-nav.next::before {
+    transform: rotate(45deg);
+    margin-right: 4px;
+}
+
+/* Zoom cursor on story images */
+.small-image-single img,
+.after-section img',
+.before-after img,
+.small-image-left img,
+.profile-image {
+    cursor: zoom-in;
+}
+/* ===== DESKTOP ENHANCEMENTS (min-width: 769px) ===== */
+@media (min-width: 769px) {
+    
+    /* 1. SUBTLE PARALLAX HERO BACKGROUND */
+    .story-hero {
+        background: linear-gradient(180deg, 
+            rgba(201,169,97,0.15) 0%, 
+            rgba(201,169,97,0.05) 50%,
+            transparent 100%
+        );
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .story-hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle at 50% 50%, 
+            rgba(201,169,97,0.03) 0%, 
+            transparent 70%
+        );
+        animation: slowPulse 8s ease-in-out infinite;
+        pointer-events: none;
+    }
+    
+    @keyframes slowPulse {
+        0%, 100% { transform: scale(1); opacity: 0.5; }
+        50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    /* 2. FLOATING PROFILE IMAGE WITH DEPTH */
+    .profile-image {
+        width: 140px;
+        height: 140px;
+        border: 3px solid var(--gold);
+        box-shadow: 
+            0 0 0 1px rgba(201,169,97,0.3),
+            0 20px 40px rgba(0,0,0,0.4),
+            0 0 60px rgba(201,169,97,0.1);
+        animation: gentleFloat 6s ease-in-out infinite;
+    }
+    
+    @keyframes gentleFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    .profile-image:hover {
+        transform: scale(1.08) translateY(-5px);
+        box-shadow: 
+            0 0 0 2px var(--gold),
+            0 30px 60px rgba(0,0,0,0.5),
+            0 0 80px rgba(201,169,97,0.3);
+    }
+    
+    /* 3. INTRO WITH SIDE ORNAMENTS */
+    .story-intro {
+        position: relative;
+        padding: 50px 60px;
+        border-top: 1px solid rgba(201,169,97,0.2);
+        border-bottom: 1px solid rgba(201,169,97,0.2);
+    }
+    
+    .story-intro::before,
+    .story-intro::after {
+        content: '❧';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5rem;
+        color: var(--gold-muted);
+        opacity: 0.4;
+    }
+    
+    .story-intro::before {
+        left: 20px;
+    }
+    
+    .story-intro::after {
+        right: 20px;
+        transform: translateY(-50%) rotate(180deg);
+    }
+    
+    /* 4. ELEGANT SIDEBAR ACCENTS FOR CONTENT */
+    .story-container {
+        position: relative;
+    }
+    
+    .story-container::before {
+        content: '';
+        position: absolute;
+        left: -40px;
+        top: 200px;
+        bottom: 200px;
+        width: 1px;
+        background: linear-gradient(180deg, 
+            transparent 0%,
+            rgba(201,169,97,0.2) 20%,
+            rgba(201,169,97,0.2) 80%,
+            transparent 100%
+        );
+    }
+    
+    /* 5. PULL QUOTE WITH QUOTATION MARKS */
+    .pull-quote {
+        font-size: 2rem;
+        padding: 50px 60px;
+        position: relative;
+        border: none;
+        background: transparent;
+    }
+    
+    .pull-quote::before {
+        content: '"';
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 6rem;
+        color: var(--gold);
+        opacity: 0.15;
+        line-height: 1;
+    }
+    
+    .pull-quote::after {
+        content: '"';
+        position: absolute;
+        bottom: -20px;
+        right: 20px;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 6rem;
+        color: var(--gold);
+        opacity: 0.15;
+        line-height: 1;
+        transform: rotate(180deg);
+    }
+    
+    /* 6. IMAGE HOVER ZOOM EFFECT */
+    .small-image-single,
+    .before-after > div,
+    .small-image-left {
+        transition: transform 0.4s ease;
+    }
+    
+    .small-image-single:hover,
+    .before-after > div:hover,
+    .small-image-left:hover {
+        transform: translateY(-5px);
+    }
+    
+    .small-image-single img,
+    .before-after img,
+    .small-image-left img {
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .small-image-single:hover img,
+    .before-after > div:hover img,
+    .small-image-left:hover img {
+        transform: scale(1.03);
+        box-shadow: 0 20px 40px rgba(201,169,97,0.25);
+    }
+    
+    /* 7. HEADING WITH ANIMATED UNDERLINE */
+    .story-container h2 {
+        font-size: 2.6rem;
+    }
+    
+    .story-container h2::after {
+        width: 0;
+        animation: expandLine 1s ease forwards;
+        animation-delay: 0.3s;
+    }
+    
+    @keyframes expandLine {
+        to { width: 100px; }
+    }
+    
+    /* 8. PARAGRAPH FADE-IN ON SCROLL */
+    .story-container p {
+        opacity: 0.7;
+        transform: translateY(20px);
+        transition: all 0.6s ease;
+    }
+    
+    .story-container p.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+       /* 10. GRADUATION IMAGE WITH GOLDEN FRAME */
+    .small-image-left img {
+        border: 2px solid var(--gold);
+        padding: 8px;
+        background: var(--bg);
+        box-shadow: 
+            inset 0 0 20px rgba(201,169,97,0.1),
+            0 15px 30px rgba(0,0,0,0.3);
+    }
+    
+    /* 11. PROGRESSIVE REVEAL FOR TIMELINE ITEMS */
+    .story-container h2:nth-of-type(2) ~ p strong {
+        position: relative;
+        padding-left: 20px;
+        border-left: 3px solid var(--gold);
+        border-bottom: none;
+        margin-left: -20px;
+    }
+    
+    /* 12. FOOTER WITH SUBTLE ANIMATION */
+    .ministry-footer {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .ministry-footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, 
+            transparent, 
+            var(--gold), 
+            transparent
+        );
+        animation: shimmer 3s infinite;
+    }
+    
+    @keyframes shimmer {
+        0% { left: -100%; }
+        100% { left: 100%; }
+    }
+}
+/* Mobile adjustments */
 @media (max-width: 768px) {
-   .story-hero {
-        padding: 30px 20px 30px;
+    .lightbox-overlay {
+        padding: 20px;
+    }
+    
+    .lightbox-close {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .lightbox-nav {
+        display: none; /* Hide nav on mobile, use swipe */
+    }
+    
+    .lightbox-caption {
+        font-size: 0.7rem;
+        bottom: -40px;
+    }
+}
+
+    /* ===== MOBILE ===== */
+@media (max-width: 768px) {
+    /* Compact hero */
+    .story-hero {
+        padding: 20px 15px 25px;
+        min-height: auto;
     }
     
     .story-hero h1 {
-        font-size: 1.4rem;
-        margin-bottom: 10px;
+        font-size: 1.3rem;
+        margin-bottom: 8px;
     }
+    
     .story-hero .subtitle {
-        font-size: 0.6rem;  /* ← ADDED: slightly smaller subtitle */
-        letter-spacing: 3px;  /* ← ADDED: tighter letter spacing */
+        font-size: 0.55rem;
+        letter-spacing: 2px;
     }
+    
     .profile-image {
-        width: 80px;  /* ← REDUCED from 100px */
-        height: 80px;  /* ← REDUCED from 100px */
-        margin: 15px 0 5px;  /* ← REDUCED from 25px 0 10px */
+        width: 90px;
+        height: 90px;
+        margin: 12px 0 5px;
     }
     
-    .story-container {
-        margin: 40px auto;
-        padding: 0 20px;
-    }
-    
+    /* Compact intro */
     .story-intro {
-        font-size: 1.15rem;
-        padding-left: 15px;
-        margin-bottom: 35px;
+        font-size: 1.05rem;
+        padding: 20px 15px;
+        margin-bottom: 30px;
+        margin-top: 10px;
     }
     
     .story-intro::first-letter {
         font-size: 3rem;
+        margin-bottom: 10px;
+    }
+    
+    .story-container {
+        margin: 30px auto;
+        padding: 0 15px;
     }
     
     .story-container p {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.8;
     }
     
     .story-container h2 {
-        font-size: 1.4rem;
-        margin: 45px 0 20px 0;
+        font-size: 1.5rem;
+        margin: 50px 0 20px 0;
+    }
+    
+    .story-container h2::before {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
     }
     
     .pull-quote {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
         padding: 25px 15px;
-        margin: 40px 0;
+        margin: 35px 0;
     }
     
-    .before-after {
-        gap: 15px;
-        margin: 40px 0;
-    }
+    /* Small single image - FIXED FOR MOBILE */
+.small-image-single {
+    max-width: 260px;
+    margin: 25px auto;
+    padding: 0 15px; /* Add padding to prevent touching screen edges */
+    box-sizing: border-box;
+}
+
+.small-image-single img {
+    width: 100%;
+    height: 140px; /* Change from fixed 160px to auto to maintain aspect ratio */
+    max-height: 250px; /* But cap the height so it doesn't get too tall */
+    display: block; /* Removes extra space below image */
+    border-radius: 4px;
+}
     
-    .before-after img {
-        height: 200px;
-    }
     
-    .share-container {
-         margin-bottom: 35px; 
+    /* Small left image */
+    .small-image-left {
+        flex-direction: column;
         gap: 12px;
+        margin: 35px 0;
+    }
+    
+    .small-image-left img {
+        width: 100%;
+        height: 180px;
+    }
+    
+    .small-image-left .caption {
+        padding-top: 0;
+    }
+    
+    .small-image-left .caption p {
+        font-size: 0.9rem;
+    }
+    
+    /* Share section */
+    .share-container {
+        margin-bottom: 30px;
+        gap: 10px;
     }
     
     .share-btn {
-        width: 45px;
-        height: 45px;
+        width: 40px;
+        height: 40px;
     }
     
     .share-btn svg {
-        width: 18px;
-        height: 18px;
-    }
-    .share-subtitle {
-        font-size: 0.75rem;          /* Reduced from 0.85rem */
-        margin-bottom: 25px;         /* Reduced from 40px */
+        width: 16px;
+        height: 16px;
     }
     
     .share-title {
-        font-size: 1.3rem;
-        margin-bottom: 10px;
+        font-size: 1.2rem;
     }
+    
+    .share-subtitle {
+        font-size: 0.7rem;
+        margin-bottom: 20px;
+    }
+    
     .copy-link-btn {
-        margin-top: 20px;            /* Reduced from 30px */
-        padding: 12px 24px;          /* Reduced from 14px 32px */
-        font-size: 0.75rem;          /* Reduced from 0.8rem */
+        margin-top: 15px;
+        padding: 10px 20px;
+        font-size: 0.7rem;
     }
     
     .copy-link-btn svg {
-        width: 16px;                 /* Reduced from 18px */
-        height: 16px;                /* Reduced from 18px */
+        width: 14px;
+        height: 14px;
     }
-     .ministry-footer {
-        padding: 40px 15px;          /* Reduced from 60px 20px */
+    
+    /* Footer */
+    .ministry-footer {
+        padding: 30px 15px;
     }
+    
     .ministry-logo {
-        font-size: 1.1rem;
-         margin-bottom: 15px;
+        font-size: 1rem;
+        margin-bottom: 12px;
     }
+    
     .ministry-verse {
-        font-size: 0.95rem;          /* Reduced from 1.1rem */
-        padding: 0 15px;             /* Reduced from 0 20px */
+        font-size: 0.9rem;
+        padding: 0 10px;
     }
     
     .footer-socials {
-         margin-top: 30px;
-        gap: 15px;
-        flex-wrap: wrap;
+        margin-top: 25px;
+        gap: 12px;
     }
+    
     .footer-socials a {
-        font-size: 0.7rem;           /* Reduced from 0.75rem */
+        font-size: 0.65rem;
     }
+    
     .footer-section {
-        margin-top: 60px;            /* Reduced from 100px */
+        margin-top: 50px;
     }
     
     .footer-divider {
-        margin-bottom: 40px;         /* Reduced from 60px */
+        margin-bottom: 30px;
     }
     
     .footer-content {
-        padding: 0 20px 50px;        /* Reduced from 0 25px 80px */
+        padding: 0 15px 40px;
     }
+    
     .toast {
-        padding: 12px 24px;          /* Reduced from 16px 32px */
-        font-size: 0.8rem;           /* Reduced from 0.9rem */
-        bottom: 20px;                /* Closer to bottom */
-        min-width: auto;             /* Allow natural width */
-        white-space: nowrap;         /* Keep text on one line */
+        padding: 10px 20px;
+        font-size: 0.75rem;
+        bottom: 15px;
+    }
+    
+    /* BACK BUTTON - SMOOTH EDGES */
+    .back-btn {
+        top: 10px;
+        left: 10px;
+        padding: 6px 12px;
+        font-size: 0.65rem;
+        letter-spacing: 1.5px;
+        border-radius: 20px;  /* Smooth rounded edges */
+        border: 1px solid rgba(248,246,243,0.2);
+        background: transparent;
+        backdrop-filter: blur(5px);
+    }
+
+}
+/* ===== ELEGANT LIGHTBOX/ZOOM ===== */
+/* AFTER SECTION - IMAGE ON LEFT */
+.after-section {
+    display: flex;
+    gap: 30px;
+    margin: 50px 0;
+    align-items: flex-start;
+}
+
+.after-section img {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid rgba(201,169,97,0.2);
+    flex-shrink: 0;
+}
+
+.after-section .after-content {
+    flex: 1;
+}
+
+.after-section .after-content .label {
+    color: var(--gold);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.after-section .after-content p {
+    margin-bottom: 1em;
+}
+
+/* Mobile: stack vertically */
+@media (max-width: 768px) {
+    .after-section {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .after-section img {
+        width: 100%;
+        height: 220px;
+    }
+    
+    .after-section .after-content .label {
+        margin-bottom: 10px;
     }
 }
 </style>
@@ -659,75 +1289,120 @@ body {
 <!-- COMPACT HERO -->
 <section class="story-hero">
     <div class="subtitle">The Testimony of</div>
-    <h1>Sarah L.</h1>
-    <img src="images/sarahl.jpeg" alt="Sarah L" class="profile-image">
+    <h1>Dora Obwaka.</h1>
+    <img src="images/Dora.jpeg" alt="Dora" class="profile-image">
 </section>
 
 <!-- STORY CONTENT -->
 <div class="story-container">
     <p class="story-intro">
-        This is the story of Sarah L. — a journey from the depths of depression 
-        to discovering profound purpose. A testimony of how light finds us 
-        even in our darkest valleys.
+        This is the story of Dora Obwaka. — a testimony of redemption, 
+        restoration, and the light that overcomes darkness. 
+        Read prayerfully and be encouraged.
     </p>
+     <p>Dora Obwaka is widely known as a Jesus Girl—an entrepreneur, a servant of Jesus Christ, and the founder of Jesus Girls Closet. Today, she lives a life grounded in faith, purpose, and gratitude.
+
+     She runs her clothing business while also supporting her mother in rehabilitation center responsibilities, helping individuals battling addiction and brokenness—struggles she once personally endured.
+
+     Dora deeply values her family and every opportunity life offers her, because she understands something many never experience:
+
+     She was almost gone.
+
+     <p>Behind her vibrant personality and hopeful outlook lies a story of survival. Many see her enthusiasm today, but few know that her positivity rose from years of darkness, addiction, and internal conflict.
+
+     Even during her lowest moments, some people still saw something different in her—a spiritual spark that refused to die. Though her physical life seemed lost, her spirit carried a calling waiting to be rediscovered.</p>
+
+     <p>The name “Jesus Girl” emerged after her rehabilitation journey—not from supernatural visions, but from a personal realization that true identity comes from carrying Jesus in one’s heart rather than merely claiming a title.
+
+      She came to believe one enduring truth:
+
+      Rebuilding is a lifelong process, not a one-time event.</p>
+     <div class="pull-quote">
+       "Mungu wangu hananga bedroom" 
+    </div>
+    
+     
+
+    <h2>Dora's History</h2>
 
     <p>
-        In a small village tucked between rolling hills, Sarah moved through life carrying an invisible weight. From the outside, she appeared to have everything under control — she was capable, caring, and reliable. The kind of woman others leaned on, the friend who always listened, the daughter who never complained.
-    </p>
+        Dora grew up in church and actively served, yet she lived a double life. While maintaining a Christian appearance, she struggled with partying, rebellion, and destructive habits outside church walls.
 
-    <p>
-        But beneath the surface, a storm raged silently. Depression had wrapped its cold fingers around her heart, whispering lies that she was alone, that her pain was permanent, that hope was a luxury she couldn't afford. Each morning became a battle, each smile a performance, each night a prison of anxious thoughts.
-    </p>
+        <p>At seventeen, she took her first drink and began experimenting with drugs. Slowly, church became distant as addiction took control. Influenced by unhealthy relationships and environments, alcohol turned into a daily dependency, soon accompanied by cigarettes, weed, and shisha.</p>
 
-    <div class="pull-quote">
-        I was drowning in plain sight, and nobody knew. Not because they didn't care, but because I had become so good at hiding.
+        What began as experimentation evolved into identity. She openly embraced substance use, developing a careless attitude toward consequences.
+
+       <p>At nineteen, she involuntarily entered rehabilitation for the first time.After 3 months its sad to say that the rehabilitation did not help her becouse her heart was far off from wanting change.
+
+       For nearly six years, addiction dominated her life.</p>
+
+       <p>Her lowest moment came when she consumed spiked marijuana containing traces of heroin, pushing her deeper into physical and emotional deterioration. Despite her parents’ relentless efforts—even relocating opportunities abroad—she remained trapped.</p>
+       <div class="small-image-single">
+        <img src="images/Dora-breaking-point.jpeg" alt="The Turning Point">
+        <div class="label">Dora was lost</div>
+    </div>
+    
+    <h2>Breaking point</h2>
+
+      <p>The breaking point arrived when her mother found her lying by the roadside, barely recognizable.
+
+       In desperation, her mother cried out to God.
+
+       Soon afterward, Dora chose recovery and joined Teen Challenge(A faith-based rehabilitation facility), marking the beginning of genuine transformation.
+
+      <p>The early stages were painful. Withdrawal symptoms tested her strength daily, but prayer became her anchor. Slowly, healing began—not only physically, but spiritually.She even said,
+      <div class="pull-quote">
+        Rebuilding is a life long process not a one time phenomenon.
     </div>
 
-    <h2>The Breaking Point</h2>
+      During this period, Dora realized her survival carried purpose. She understood that her life was not merely being restored—it was being redirected.</p>
+      
 
-    <p>
-        The turning point came during an ordinary evening that suddenly became sacred. Sarah found herself by the village river, watching the water flow steadily beneath an amber sunset. The same river she had walked past a thousand times, but tonight it spoke differently — a whisper of peace that cut through the noise in her mind.
+     <p>Her journey has included setbacks, including relapses after rehabilitation. Yet each return strengthened her understanding that transformation is a continuous journey rather than a single moment of victory.</p>
+
+     Today, Dora walks a path of faith, recovery, and service—turning past pain into hope for others still searching for freedom.
     </p>
+    
+    
+    <!-- BEFORE AFTER SECTION (SAME SIZE IMAGES) -->
+        <div class="after-section">
+        <img src="images/DoraA.after.jpeg" alt="Dora After Faith">
+        <div class="after-content">
+            <div class="label">Glowing Dora</div>
 
-    <p>
-        An elderly woman approached, her presence gentle and unhurried. "You carry a heavy burden, child," she said. "But you don't have to carry it alone." That evening, Sarah heard about a love that pursues us even when we hide, a grace that meets us in our lowest moments, and a purpose that waits on the other side of our pain.
-    </p>
-
-    <!-- BEFORE AFTER SECTION -->
-    <div class="before-after">
-        <div>
-            <img src="images/sarah-before.jpeg.jpg" alt="Before Faith">
-            <div class="label">Before</div>
-        </div>
-        <div>
-            <img src="images/sarah-after.jpeg.jpg" alt="After Faith">
-            <div class="label">After</div>
-        </div>
     </div>
-
-    <h2>Transformation</h2>
-
-    <p>
-        Healing didn't arrive overnight. It came gradually — through early morning prayers when tears flowed freely, through community that sat with her in silence when words failed, through small victories that rebuilt her sense of worth. The depression didn't disappear instantly, but Sarah discovered she was no longer fighting alone.
-    </p>
-
-    <p>
-        Purpose began to emerge from the pain. She started sharing her story with other women who wore the same masks she once did — the high-functioning, the secretly struggling, the beautifully broken. Her testimony became a lifeline, proof that darkness doesn't have the final word.
-    </p>
-
-    <p>
-        Today, Sarah mentors women navigating similar valleys. She speaks of a hope that anchors the soul, a peace that guards the mind, and a joy that returns softly but surely. The woman who once sat by the river in despair now stands as living proof that restoration is real, reminding others that no night is too long for morning to come.
-    </p>
-
+        
 </div>
+<p><strong>Dora's Success</strong></p>
+        From that viral moment, MCA Tricky became unstoppable. Churchill Show regular—every weekend, national TV. Corporate MC gigs paying more than his mother's yearly income. Radio stations fighting to book him. Social media explosion—Kenyans shared his clips like gospel.
+    </p>
 
+    <p>
+        But here's what fans didn't see: while trending on stage, MCA Tricky was still grinding in class. JKUAT. Mechanical Engineering. 8 AM lectures after 2 AM shows. Assignments between sound checks. Exams during tour season.
+    </p>
+
+    <p>
+        <em>"People thought I was just a comedian,"</em> he says. <em>"They didn't know I had a deadline: graduation."</em>
+    </p>
+<!-- LIGHTBOX OVERLAY -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close"></button>
+    
+    <button class="lightbox-nav prev" onclick="changeImage(-1, event)" aria-label="Previous"></button>
+    <button class="lightbox-nav next" onclick="changeImage(1, event)" aria-label="Next"></button>
+    
+    <div class="lightbox-container" onclick="event.stopPropagation()">
+        <img src="" alt="" class="lightbox-image" id="lightbox-img">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+</div>
 <!-- CLASSIC FOOTER WITH SHARE -->
 <section class="footer-section">
     <div class="footer-divider"></div>
     
     <div class="footer-content">
         <h3 class="share-title">Share This Story</h3>
-        <p class="share-subtitle">Spread hope by sharing Sarah's testimony</p>
+        <p class="share-subtitle">Spread hope by sharing Dora's testimony</p>
         
         <div class="share-container">
             <!-- Facebook -->
@@ -779,7 +1454,147 @@ body {
 <div class="toast" id="toast">Link copied to clipboard!</div>
 
 <script>
-// Share Functions
+// ===== LIGHTBOX FUNCTIONALITY =====
+let currentImageIndex = 0;
+let storyImages = [];
+
+// Collect all story images on load
+function initLightbox() {
+    // Find all images in story sections that should be zoomable
+    const selectors = [
+        '.small-image-single img',
+        '.after-section img',  // ← CHANGED from .before-after img
+        '.small-image-left img',
+        '.profile-image'
+    ];
+    
+    storyImages = [];
+    selectors.forEach(selector => {
+        document.querySelectorAll(selector).forEach(img => {
+            // Add click handler
+            img.addEventListener('click', function(e) {
+                e.preventDefault();
+                openLightbox(this);
+            });
+            
+            // Store reference with metadata
+            storyImages.push({
+                element: img,
+                src: img.src,
+                caption: getImageCaption(img)
+            });
+        });
+    });
+}
+
+function getImageCaption(img) {
+    // Try to find associated caption/label
+        const parent = img.closest('.small-image-single, .after-section, .small-image-left, .story-hero');
+    
+    if (parent) {
+        const label = parent.querySelector('.label');
+        if (label) return label.textContent;
+        
+        const caption = parent.querySelector('.caption p');
+        if (caption) return caption.textContent;
+        
+        // For profile image
+        if (img.classList.contains('profile-image')) {
+            return document.querySelector('.story-hero h1')?.textContent || 'Profile';
+        }
+    }
+    
+    return img.alt || 'Image';
+}
+
+function openLightbox(imgElement) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    
+    // Find current index
+    currentImageIndex = storyImages.findIndex(item => item.element === imgElement);
+    
+    // Set content
+    lightboxImg.src = imgElement.src;
+    lightboxCaption.textContent = getImageCaption(imgElement);
+    
+    // Show with animation
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent background scroll
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', handleKeydown);
+}
+
+function closeLightbox(event) {
+    // Only close if clicking overlay or close button, not the image
+    if (event && event.target.closest('.lightbox-container') && !event.target.closest('.lightbox-close')) {
+        return;
+    }
+    
+    const lightbox = document.getElementById('lightbox');
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', handleKeydown);
+}
+
+function changeImage(direction, event) {
+    event.stopPropagation();
+    
+    currentImageIndex += direction;
+    
+    // Loop around
+    if (currentImageIndex < 0) currentImageIndex = storyImages.length - 1;
+    if (currentImageIndex >= storyImages.length) currentImageIndex = 0;
+    
+    const item = storyImages[currentImageIndex];
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    
+    // Fade effect
+    lightboxImg.style.opacity = '0';
+    
+    setTimeout(() => {
+        lightboxImg.src = item.src;
+        lightboxCaption.textContent = item.caption;
+        lightboxImg.style.opacity = '1';
+    }, 200);
+}
+
+function handleKeydown(e) {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') changeImage(-1, {stopPropagation: () => {}});
+    if (e.key === 'ArrowRight') changeImage(1, {stopPropagation: () => {}});
+}
+
+// Touch/swipe support for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleTouchStart(e) {
+    touchStartX = e.changedTouches[0].screenX;
+}
+
+function handleTouchEnd(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}
+
+function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+            changeImage(1, {stopPropagation: () => {}}); // Swipe left = next
+        } else {
+            changeImage(-1, {stopPropagation: () => {}}); // Swipe right = prev
+        }
+    }
+}
+
+// ===== SHARE FUNCTIONS (keep your existing ones) =====
 function shareToFacebook() {
     const url = encodeURIComponent(window.location.href);
     const text = encodeURIComponent("Read this powerful testimony of transformation and hope");
@@ -833,22 +1648,45 @@ function scrollToTop() {
     });
 }
 
-// Smooth reveal animation on scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+// ===== INITIALIZATION =====
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize lightbox
+    initLightbox();
+    
+    // Add touch events for mobile swipe
+    const lightbox = document.getElementById('lightbox');
+    lightbox.addEventListener('touchstart', handleTouchStart, {passive: true});
+    lightbox.addEventListener('touchend', handleTouchEnd, {passive: true});
+    
+    // Add this inside your DOMContentLoaded event listener, after initLightbox():
 
-const observer = new IntersectionObserver((entries) => {
+// Scroll reveal for paragraphs
+const paragraphObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.add('visible');
         }
     });
-}, observerOptions);
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-document.addEventListener('DOMContentLoaded', () => {
+document.querySelectorAll('.story-container p').forEach(p => {
+    paragraphObserver.observe(p);
+});
+    // Existing scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
     const animatedElements = document.querySelectorAll('.share-btn, .copy-link-btn');
     animatedElements.forEach((el, index) => {
         el.style.opacity = '0';
@@ -856,8 +1694,12 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.transition = `all 0.6s ease ${index * 0.1}s`;
         observer.observe(el);
     });
+
 });
+
+// Add this inside your DOMContentLoaded event listener, after initLightbox():
 </script>
+
 
 </body>
 </html>
