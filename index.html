@@ -1077,45 +1077,30 @@ footer p {
     #heroText {
         align-items: center;
     }
-    
-    .testimony-card {
-        min-width: 320px;
-        max-width: 85vw;
-        padding: 20px;
+    .testimony-img {
+        width: 100%;                 /* CHANGE: Full width of card */
+        height: auto;                /* CHANGE: Let height adjust */
+        max-height: 220px;           /* ADD: Cap the height */
+        margin: 0 0 15px 0;          /* CHANGE: Bottom margin only */
+        order: 1;                    /* ADD: Image on top */
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        display: flex;               /* ADD: Center image */
+        align-items: center;         /* ADD: Vertical center */
+        justify-content: center;     /* ADD: Horizontal center */
+        background: #f0e4c0;         /* ADD: Match card background */
+    }
+
+    .testimony-img img {
+        width: 100%;                 /* ADD: Full width */
+        height: auto;                /* ADD: Natural height */
+        max-height: 220px;           /* ADD: Don't exceed container */
+        object-fit: contain;         /* CHANGE: Show full image, no crop */
+        object-position: center;     /* ADD: Center the image */
+        display: block;              /* ADD: Remove inline spacing */
     }
     
-    .testimony-card {
-    min-width: 320px;
-    max-width: 85vw;
-    padding: 20px;
-    flex-direction: column;      /* ADD: Stack vertically */
-    align-items: center;         /* ADD: Center content */
-    text-align: center;          /* ADD: Center text */
-}
-
-.testimony-img {
-    width: 100%;                 /* CHANGE: Full width of card */
-    height: auto;                /* CHANGE: Let height adjust */
-    max-height: 220px;           /* ADD: Cap the height */
-    margin: 0 0 15px 0;          /* CHANGE: Bottom margin only */
-    order: 1;                    /* ADD: Image on top */
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative;
-    display: flex;               /* ADD: Center image */
-    align-items: center;         /* ADD: Vertical center */
-    justify-content: center;     /* ADD: Horizontal center */
-    background: #f0e4c0;         /* ADD: Match card background */
-}
-
-.testimony-img img {
-    width: 100%;                 /* ADD: Full width */
-    height: auto;                /* ADD: Natural height */
-    max-height: 220px;           /* ADD: Don't exceed container */
-    object-fit: contain;         /* CHANGE: Show full image, no crop */
-    object-position: center;     /* ADD: Center the image */
-    display: block;              /* ADD: Remove inline spacing */
-}
     
     .scroll-btn {
         display: none;
@@ -1136,7 +1121,7 @@ footer p {
     }
         
         /* SMOOTH MOBILE SCROLL - fixes shaky behavior */
-    .testimony-row {
+   .testimony-row {
         cursor: default;
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x mandatory;
@@ -1284,9 +1269,6 @@ footer p {
         padding: 15px;
     }
     
-    /* FIXED: Testimony card layout */
-        /* FIXED: Testimony card layout */
-        /* FIXED: Testimony card layout */
     .testimony-card {
         min-width: 260px;
         max-width: 80vw;
@@ -1298,6 +1280,7 @@ footer p {
         box-sizing: border-box;
         overflow: hidden;
     }
+    
     .testimony-text {
         text-align: center;
         order: 2;
@@ -1318,21 +1301,21 @@ footer p {
         line-height: 1.3;
     }
     
-    /* FIXED: Prevent text cutoff */
+    /* FIXED: Single testimony-img definition with auto height and contain */
     .testimony-img {
-    margin: 0 0 15px 0;
-    width: 100%;
-    height: auto;                /* CHANGE: Auto height */
-    max-height: 200px;           /* ADD: Cap height */
-    order: 1;
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative;
-    display: flex;               /* ADD */
-    align-items: center;         /* ADD */
-    justify-content: center;     /* ADD */
-    background: #f0e4c0;         /* ADD */
-}
+        margin: 0 0 15px 0;
+        width: 100%;
+        height: auto;                /* Auto height, not fixed */
+        max-height: 200px;           /* Cap height instead */
+        order: 1;
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        display: flex;               /* ADD */
+        align-items: center;         /* ADD */
+        justify-content: center;     /* ADD */
+        background: #f0e4c0;         /* ADD */
+    }
     
     .testimony-img::after {
         content: '';
@@ -1348,13 +1331,14 @@ footer p {
     }
     
     .testimony-img img {
-    width: 100%;
-    height: auto;                /* CHANGE: Auto height */
-    max-height: 200px;           /* ADD */
-    object-fit: contain;         /* CHANGE: was 'cover' */
-    object-position: center;     /* ADD */
-    display: block;              /* ADD */
-}
+        width: 100%;
+        height: auto;                /* Auto height */
+        max-height: 200px;           /* Cap height */
+        object-fit: contain;         /* Show full image, no crop */
+        object-position: center;     /* ADD */
+        display: block;              /* ADD */
+    }
+    
     /* FIXED: Button separation in CTA */
     .cta-buttons {
         flex-direction: column;
@@ -1368,6 +1352,7 @@ footer p {
         max-width: 280px;
         margin: 0;
     }
+    
     #donateModal > div > div {
         display: flex;
         flex-direction: column;
@@ -1381,6 +1366,7 @@ footer p {
         display: block;
         text-align: center;
     }
+    
     /* FIXED: Swipe hint position */
     .swipe-hint {
         margin-top: 25px;
