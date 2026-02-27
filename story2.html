@@ -767,7 +767,7 @@ body {
 
 /* Zoom cursor on story images */
 .small-image-single img,
-.after-section img',
+.after-section img,
 .before-after img,
 .small-image-left img,
 .profile-image {
@@ -1278,6 +1278,22 @@ body {
     .after-section .after-content .label {
         margin-bottom: 10px;
     }
+    .lightbox-close {
+    position: fixed; /* Change from absolute to fixed */
+    top: 30px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border: 1px solid rgba(201,169,97,0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 100001;
+    pointer-events: auto; /* Ensure clicks register */
+}
 }
 </style>
 </head>
@@ -1398,17 +1414,17 @@ body {
 </p>
 
 <p>
-    Her designs have gained attention across Nairobi, with many customers discovering her through her widely-shared testimony. Dora hopes to expand Jesus Girl Closet to other cities, creating employment opportunities to individuals and spreading the gospel of her testimony and power." Follow her journey on Instagram: <a href="https://instagram.com/jesusgirlcloset" target="_blank" style="color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold);">@jesusgirlcloset
+    Her designs have gained attention across Nairobi, with many customers discovering her through her widely-shared testimony. Dora hopes to expand Jesus Girl Closet to other cities, creating employment opportunities to individuals and spreading the gospel of her testimony and power." Follow her journey on Instagram: <a href="https://instagram.com/jesusgirlcloset" target="_blank" style="color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold);">@jesusgirlcloset</a>
 </p>
 
 <!-- LIGHTBOX OVERLAY -->
-<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
-    <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close"></button>
+<div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close"></button>
     
     <button class="lightbox-nav prev" onclick="changeImage(-1, event)" aria-label="Previous"></button>
     <button class="lightbox-nav next" onclick="changeImage(1, event)" aria-label="Next"></button>
     
-    <div class="lightbox-container" onclick="event.stopPropagation()">
+    <div class="lightbox-container">
         <img src="" alt="" class="lightbox-image" id="lightbox-img">
         <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
@@ -1545,9 +1561,20 @@ function openLightbox(imgElement) {
 }
 
 function closeLightbox(event) {
-    // Only close if clicking overlay or close button, not the image
-    if (event && event.target.closest('.lightbox-container') && !event.target.closest('.lightbox-close')) {
-        return;
+    // If event exists, check what was clicked
+    if (event) {
+        // Don't close if clicking the image itself
+        if (event.target.closest('.lightbox-image')) {
+            return;
+        }
+        // Don't close if clicking nav buttons
+        if (event.target.closest('.lightbox-nav')) {
+            return;
+        }
+        // Don't close if clicking the container (image wrapper)
+        if (event.target.closest('.lightbox-container')) {
+            return;
+        }
     }
     
     const lightbox = document.getElementById('lightbox');
