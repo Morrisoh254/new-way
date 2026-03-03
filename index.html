@@ -1128,9 +1128,13 @@ button:focus {
     .scroll-indicator {
         display: flex;
         position: relative;
-        margin: 70px auto 40px auto; /* 👈 increase spacing */
+        margin: 70px auto 40px auto;  /* Center with auto margins */
+        left: auto;
+        transform: none;
+        width: fit-content;           /* Shrink to content width */
+        align-self: center;           /* Center in flex container */
     }
-        
+
         /* SMOOTH MOBILE SCROLL - fixes shaky behavior */
    .testimony-row {
         cursor: default;
