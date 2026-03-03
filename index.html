@@ -1108,7 +1108,15 @@ footer p {
         display: block;              /* ADD: Remove inline spacing */
     }
     
-    
+    a, button {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+a:focus,
+button:focus {
+    outline: none;
+}
     .scroll-btn {
         display: none;
     }
