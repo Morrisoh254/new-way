@@ -1606,6 +1606,7 @@ footer p {
 }
 
 </style>
+
 </head>
 
 <body>
@@ -1783,7 +1784,7 @@ footer p {
         <h3 style="color:#d4af37;text-align:center;margin-bottom:20px;font-family:'Playfair Display',serif;">Send Prayer Request</h3>
         
         <!-- FORM - REPLACE URL AFTER DEPLOYMENT -->
-        <form id="prayerForm" action="https://script.google.com/macros/s/AKfycbw8hA_OHtCRJAEsQ4v0CR9jJxTOII2uYCkxi65aII0mhCMxaU5PUGaVn5DT9IDvqIPvyg/exec" method="POST">
+        <form id="prayerForm" action="https://script.google.com/macros/s/AKfycbxa8sWE4_LAX4itE-bkAqd_1hmSsNXl3YYO-SBY6XnatcD3cIhq3P7x6Fp8am9wH_Yriw/exec" method="POST">
             
             <input type="hidden" name="timestamp" id="ts">
             <input type="hidden" name="date" id="dt">
@@ -2095,55 +2096,54 @@ document.getElementById('prayerModal').addEventListener('click', function(e) {
 });
 // ========== PRAYER FORM - IFRAME VERSION (100% RELIABLE) ==========
 // PRAYER FORM - Explicit identification
+// ========== PRAYER FORM - FIXED VERSION ==========
+// ========== PRAYER FORM - OPTIMIZED VERSION ==========
 document.getElementById('prayerForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
     const form = this;
     const submitBtn = document.getElementById('submitPrayerBtn');
     
-    // ✅ DEBUG: Verify we have the right form
-    console.log('Prayer form submitting to:', form.action);
+    // ✅ IMMEDIATE: Capture data and clear form right away
+    const formData = new FormData(form);
+    const params = new URLSearchParams();
+    formData.forEach((value, key) => {
+        params.append(key, value);
+    });
     
-    // ✅ Set timestamps with UNIQUE field names for prayer form
-    // Use prayer-specific field IDs to avoid collision with story form
-    const prayerTs = document.getElementById('prayerTs') || document.getElementById('ts');
-    const prayerDt = document.getElementById('prayerDt') || document.getElementById('dt');
+    // ✅ CRITICAL: Clear form immediately for better UX
+    form.reset();
     
-    if (prayerTs) prayerTs.value = new Date().toLocaleString();
-    if (prayerDt) prayerDt.value = new Date().toISOString().split('T')[0];
-    
-    // Show loading
+    // Show loading state
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<span class="loading-spinner"></span> Sending...';
     
-    // ✅ EXPLICITLY construct the URL - don't rely on form.action alone
-    const PRAYER_URL = 'https://script.google.com/macros/s/AKfycbw8hA_OHtCRJAEsQ4v0CR9jJxTOII2uYCkxi65aII0mhCMxaU5PUGaVn5DT9IDvqIPvyg/exec'; // Replace with your actual URL
-    
-    const formData = new FormData(form);
-    
-    // ✅ Add a type identifier so Google Apps Script knows which form this is
-    formData.append('formType', 'prayer');
-    
-    fetch(PRAYER_URL, {
+    // ✅ SPEED UP: Use a timeout to show success quickly regardless of network
+    // Google Apps Script with no-cors always "succeeds" from browser perspective
+    const submissionPromise = fetch(form.action, {
         method: 'POST',
-        body: formData,
-        // ✅ Remove no-cors if possible, or handle it properly
-        mode: 'no-cors'  // Keep only if absolutely required by Google Apps Script
-    })
-    .then(() => {
-        showPrayerSuccess();
-        form.reset(); // ✅ Clear the form after success
-    })
-    .catch((error) => {
-        console.error('Prayer form error:', error);
-        // Still show success for no-cors, but log the error
-        showPrayerSuccess();
-    })
-    .finally(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Submit Prayer Request';
-        submitBtn.style.opacity = '1';
+        body: params,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        mode: 'no-cors'
     });
+    
+    // ✅ Show success after max 2 seconds, don't wait for network
+    const timeoutPromise = new Promise(resolve => setTimeout(resolve, 1500));
+    
+    Promise.race([submissionPromise, timeoutPromise])
+        .then(() => {
+            showPrayerSuccess();
+        })
+        .catch(() => {
+            // Even on error, show success (no-cors makes errors invisible anyway)
+            showPrayerSuccess();
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>Submit Prayer</span>';
+        });
 });
 
 // ✅ SEPARATE success function for prayer only
@@ -2204,23 +2204,26 @@ document.getElementById('storyModal').addEventListener('click', function(e) {
 });
 
 // Form submission - FIXED VERSION WITH CHECKBOX HANDLING
+// ========== STORY FORM - OPTIMIZED VERSION ==========
 document.getElementById('storyForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const submitBtn = document.getElementById('submitStoryBtn');
+    
     const form = this;
+    const submitBtn = document.getElementById('submitStoryBtn');
     
-    // Set timestamps
-    document.getElementById('storyTs').value = new Date().toLocaleString();
-    document.getElementById('storyDt').value = new Date().toISOString().split('T')[0];
+    // ✅ Set timestamps BEFORE collecting data
+    const now = new Date();
+    const tsField = form.querySelector('input[name="timestamp"]');
+    const dtField = form.querySelector('input[name="date"]');
+    if (tsField) tsField.value = now.toLocaleString();
+    if (dtField) dtField.value = now.toISOString().split('T')[0];
     
-    // ✅ FIX: Handle checkbox - if unchecked, add hidden field with "no"
+    // ✅ Handle checkbox - add hidden field if unchecked
     const contactOkCheckbox = form.querySelector('input[name="contact_ok"]');
     if (!contactOkCheckbox.checked) {
-        // Remove any existing hidden contact_ok fields first
         const existingHidden = form.querySelector('input[type="hidden"][name="contact_ok"]');
         if (existingHidden) existingHidden.remove();
         
-        // Add hidden field with "no" value
         const hiddenField = document.createElement('input');
         hiddenField.type = 'hidden';
         hiddenField.name = 'contact_ok';
@@ -2228,17 +2231,54 @@ document.getElementById('storyForm').addEventListener('submit', function(e) {
         form.appendChild(hiddenField);
     }
     
+    // ✅ Build data object manually (like prayer form)
+    const data = {
+        timestamp: form.querySelector('input[name="timestamp"]').value,
+        date: form.querySelector('input[name="date"]').value,
+        name: form.querySelector('input[name="name"]').value,
+        contact: form.querySelector('input[name="contact"]').value,
+        title: form.querySelector('input[name="title"]').value,
+        testimony: form.querySelector('textarea[name="testimony"]').value,
+        category: form.querySelector('select[name="category"]').value,
+        contact_ok: form.querySelector('input[name="contact_ok"]').checked ? 'yes' : 'no'
+    };
+    
+    // Debug log
+    console.log('Sending story data:', data);
+    
+    // ✅ IMMEDIATE: Clear form and show loading
+    form.reset();
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<span class="loading-spinner"></span> Sending...';
-    submitBtn.style.opacity = '0.7';
     
-    fetch(form.action, {
+    // ✅ Build URL-encoded string
+    const params = Object.keys(data)
+        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        .join('&');
+    
+    // ✅ SPEED UP: Race between fetch and timeout
+    const submissionPromise = fetch(form.action, {
         method: 'POST',
-        body: new FormData(form),
+        body: params,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
         mode: 'no-cors'
-    })
-    .then(() => showStorySuccess())
-    .catch(() => showStorySuccess());
+    });
+    
+    const timeoutPromise = new Promise(resolve => setTimeout(resolve, 1500));
+    
+    Promise.race([submissionPromise, timeoutPromise])
+        .then(() => {
+            showStorySuccess();
+        })
+        .catch(() => {
+            showStorySuccess();
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Submit My Story';
+        });
 });
 
 function showStorySuccess() {
