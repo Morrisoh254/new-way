@@ -308,22 +308,53 @@ body {
 
 /* Delete ALL other h2:nth-of-type() rules */
 
-/* Timeline markers in Transformation */
-.story-container h2:nth-of-type(2) ~ p strong {
-    color: var(--gold);
-    font-weight: 700;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    display: block;
-    margin: 40px 0 15px 0;
-    padding-bottom: 8px;
-    border-bottom: 1px solid rgba(201,169,97,0.3);
+/* ===== CLEAN HEADINGS ===== */
+.story-container h2 {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--cream);
+    margin: 70px 0 25px 0;
+    font-size: 2rem;
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: 0.05em;
+    position: relative;
+    padding-bottom: 18px;
+    text-align: center;
+    clear: both;
 }
 
-.story-container h2:nth-of-type(2) ~ p:first-of-type strong {
-    margin-top: 20px;
+.story-container h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.story-container h2::before {
+    content: "✦";
+    display: block;
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin-bottom: 12px;
+    font-style: normal;
+}
+
+/* Mobile headings */
+@media (max-width: 768px) {
+    .story-container h2 {
+        font-size: 1.6rem;
+        margin: 50px 0 20px 0;
+        padding-bottom: 15px;
+    }
+    
+    .story-container h2::before {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
 }
 
 /* Enhanced pull quote */
@@ -1366,6 +1397,63 @@ button:active {
     }
 
 }
+/* ===== BEFORE & AFTER SECTION ===== */
+.before-after {
+    display: flex;
+    gap: 25px;
+    margin: 50px 0;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.before-after > div {
+    flex: 1;
+    max-width: 320px;
+    text-align: center;
+}
+
+.before-after img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 4px;
+    filter: grayscale(20%);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(201,169,97,0.2);
+    cursor: zoom-in;
+}
+
+.before-after img:hover {
+    filter: grayscale(0%);
+    box-shadow: 0 10px 30px rgba(201,169,97,0.2);
+}
+
+.before-after .label {
+    margin-top: 12px;
+    color: var(--gold);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Mobile: stack vertically */
+@media (max-width: 768px) {
+    .before-after {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .before-after > div {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .before-after img {
+        height: 200px;
+    }
+}
 /* ===== ELEGANT LIGHTBOX/ZOOM ===== */
 /* AFTER SECTION - IMAGE ON LEFT */
 .after-section {
@@ -1444,135 +1532,86 @@ button:active {
 <!-- COMPACT HERO -->
 <section class="story-hero">
     <div class="subtitle">The Testimony of</div>
-    <h1>Dora Obwaka.</h1>
+    <h1>John Kiriamiti</h1>
     <div class="profile-image-wrapper">
     <div class="sparkle"></div>
     <div class="sparkle"></div>
     <div class="sparkle"></div>
     <div class="sparkle"></div>
-    <img src="images/Dora.jpeg" alt="Dora" class="profile-image">
+    <img src="images/johnkiriamiti.jpg" alt="John K" class="profile-image">
 </div>
 </section>
 
 <!-- STORY CONTENT -->
 <div class="story-container">
     <p class="story-intro">
-        TDora Obwaka’s life is a testament to redemption and restoration. Once lost in addiction and despair, she found healing and purpose through faith and prayer. Her journey shows that even in the darkest moments, light can overcome darkness and hope can be restored
+        This is the story of Mr Kiriamiti. — The story of John Baptista Wanjohi Kiriamiti is one of Kenya's most remarkable real-life transformation stories—from a feared criminal to a bestselling author and social reformer.
     </p>
-    <p>Dora Obwaka, who gave herself the name Jesus Girl, once walked through darkness, struggling with addiction, despair, and the weight of brokenness. Even during her lowest moments, some people still saw a spark in her—a spirit that refused to die.</p>
-
-<p>Her name “Jesus Girl” emerged after her rehabilitation journey—not from supernatural visions, but from a personal realization: she truly believes that Jesus loves her. Over time, she understood that true identity comes from carrying Jesus in one’s heart, not merely claiming a title.</p>
-
-<p>Today, Dora is an entrepreneur, a servant of Jesus Christ, and the sole founder of <strong>Jesus Girls Closet</strong>. She runs her clothing business while supporting her mother in rehabilitation center responsibilities, helping others battling struggles she once personally endured.</p>
-
-<p>Dora deeply values her family and every opportunity life offers her, because she understands something many never experience: <strong>She was almost gone.</strong> Her journey taught her that rebuilding is a lifelong process, not a one-time event, and her life now reflects faith, purpose, and hope for others.</p>
-
-    <h2>Dora's History</h2>
 
     <p>
-        Dora grew up in church and actively served, yet she lived a double life. While maintaining a Christian appearance, she struggled with partying, rebellion, and destructive habits outside church walls.</p>
+        John Kiriamiti was born on 14 February 1950 in Thuita Village, Kamacharia, Murang'a County, Kenya. He was the second of nine children born to Albert and Anne Wanjiru Kiriamiti, who were both primary school teachers. He was an intelligent student and earned a place at the then prestigious Prince of Wales School (now Nairobi School). However, at just 15 years old, he was expelled after leading a student strike, effectively ending his formal education.</p>
 
-        <p>At seventeen, she took her first drink and began experimenting with drugs. Slowly, church became distant as addiction took control. Influenced by unhealthy relationships and environments, alcohol turned into a daily dependency, soon accompanied by cigarettes and weed.</p>
 
-        <p>What began as experimentation evolved into identity. She openly embraced substance use, developing a careless attitude toward consequences.</p>
 
-       <p>At nineteen, she involuntarily entered rehabilitation for the first time.After 3 months its sad to say that the rehabilitation did not help her becouse her heart was far off from wanting change</p>
+        <p> Entry into Crime
 
-       For nearly six years, addiction dominated her life.</p>
-
-       <p>Her lowest moment came when she consumed spiked marijuana containing traces of heroin, pushing her deeper into physical and emotional deterioration. Despite her parents’ relentless efforts—even relocating opportunities abroad—she remained trapped.</p>
-       <div class="small-image-single">
-        <img src="images/Dora-breaking-point.jpeg" alt="The Turning Point">
-        <div class="label">Dora was lost</div>
-    </div>
+After leaving school, Kiriamiti drifted into Nairobi's criminal underworld. He began with pickpocketing and car break-ins before becoming involved in armed robberies. During the late 1960s and early 1970s, he became one of Kenya's most wanted criminals, operating under several aliases, the most famous being Jack Zollo. His gang carried out daring robberies and managed to evade police for years.</p>
     
-    <h2>Breaking point</h2>
 
-      <p>The breaking point arrived when her mother found her lying by the roadside, barely recognizable.
+    <p>
+       Arrest and Imprisonment
 
-       In desperation, her mother cried out to God.</p>
+Kiriamiti's criminal career ended in 1970 when he was arrested and later convicted of robbery. In January 1971, he was sentenced to prison and served many years in Naivasha and Kamiti Maximum Security prisons. While incarcerated, he reflected deeply on his life and began writing about his experiences.
 
-       <p>Soon afterward, Dora chose recovery and joined;<strong>Teen Challenge(A faith-based rehabilitation facility)</strong>marking the beginning of genuine transformation.Surely God was redirecting her</p>
 
-      <p>The early stages were painful. Withdrawal symptoms tested her strength daily, but prayer became her anchor. Slowly, healing began—not only physically, but spiritually.She even said,
-      <div class="pull-quote">
-        I was praying to God each day to give me strength to overcome just a day.
-    </div>
-
-      <p>During this period, Dora realized her survival carried purpose. She understood that her life was not merely being restored—it was being redirected.</p>
-      
-
-     <p>Her journey has included setbacks, including relapses after rehabilitation. Yet each return strengthened her understanding that transformation is a continuous journey rather than a single moment of victory.</p>
-
-     <P>Today, Dora walks a path of faith, recovery, and service—turning past pain into hope for others still searching for freedom.
     </p>
+
     
+
+    <h2>Becoming an Author;</h2>
+
+    <p>
+       
+
+While still in prison, Kiriamiti wrote My Life in Crime, a fictionalized autobiography based on his criminal life. Published in 1984, the book became one of Kenya's best-selling novels and was especially popular among young readers.
+
+He later wrote several more books, including:
+
+My Life with a Criminal: Milly's Story
+My Life in Prison
+Son of Fate
+The Sinister Trophy
+The Abduction Squad
+City Carjackers
+    </p>
+
     
-    <!-- BEFORE AFTER SECTION (SAME SIZE IMAGES) -->
-        <div class="after-section">
-        <img src="images/DoraA.after.jpeg" alt="Dora After Faith">
-        <div class="after-content">
-            <div class="label">Glowing Dora</div>
+        <h2>Life After Prison</h2>
 
-    </div>
-        
-</div>
+<p>After his release in 1984, Kiriamiti devoted himself to writing and speaking about the consequences of crime. He also became involved in rehabilitating street children and helping young people avoid criminal lifestyles. He founded and edited a newspaper called The Sharpener and became known as a philanthropist and social reformer.
+    </p>
+    <h2>Legacy</h2>
+    <p>
 
-<P></P>
-<p><strong>Dora's Success: Jesus Girl Closet</strong></p>
 
-<div class="after-section">
-    <img src="images/dora-shop.jpeg" alt="Jesus Girl Closet Store">
-    <div class="after-content">
-        <div class="label">Jesus Girl Closet</div>
-        <p><strong>"Sassy Stylish Statements"</strong> — Dora's boutique specializes in ready-made fits that blend African heritage with modern fashion. Each piece tells a story of transformation, just like her own journey.</p>
-        <p>Located at <strong>Moi Avenue, CBD Digital Shopping Mall</strong>, Jesus Girl Closet has become a beacon of hope for young women seeking both style and inspiration.</p>
-    </div>
-</div>
+John Kiriamiti's life is often described as a story of redemption. His books provide a vivid account of Kenya's criminal underworld in the years following independence while emphasizing the heavy cost of crime. Today, he is remembered not only as one of Kenya's most notorious former criminals but also as one of its most influential popular authors.
 
-<!-- Gallery of Dora's Work -->
-<div style="margin: 40px 0;">
-    <p style="text-align: center; color: var(--gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px;">Featured Collection</p>
-    
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-        <div class="small-image-single" style="margin: 0;">
-            <img src="images/Kauliset.jpeg" alt="Ankara Design 1" style="height: 250px;">
-            <div class="label">Kauliset</div>
+His life carries a powerful lesson: past mistakes do not have to define a person's future. With genuine change, it is possible to transform even the darkest chapter of life into something that educates and inspires others.</p>
+
+    <!-- BEFORE AFTER SECTION -->
+    <div class="before-after">
+        <div>
+            <img src="images/davidk-before.jpg" alt="Before Faith">
+            <div class="label">Before</div>
         </div>
-        <div class="small-image-single" style="margin: 0;">
-            <img src="images/nakayabati.jpeg" alt="Ankara Design 2" style="height: 250px;">
-            <div class="label">Nakayaset</div>
-        </div>
-        <div class="small-image-single" style="margin: 0;">
-            <img src="images/Ririkaftali.jpeg" alt="Ankara Design 3" style="height: 250px;">
-            <div class="label">Ririkaftali</div>
+        <div>
+            <img src="images/davidk-after.jpg" alt="After Faith">
+            <div class="label">After</div>
         </div>
     </div>
-</div>
 
-<p>
-     <strong>Through Jesus Girl Closet</strong> Dora has not only built a thriving business but also created employment opportunities for other young women. Her boutique stands as proof that "beauty can indeed come from ashes.</a>.
-</p>
-
-<p>
-    The name "Jesus Girl Closet" reflects how Dora sees herself. <em>"Jesus found me when I was lost. That's the most important thing about me."</em>
-</p>
-
-<p>
-    Her designs have gained attention across Nairobi, with many customers discovering her through her widely-shared testimony. Dora hopes to expand Jesus Girl Closet to other cities, creating employment opportunities to individuals and spreading the gospel of her testimony and power." Follow her journey on Instagram: <a href="https://instagram.com/jesusgirlcloset" target="_blank" style="color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold);">@jesusgirlcloset</a>
-</p>
-
-<!-- LIGHTBOX OVERLAY -->
-<div class="lightbox-overlay" id="lightbox">
-    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close"></button>
     
-    <button class="lightbox-nav prev" onclick="changeImage(-1, event)" aria-label="Previous"></button>
-    <button class="lightbox-nav next" onclick="changeImage(1, event)" aria-label="Next"></button>
-    
-    <div class="lightbox-container">
-        <img src="" alt="" class="lightbox-image" id="lightbox-img">
-        <div class="lightbox-caption" id="lightbox-caption"></div>
-    </div>
+
 </div>
 <!-- CLASSIC FOOTER WITH SHARE -->
 <section class="footer-section">
