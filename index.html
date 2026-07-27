@@ -834,7 +834,95 @@ body.modal-open {
     .prayer-widget {
         right: 0px;
     }
-}/* ========== FOOTER ========== */
+}
+/* ========== INSPIRATION NOTE SECTION ========== */
+.inspiration-section {
+    padding: 100px 5%;
+    background: linear-gradient(to bottom, var(--bg), var(--bg-light));
+    position: relative;
+    overflow: hidden;
+}
+
+.inspiration-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.inspiration-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    background: rgba(18, 18, 18, 0.6);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 20px;
+    padding: 60px 40px;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 20px 60px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.inspiration-icon {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+    opacity: 0.8;
+    animation: heartbeat 3s ease-in-out infinite;
+}
+
+.inspiration-container h3 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--gold);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.inspiration-divider {
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 30px;
+    opacity: 0.6;
+}
+
+.inspiration-message {
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    line-height: 2;
+    color: var(--text);
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 25px;
+}
+
+.inspiration-date {
+    color: var(--gold);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+@media (max-width: 968px) {
+    .inspiration-section {
+        padding: 60px 4%;
+    }
+    .inspiration-container {
+        padding: 40px 25px;
+    }
+}
+/* ========== FOOTER ========== */
 footer {
     padding: 60px 5%;
     text-align: center;
@@ -1787,7 +1875,7 @@ footer p {
                     </div>
                 </div>
                 <div class="testimony-img">
-                    <img src="images/Johnkiriamiti.jpg" alt="John K.">
+                    <img src="images/johnkiriamiti.jpg" alt="John K.">
                 </div>
             </a>
 
@@ -1995,7 +2083,23 @@ footer p {
         <p style="text-align:center;color:#666;font-size:0.8rem;margin-top:15px;font-style:italic;">"And they overcame by the blood of the Lamb and by the word of their testimony" — Revelation 12:11</p>
     </div>
 </div>
-
+<!-- INSPIRATION NOTE SECTION -->
+<section class="inspiration-section" id="inspiration">
+    <div class="inspiration-container">
+        <div class="inspiration-icon">✦</div>
+        <h3>Word of Insight</h3>
+        <div class="inspiration-divider"></div>
+        <p class="inspiration-message">
+            <!-- ✏️ EDIT YOUR MESSAGE BELOW -->
+            In every season of silence, God is not absent — He is preparing. 
+            What feels like a delay is often divine alignment. Trust the process, 
+            keep your heart open, and know that the light within you is greater 
+            than the darkness around you. This is your season of becoming.
+            <!-- ✏️ EDIT YOUR MESSAGE ABOVE -->
+        </p>
+        <div class="inspiration-date">— Light to the World Ministries</div>
+    </div>
+</section>
 <!-- FOOTER -->
 <footer>
     <div class="footer-container">
