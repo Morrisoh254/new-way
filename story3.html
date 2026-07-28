@@ -800,10 +800,8 @@ body {
 }
 
 .lightbox-image {
-    max-width: 92vw;
-    max-height: 82vh;
-    width: auto;
-    height: auto;
+    max-width: 100%;
+    max-height: 85vh;
     object-fit: contain;
     border-radius: 4px;
     box-shadow: 0 25px 80px rgba(0,0,0,0.6);
@@ -1402,36 +1400,32 @@ button:active {
 /* ===== BEFORE & AFTER SECTION ===== */
 .before-after {
     display: flex;
-    gap: 20px;
+    gap: 25px;
     margin: 50px 0;
     justify-content: center;
     align-items: stretch;
-    width: 100%;
 }
 
 .before-after > div {
     flex: 1;
-    max-width: 50%;
+    max-width: 320px;
     text-align: center;
 }
 
 .before-after img {
     width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 3;
+    height: 220px;
     object-fit: cover;
     border-radius: 4px;
     filter: grayscale(20%);
     transition: all 0.4s ease;
     border: 1px solid rgba(201,169,97,0.2);
     cursor: zoom-in;
-    display: block;
 }
 
 .before-after img:hover {
     filter: grayscale(0%);
     box-shadow: 0 10px 30px rgba(201,169,97,0.2);
-    transform: scale(1.02);
 }
 
 .before-after .label {
@@ -1443,24 +1437,6 @@ button:active {
     font-family: 'Inter', sans-serif;
 }
 
-/* Mobile: stack vertically with better proportions */
-@media (max-width: 768px) {
-    .before-after {
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
-    }
-    
-    .before-after > div {
-        max-width: 100%;
-        width: 100%;
-    }
-    
-    .before-after img {
-        aspect-ratio: 16 / 10;
-        height: auto;
-    }
-}
 /* Mobile: stack vertically */
 @media (max-width: 768px) {
     .before-after {
