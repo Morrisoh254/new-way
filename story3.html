@@ -1538,7 +1538,7 @@ button:active {
     <div class="sparkle"></div>
     <div class="sparkle"></div>
     <div class="sparkle"></div>
-    <img src="images/Johnkiriamiti.jpg" alt="John K" class="profile-image">
+    <img src="images/johnkiriamiti.jpg" alt="John K" class="profile-image">
 </div>
 </section>
 
@@ -1601,12 +1601,12 @@ His life carries a powerful lesson: past mistakes do not have to define a person
     <!-- BEFORE AFTER SECTION -->
     <div class="before-after">
         <div>
-            <img src="images/davidk-before.jpg" alt="Before Faith">
-            <div class="label">Before</div>
+            <img src="images/kiriamitibest.jpg" alt="Photo 1">
+            <div class="label">Photo 1</div>
         </div>
         <div>
-            <img src="images/davidk-after.jpg" alt="After Faith">
-            <div class="label">After</div>
+            <img src="images/Johnkiriamitibefore.jpg" alt="Photo 2">
+            <div class="label">Photo 2</div>
         </div>
     </div>
 
@@ -1666,6 +1666,18 @@ His life carries a powerful lesson: past mistakes do not have to define a person
         </button>
     </div>
 </section>
+<!-- LIGHTBOX OVERLAY -->
+<div id="lightbox" class="lightbox-overlay" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close"></button>
+    
+    <button class="lightbox-nav prev" onclick="changeImage(-1, event)" aria-label="Previous image"></button>
+    <button class="lightbox-nav next" onclick="changeImage(1, event)" aria-label="Next image"></button>
+    
+    <div class="lightbox-container">
+        <img id="lightbox-img" class="lightbox-image" src="" alt="">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+</div>
 
 <!-- Toast Notification -->
 <div class="toast" id="toast">Link copied to clipboard!</div>
@@ -1680,7 +1692,7 @@ function initLightbox() {
     // Find all images in story sections that should be zoomable
     const selectors = [
         '.small-image-single img',
-        '.after-section img',  // ← CHANGED from .before-after img
+        '.before-after img',   // ← Matches your actual HTML class
         '.small-image-left img',
         '.profile-image'
     ];
