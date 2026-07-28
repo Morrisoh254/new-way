@@ -800,8 +800,10 @@ body {
 }
 
 .lightbox-image {
-    max-width: 100%;
-    max-height: 85vh;
+    max-width: 92vw;
+    max-height: 82vh;
+    width: auto;
+    height: auto;
     object-fit: contain;
     border-radius: 4px;
     box-shadow: 0 25px 80px rgba(0,0,0,0.6);
@@ -1400,32 +1402,36 @@ button:active {
 /* ===== BEFORE & AFTER SECTION ===== */
 .before-after {
     display: flex;
-    gap: 25px;
+    gap: 20px;
     margin: 50px 0;
     justify-content: center;
     align-items: stretch;
+    width: 100%;
 }
 
 .before-after > div {
     flex: 1;
-    max-width: 320px;
+    max-width: 50%;
     text-align: center;
 }
 
 .before-after img {
     width: 100%;
-    height: 220px;
+    height: auto;
+    aspect-ratio: 4 / 3;
     object-fit: cover;
     border-radius: 4px;
     filter: grayscale(20%);
     transition: all 0.4s ease;
     border: 1px solid rgba(201,169,97,0.2);
     cursor: zoom-in;
+    display: block;
 }
 
 .before-after img:hover {
     filter: grayscale(0%);
     box-shadow: 0 10px 30px rgba(201,169,97,0.2);
+    transform: scale(1.02);
 }
 
 .before-after .label {
@@ -1437,6 +1443,24 @@ button:active {
     font-family: 'Inter', sans-serif;
 }
 
+/* Mobile: stack vertically with better proportions */
+@media (max-width: 768px) {
+    .before-after {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+    
+    .before-after > div {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .before-after img {
+        aspect-ratio: 16 / 10;
+        height: auto;
+    }
+}
 /* Mobile: stack vertically */
 @media (max-width: 768px) {
     .before-after {
@@ -1538,7 +1562,7 @@ button:active {
     <div class="sparkle"></div>
     <div class="sparkle"></div>
     <div class="sparkle"></div>
-    <img src="images/Johnkiriamiti.jpg" alt="John K" class="profile-image">
+    <img src="images/johnkiriamiti.jpg" alt="John K" class="profile-image">
 </div>
 </section>
 
@@ -1601,7 +1625,7 @@ His life carries a powerful lesson: past mistakes do not have to define a person
     <!-- BEFORE AFTER SECTION -->
     <div class="before-after">
         <div>
-            <img src="images/kiriamitibest.JPG" alt="Photo 1">
+            <img src="images/kiriamitibest.jpg" alt="Photo 1">
             <div class="label">Photo 1</div>
         </div>
         <div>
