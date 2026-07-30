@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Betty B. | Testimony</title>
+<title>Morris K. | Testimony — Coming Soon</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -89,27 +89,17 @@ body {
     box-shadow: 0 0 30px rgba(201,169,97,0.3);
 }
 
-/* ===== INTRO DROP CAP ===== */
-.story-intro {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    line-height: 1.7;
-    margin-bottom: 50px;
-    text-align: left;
-    color: var(--gold-light);
-    font-weight: 400;
-    position: relative;
-    padding-left: 25px;
-    border-left: 1px solid var(--gold-muted);
-}
-
-.story-intro::first-letter {
-    float: left;
-    font-size: 4rem;
-    line-height: 0.8;
-    padding-right: 12px;
-    padding-top: 8px;
+/* ===== COMING SOON BADGE ===== */
+.coming-soon-badge {
+    display: inline-block;
+    padding: 8px 24px;
+    border: 1px solid var(--gold);
     color: var(--gold);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: 15px;
     font-weight: 500;
 }
 
@@ -131,7 +121,7 @@ body {
 .story-container h2 {
     font-family: 'Cormorant Garamond', serif;
     color: var(--gold);
-    margin: 60px 0 25px 0;
+    margin: 50px 0 25px 0;
     font-size: 1.6rem;
     font-weight: 500;
     font-style: italic;
@@ -150,6 +140,181 @@ body {
     background: var(--gold);
 }
 
+/* ===== INTRO DROP CAP ===== */
+.story-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    text-align: left;
+    color: var(--gold-light);
+    font-weight: 400;
+    position: relative;
+    padding-left: 25px;
+    border-left: 1px solid var(--gold-muted);
+}
+
+/* ===== REQUEST CARD ===== */
+.request-card {
+    background: rgba(201,169,97,0.04);
+    border: 1px solid rgba(201,169,97,0.15);
+    border-radius: 4px;
+    padding: 40px 35px;
+    margin: 50px 0;
+    text-align: center;
+}
+
+.request-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    font-weight: 500;
+    font-style: italic;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.request-card p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.request-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    border: 1px solid rgba(201,169,97,0.4);
+    background: transparent;
+    color: var(--gold);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.request-email::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+    z-index: 0;
+}
+
+.request-email:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.request-email:hover {
+    color: var(--bg);
+    border-color: var(--gold);
+}
+
+.request-email span {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== FEEDBACK SECTION ===== */
+.feedback-section {
+    margin-top: 60px;
+    padding-top: 50px;
+    border-top: 1px solid rgba(201,169,97,0.1);
+}
+
+.feedback-section h2 {
+    margin-top: 0;
+}
+
+.feedback-section p {
+    color: var(--text-muted);
+}
+
+.feedback-list {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0;
+}
+
+.feedback-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 18px;
+    font-size: 1.05rem;
+    color: var(--text);
+    line-height: 1.7;
+}
+
+.feedback-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 500;
+}
+
+/* ===== BACK TO STORIES ===== */
+.back-stories {
+    text-align: center;
+    margin: 60px 0 30px;
+}
+
+.back-stories a {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 36px;
+    border: 1px solid rgba(201,169,97,0.4);
+    background: transparent;
+    color: var(--gold);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.back-stories a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+    z-index: 0;
+}
+
+.back-stories a:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.back-stories a:hover {
+    color: var(--bg);
+    border-color: var(--gold);
+}
+
+.back-stories a span {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== PULL QUOTE ===== */
 .pull-quote {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.5rem;
@@ -162,45 +327,6 @@ body {
     line-height: 1.5;
     border-top: 1px solid rgba(201,169,97,0.2);
     border-bottom: 1px solid rgba(201,169,97,0.2);
-}
-
-/* ===== BEFORE AFTER ===== */
-.before-after {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin: 60px 0;
-    align-items: start;
-}
-
-.before-after > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.before-after img {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-    border-radius: 4px;
-    filter: grayscale(20%);
-    transition: filter 0.4s ease;
-}
-
-.before-after img:hover {
-    filter: grayscale(0%);
-}
-
-.label {
-    text-align: center;
-    margin-top: 15px;
-    color: var(--gold);
-    font-weight: 400;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-family: 'Inter', sans-serif;
 }
 
 /* ===== CLASSIC FOOTER WITH SHARE ===== */
@@ -529,13 +655,13 @@ body {
         margin-bottom: 10px;
     }
     .story-hero .subtitle {
-        font-size: 0.6rem;  /* ← ADDED: slightly smaller subtitle */
-        letter-spacing: 3px;  /* ← ADDED: tighter letter spacing */
+        font-size: 0.6rem;
+        letter-spacing: 3px;
     }
     .profile-image {
-        width: 80px;  /* ← REDUCED from 100px */
-        height: 80px;  /* ← REDUCED from 100px */
-        margin: 15px 0 5px;  /* ← REDUCED from 25px 0 10px */
+        width: 80px;
+        height: 80px;
+        margin: 15px 0 5px;
     }
     
     .story-container {
@@ -547,10 +673,6 @@ body {
         font-size: 1.15rem;
         padding-left: 15px;
         margin-bottom: 35px;
-    }
-    
-    .story-intro::first-letter {
-        font-size: 3rem;
     }
     
     .story-container p {
@@ -568,13 +690,12 @@ body {
         margin: 40px 0;
     }
     
-    .before-after {
-        gap: 15px;
-        margin: 40px 0;
+    .request-card {
+        padding: 30px 20px;
     }
     
-    .before-after img {
-        height: 200px;
+    .request-card h3 {
+        font-size: 1.3rem;
     }
     
     .share-container {
@@ -592,8 +713,8 @@ body {
         height: 18px;
     }
     .share-subtitle {
-        font-size: 0.75rem;          /* Reduced from 0.85rem */
-        margin-bottom: 25px;         /* Reduced from 40px */
+        font-size: 0.75rem;
+        margin-bottom: 25px;
     }
     
     .share-title {
@@ -601,25 +722,25 @@ body {
         margin-bottom: 10px;
     }
     .copy-link-btn {
-        margin-top: 20px;            /* Reduced from 30px */
-        padding: 12px 24px;          /* Reduced from 14px 32px */
-        font-size: 0.75rem;          /* Reduced from 0.8rem */
+        margin-top: 20px;
+        padding: 12px 24px;
+        font-size: 0.75rem;
     }
     
     .copy-link-btn svg {
-        width: 16px;                 /* Reduced from 18px */
-        height: 16px;                /* Reduced from 18px */
+        width: 16px;
+        height: 16px;
     }
      .ministry-footer {
-        padding: 40px 15px;          /* Reduced from 60px 20px */
+        padding: 40px 15px;
     }
     .ministry-logo {
         font-size: 1.1rem;
          margin-bottom: 15px;
     }
     .ministry-verse {
-        font-size: 0.95rem;          /* Reduced from 1.1rem */
-        padding: 0 15px;             /* Reduced from 0 20px */
+        font-size: 0.95rem;
+        padding: 0 15px;
     }
     
     .footer-socials {
@@ -628,25 +749,25 @@ body {
         flex-wrap: wrap;
     }
     .footer-socials a {
-        font-size: 0.7rem;           /* Reduced from 0.75rem */
+        font-size: 0.7rem;
     }
     .footer-section {
-        margin-top: 60px;            /* Reduced from 100px */
+        margin-top: 60px;
     }
     
     .footer-divider {
-        margin-bottom: 40px;         /* Reduced from 60px */
+        margin-bottom: 40px;
     }
     
     .footer-content {
-        padding: 0 20px 50px;        /* Reduced from 0 25px 80px */
+        padding: 0 20px 50px;
     }
     .toast {
-        padding: 12px 24px;          /* Reduced from 16px 32px */
-        font-size: 0.8rem;           /* Reduced from 0.9rem */
-        bottom: 20px;                /* Closer to bottom */
-        min-width: auto;             /* Allow natural width */
-        white-space: nowrap;         /* Keep text on one line */
+        padding: 12px 24px;
+        font-size: 0.8rem;
+        bottom: 20px;
+        min-width: auto;
+        white-space: nowrap;
     }
 }
 </style>
@@ -659,65 +780,63 @@ body {
 <!-- COMPACT HERO -->
 <section class="story-hero">
     <div class="subtitle">The Testimony of</div>
-    <h1>Betty B.</h1>
-    <img src="images/Bettyy.jpeg" alt="Betty B." class="profile-image">
+    <h1>Morris K.</h1>
+    <img src="images/Bettyy.jpeg" alt="Morris K." class="profile-image">
+    <div class="coming-soon-badge">Coming Soon</div>
 </section>
 
 <!-- STORY CONTENT -->
 <div class="story-container">
     <p class="story-intro">
-        This is the story of Betty B. — a testimony of breaking free from 
-        the chains of addiction and discovering a purpose greater than 
-        her pain. A journey from darkness into light.
+        Morris Kinywa Kathi is the founder of Light to the World, and his testimony is currently being prepared with the care and reverence it deserves. His story will be shared when the time is right — a testimony of grace, vision, and the very foundation upon which this ministry was built.
     </p>
 
     <p>
-        For years, Betty lived in the shadows of a life she never intended to build. What started as casual social drinking in her early twenties gradually tightened its grip until it became something she couldn't control. The woman who once dreamed of being an artist, a mother, a light in her community found herself trapped in cycles she couldn't break alone.
-    </p>
-
-    <p>
-        On the outside, she maintained the facade. She held down jobs, paid bills, showed up to family dinners with practiced smiles. But inside, she was drowning. Each morning brought shame, each evening brought the familiar pull of escape, and each night ended with promises that tomorrow would be different.
+        We are thoughtfully preparing Morris's story to ensure it speaks powerfully to everyone who reads it. As our founder, his journey carries a unique weight and significance, and we want to present it in a way that truly honors God and encourages your heart.
     </p>
 
     <div class="pull-quote">
-        I wasn't living. I was surviving, and barely. I had become a ghost in my own life, haunting the spaces I used to fill with joy.
+        Every testimony is a seed of hope. Morris's story will be planted here when the season is ripe.
     </div>
 
-    <h2>The Breaking Point</h2>
-
-    <p>
-        The moment of clarity arrived unexpectedly. After a particularly devastating night that ended in an emergency room, Betty found herself alone in a hospital bed at 3 a.m., staring at fluorescent lights that hummed with indifference. A nurse sat beside her — not because it was required, but because she saw something in Betty's eyes that reminded her of her own sister.
-    </p>
-
-    <p>
-        "You don't have to do this alone," the nurse said simply. Those words, spoken without judgment, became the first crack in the wall Betty had built around herself. For the first time in years, she allowed herself to be seen — truly seen — in all her brokenness.
-    </p>
-
-    <!-- BEFORE AFTER SECTION -->
-    <div class="before-after">
-        <div>
-            <img src="images/betty-before.jpg" alt="Before Recovery">
-            <div class="label">Before</div>
-        </div>
-        <div>
-            <img src="images/betty_after.jpg" alt="After Recovery">
-            <div class="label">After</div>
-        </div>
+    <!-- REQUEST CARD -->
+    <div class="request-card">
+        <h3>When Would You Like to Read It?</h3>
+        <p>
+            We would love to hear from you. If you have a preferred date or occasion when you would like Morris's testimony to be published, kindly let us know. Your input helps us plan and prepare meaningful content that serves our community well.
+        </p>
+        <a href="mailto:contact@lighttotheworld.org?subject=Preferred%20Date%20for%20Morris%20K.%20Testimony&body=Hello%20Light%20to%20the%20World%20Team,%0A%0AI%20would%20love%20to%20see%20Morris%20K.'s%20testimony%20published%20on%20or%20around:%0A%0A[Please%20enter%20your%20preferred%20date%20here]%0A%0ABlessings," class="request-email">
+            <span>Suggest a Date</span>
+        </a>
     </div>
 
-    <h2>Transformation</h2>
+    <div class="back-stories">
+        <a href="index.html">
+            <span>← Explore Other Stories</span>
+        </a>
+    </div>
 
-    <p>
-        Recovery was not a straight line. It was a winding road of setbacks and small victories, of learning to sit with uncomfortable emotions instead of numbing them, of rebuilding relationships she had damaged and discovering new ones that sustained her. Faith became her anchor — not the performative religion she had known growing up, but a raw, honest connection with something greater than her struggle.
-    </p>
-
-    <p>
-        Through community, counseling, and unwavering grace, Betty began to reclaim pieces of herself she thought were lost forever. The artist returned, painting not to escape but to express. The nurturer emerged, mentoring other women walking the same difficult path she had survived.
-    </p>
-
-    <p>
-        Today, Betty leads recovery groups for women battling addiction. She speaks with a transparency that disarms shame and offers hope that healing is possible. Her story reminds us that no chain is too strong to be broken, no night too dark for morning to come, and that purpose can emerge from the very places we once thought would destroy us.
-    </p>
+    <!-- FEEDBACK SECTION -->
+    <div class="feedback-section">
+        <h2>Help Us Grow</h2>
+        <p>
+            While you wait, we invite you to enjoy the other testimonies on our site. Each story is a testament to God's grace and transforming power.
+        </p>
+        <p>
+            We also welcome your honest feedback. Your thoughts and suggestions help us improve, advance, and serve you better. Here are a few ways you can share your input:
+        </p>
+        <ul class="feedback-list">
+            <li>What changes would you like to see on our website?</li>
+            <li>Are there features or sections you feel we should add?</li>
+            <li>How can we make your experience here more meaningful?</li>
+            <li>Is there anything we can do to advance this ministry's reach?</li>
+        </ul>
+        <p style="text-align: center; margin-top: 30px;">
+            <a href="mailto:contact@lighttotheworld.org?subject=Website%20Feedback%20%26%20Suggestions&body=Hello%20Light%20to%20the%20World%20Team,%0A%0AI%20have%20some%20feedback%20and%20suggestions%20for%20your%20website:%0A%0A[Please%20share%20your%20thoughts%20here]%0A%0ABlessings," class="request-email">
+                <span>Send Feedback</span>
+            </a>
+        </p>
+    </div>
 
 </div>
 
@@ -726,8 +845,8 @@ body {
     <div class="footer-divider"></div>
     
     <div class="footer-content">
-        <h3 class="share-title">Share This Story</h3>
-        <p class="share-subtitle">Spread hope by sharing Betty's testimony</p>
+        <h3 class="share-title">Share This Page</h3>
+        <p class="share-subtitle">Let others know that Morris's testimony is on its way</p>
         
         <div class="share-container">
             <!-- Facebook -->
@@ -782,25 +901,25 @@ body {
 // Share Functions
 function shareToFacebook() {
     const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent("Read this powerful testimony of transformation and hope");
+    const text = encodeURIComponent("Morris K.'s testimony is coming soon — a story of grace and transformation.");
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`, '_blank', 'width=600,height=400');
 }
 
 function shareToTwitter() {
     const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent("A story of redemption that will inspire you ✨");
+    const text = encodeURIComponent("Looking forward to Morris K.'s testimony on Light to the World ✨");
     window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'width=600,height=400');
 }
 
 function shareToWhatsApp() {
     const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent("Check out this amazing testimony: ");
+    const text = encodeURIComponent("Morris K.'s testimony is coming soon. Check it out: ");
     window.open(`https://wa.me/?text=${text}${url}`, '_blank');
 }
 
 function shareViaEmail() {
-    const subject = encodeURIComponent("A Testimony of Hope and Transformation");
-    const body = encodeURIComponent(`I thought you'd be encouraged by this story:\n\n${window.location.href}`);
+    const subject = encodeURIComponent("Morris K.'s Testimony — Coming Soon");
+    const body = encodeURIComponent(`I thought you'd be interested in this upcoming testimony:\n\n${window.location.href}`);
     window.location.href = `mailto:?subject=${subject}&body=${body}`;
 }
 
@@ -849,7 +968,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 document.addEventListener('DOMContentLoaded', () => {
-    const animatedElements = document.querySelectorAll('.share-btn, .copy-link-btn');
+    const animatedElements = document.querySelectorAll('.share-btn, .copy-link-btn, .request-card, .back-stories');
     animatedElements.forEach((el, index) => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
