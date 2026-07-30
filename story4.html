@@ -33,6 +33,38 @@ body {
     letter-spacing: 0.01em;
 }
 
+/* ===== BACK BUTTON (matches other testimony pages) ===== */
+.back-btn {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.8rem;
+    z-index: 9999;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.back-btn::before {
+    content: '←';
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.back-btn:hover {
+    color: var(--gold);
+}
+
+.back-btn:hover::before {
+    transform: translateX(-4px);
+}
+
 /* ===== COMPACT ELEGANT HERO ===== */
 .story-hero {
     height: auto;
@@ -43,7 +75,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 60px 20px 40px;
+    padding: 70px 20px 40px;
     background: linear-gradient(180deg, 
         rgba(201,169,97,0.1) 0%, 
         transparent 100%
@@ -72,6 +104,7 @@ body {
     font-weight: 500;
 }
 
+/* ===== PROFILE IMAGE (configurable per page) ===== */
 .profile-image {
     width: 120px;
     height: 120px;
@@ -198,6 +231,7 @@ body {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .request-email::before {
@@ -621,33 +655,16 @@ body {
     fill: var(--bg);
 }
 
-/* ===== BACK BUTTON ===== */
-.back-btn {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background: transparent;
-    color: var(--cream);
-    padding: 8px 16px;
-    text-decoration: none;
-    font-weight: 400;
-    font-size: 0.75rem;
-    z-index: 9999;
-    border: 1px solid rgba(248,246,243,0.15);
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.back-btn:hover {
-    background: rgba(248,246,243,0.08);
-    border-color: var(--cream);
-}
-
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
+    .back-btn {
+        top: 16px;
+        left: 16px;
+        font-size: 0.75rem;
+    }
+    
     .story-hero {
-        padding: 30px 20px 30px;
+        padding: 50px 20px 30px;
     }
     
     .story-hero h1 {
@@ -775,13 +792,17 @@ body {
 
 <body>
 
-<a href="index.html" class="back-btn">← Back</a>
+<!-- BACK BUTTON: now matches other testimony pages (text-only, subtle, absolute) -->
+<a href="index.html" class="back-btn">Back to Stories</a>
 
 <!-- COMPACT HERO -->
 <section class="story-hero">
     <div class="subtitle">The Testimony of</div>
     <h1>Morris K.</h1>
-    <img src="images/Bettyy.jpeg" alt="Morris K." class="profile-image">
+    
+    <!-- CHANGE IMAGE HERE: update src for each testimony page -->
+    <img src="images/Bettyy.jpeg" alt="Morris K." class="profile-image" id="profileImage">
+    
     <div class="coming-soon-badge">Coming Soon</div>
 </section>
 
