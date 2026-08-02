@@ -1,0 +1,1964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Michael A. | Testimony</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #0a0a0a;
+    --gold: #c9a961;
+    --gold-light: #e8d5b5;
+    --gold-muted: #8b7355;
+    --text: #f8f6f3;
+    --text-muted: #a8a5a0;
+    --cream: #faf8f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+}
+
+/* ===== COMPACT ELEGANT HERO ===== */
+.story-hero {
+    height: auto;
+    min-height: unset;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: linear-gradient(180deg, 
+        rgba(201,169,97,0.1) 0%, 
+        transparent 100%
+    );
+    border-bottom: 1px solid rgba(201,169,97,0.15);
+}
+
+.story-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--cream);
+    letter-spacing: 0.03em;
+    max-width: 600px;
+    line-height: 1.3;
+    margin-bottom: 15px;
+}
+
+.story-hero .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--gold);
+    font-weight: 500;
+}
+
+/* ===== ENHANCED PROFILE IMAGE (Circular Card Style) ===== */
+.profile-image-wrapper {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 25px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Golden ring border with gradient */
+.profile-image-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    box-shadow: 
+        0 0 20px rgba(201,169,97,0.5),
+        0 0 40px rgba(201,169,97,0.3);
+    animation: ringPulse 3s ease-in-out infinite;
+}
+
+
+/* The actual image */
+.profile-image {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+    filter: grayscale(20%);
+    transition: all 0.4s ease;
+    cursor: zoom-in;
+}
+
+.profile-image:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+/* Sparkle effects */
+.profile-image-wrapper .sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 10px 3px var(--gold), 0 0 20px 6px rgba(201,169,97,0.5);
+    animation: sparkle 2s ease-in-out infinite;
+    z-index: 3;
+}
+
+.profile-image-wrapper .sparkle:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.profile-image-wrapper .sparkle:nth-child(2) { top: 5%; right: 20%; animation-delay: 0.5s; }
+.profile-image-wrapper .sparkle:nth-child(3) { bottom: 15%; left: 5%; animation-delay: 1s; }
+.profile-image-wrapper .sparkle:nth-child(4) { bottom: 10%; right: 10%; animation-delay: 1.5s; }
+@keyframes ringPulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+   .profile-image-wrapper {
+        width: 120px;
+        height: 120px;
+        margin: 20px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Golden ring border with PULSE ANIMATION */
+    .profile-image-wrapper::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        padding: 3px;
+        background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+        -webkit-mask: 
+            linear-gradient(#fff 0 0) content-box, 
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        box-shadow: 
+            0 0 15px rgba(201,169,97,0.4),
+            0 0 30px rgba(201,169,97,0.2);
+        animation: ringPulse 3s ease-in-out infinite;
+    }
+    .profile-image {
+        width: 102px;
+        height: 102px;
+        border-radius: 50%;
+        object-fit: cover;
+        position: relative;
+        z-index: 2;
+        filter: grayscale(20%);
+        transition: all 0.4s ease;
+        cursor: zoom-in;
+        display: block;
+        animation: gentleFloat 6s ease-in-out infinite;
+    }
+    
+    /* Sparkles with SPARKLE ANIMATION */
+    .profile-image-wrapper .sparkle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: var(--gold);
+        border-radius: 50%;
+        box-shadow: 0 0 8px 2px var(--gold), 0 0 15px 4px rgba(201,169,97,0.4);
+        animation: sparkle 2s ease-in-out infinite;
+        z-index: 3;
+    }
+    
+    .profile-image-wrapper .sparkle:nth-child(1) { top: 8%; left: 8%; animation-delay: 0s; }
+    .profile-image-wrapper .sparkle:nth-child(2) { top: 4%; right: 18%; animation-delay: 0.5s; }
+    .profile-image-wrapper .sparkle:nth-child(3) { bottom: 12%; left: 4%; animation-delay: 1s; }
+    .profile-image-wrapper .sparkle:nth-child(4) { bottom: 8%; right: 8%; animation-delay: 1.5s; }
+}
+
+/* ===== ENHANCED INTRO - HEAVY WEIGHT ===== */
+.story-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    margin-bottom: 60px;
+    text-align: center;
+    color: var(--gold-light);
+    font-weight: 500;
+    position: relative;
+    padding: 40px 30px;
+    border-left: none;
+    border-top: 2px solid var(--gold-muted);
+    border-bottom: 2px solid var(--gold-muted);
+    background: linear-gradient(180deg, 
+        rgba(201,169,97,0.05) 0%, 
+        transparent 50%,
+        rgba(201,169,97,0.05) 100%
+    );
+}
+
+.story-intro::first-letter {
+    float: none;
+    font-size: 5rem;
+    line-height: 1;
+    padding: 0;
+    color: var(--gold);
+    font-weight: 600;
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ===== CONTENT ===== */
+.story-container {
+    max-width: 680px;
+    margin: 60px auto;
+    padding: 0 25px;
+}
+
+/* Regular paragraphs - lighter weight */
+.story-container p {
+    margin-bottom: 1.8em;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--text);
+    text-align: left;
+    font-weight: 300;
+    opacity: 0.95;
+}
+
+/* Gold strong text */
+.story-container strong {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+/* ===== UNIFIED HEADINGS - SAME STYLE ===== */
+.story-container h2 {
+    font-family: 'Cormorant Garamond', serif;
+    color: white;              /* SAME color for both */
+    margin: 80px 0 30px 0;
+    font-size: 2.2rem;               /* SAME size */
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: 0.05em;
+    position: relative;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+/* Same underline for both */
+.story-container h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* Same ornament for both */
+.story-container h2::before {
+    content: "✦";
+    display: block;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 15px;
+    font-style: normal;
+}
+
+/* Delete ALL other h2:nth-of-type() rules */
+
+/* Timeline markers in Transformation */
+.story-container h2:nth-of-type(2) ~ p strong {
+    color: var(--gold);
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: block;
+    margin: 40px 0 15px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(201,169,97,0.3);
+}
+
+.story-container h2:nth-of-type(2) ~ p:first-of-type strong {
+    margin-top: 20px;
+}
+
+/* Enhanced pull quote */
+.pull-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-style: italic;
+    color: var(--gold-light);
+    text-align: center;
+    margin: 60px 0;
+    padding: 40px 30px;
+    position: relative;
+    line-height: 1.5;
+    border-top: 2px solid rgba(201,169,97,0.3);
+    border-bottom: 2px solid rgba(201,169,97,0.3);
+    background: rgba(201,169,97,0.03);
+    font-weight: 500;
+}
+
+/* ===== SMALL SINGLE IMAGE (End of Breaking Point) ===== */
+.small-image-single {
+    max-width: 300px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.small-image-single img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    filter: grayscale(20%);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(201,169,97,0.2);
+}
+
+.small-image-single img:hover {
+    filter: grayscale(0%);
+    box-shadow: 0 10px 30px rgba(201,169,97,0.2);
+}
+
+.small-image-single .label {
+    margin-top: 12px;
+    color: var(--gold);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ===== BEFORE AFTER (Same Size Images) ===== */
+.before-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 60px 0;
+    align-items: start;
+}
+
+.before-after > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.before-after img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 4px;
+    filter: grayscale(20%);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(201,169,97,0.2);
+}
+
+.before-after img:hover {
+    filter: grayscale(0%);
+    box-shadow: 0 10px 30px rgba(201,169,97,0.2);
+}
+
+.before-after .label {
+    text-align: center;
+    margin-top: 15px;
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ===== SMALL LEFT IMAGE (After Graduation) ===== */
+.small-image-left {
+    display: flex;
+    gap: 25px;
+    margin: 50px 0;
+    align-items: flex-start;
+}
+
+.small-image-left img {
+    width: 180px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 4px;
+    filter: grayscale(20%);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(201,169,97,0.2);
+    flex-shrink: 0;
+}
+
+.small-image-left img:hover {
+    filter: grayscale(0%);
+    box-shadow: 0 10px 30px rgba(201,169,97,0.2);
+}
+
+.small-image-left .caption {
+    flex: 1;
+    padding-top: 10px;
+}
+
+.small-image-left .caption .label {
+    color: var(--gold);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.small-image-left .caption p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ===== CLASSIC FOOTER WITH SHARE ===== */
+.footer-section {
+    margin-top: 100px;
+    padding: 0;
+    position: relative;
+}
+
+.footer-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-muted), transparent);
+    margin-bottom: 60px;
+    opacity: 0.5;
+}
+
+.footer-content {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 25px 80px;
+    text-align: center;
+}
+
+.share-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: var(--cream);
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.share-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+/* Share Buttons Container */
+.share-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.share-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgba(201,169,97,0.3);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.share-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+}
+
+.share-btn:hover::before {
+    transform: translateY(0);
+}
+
+.share-btn:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(201,169,97,0.2);
+}
+
+.share-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--gold);
+    position: relative;
+    z-index: 1;
+    transition: fill 0.3s ease;
+}
+
+.share-btn:hover svg {
+    fill: var(--bg);
+}
+
+/* Copy Link Button */
+.copy-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+    padding: 14px 32px;
+    border: 1px solid rgba(201,169,97,0.4);
+    background: transparent;
+    color: var(--gold);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.copy-link-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+    z-index: 0;
+}
+
+.copy-link-btn:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.copy-link-btn:hover {
+    color: var(--bg);
+    border-color: var(--gold);
+}
+
+.copy-link-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+.copy-link-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    position: relative;
+    z-index: 1;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--gold);
+    color: var(--bg);
+    padding: 16px 32px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 10000;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* Ministry Footer */
+.ministry-footer {
+    background: linear-gradient(180deg, transparent, rgba(201,169,97,0.03));
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(201,169,97,0.1);
+}
+
+.ministry-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.ministry-verse {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    font-style: italic;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+    position: relative;
+    padding: 0 20px;
+}
+
+.ministry-verse::before,
+.ministry-verse::after {
+    content: '"';
+    font-size: 2rem;
+    color: var(--gold-muted);
+    opacity: 0.3;
+    position: absolute;
+    font-family: Georgia, serif;
+}
+
+.ministry-verse::before {
+    top: -10px;
+    left: 0;
+}
+
+.ministry-verse::after {
+    content: '"';
+    bottom: -20px;
+    right: 0;
+}
+
+/* Social Links in Footer */
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.footer-socials a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.footer-socials a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+}
+
+.footer-socials a:hover {
+    color: var(--gold);
+}
+
+.footer-socials a:hover::after {
+    width: 100%;
+}
+
+/* Back to Top */
+.back-to-top {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(201,169,97,0.3);
+    margin-top: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.back-to-top:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: translateY(-5px);
+}
+
+.back-to-top svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--gold);
+    transition: fill 0.3s ease;
+}
+
+.back-to-top:hover svg {
+    fill: var(--bg);
+}
+
+/* ===== BACK BUTTON ===== */
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: transparent;
+    color: var(--cream);
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.75rem;
+    z-index: 9999;
+    border: 1px solid rgba(248,246,243,0.15);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.back-btn:hover {
+    background: rgba(248,246,243,0.08);
+    border-color: var(--cream);
+}
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 40px;
+}
+
+.lightbox-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-container {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lightbox-overlay.active .lightbox-container {
+    transform: scale(1) translateY(0);
+}
+
+.lightbox-image {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+}
+
+.lightbox-caption {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.4s ease 0.2s;
+}
+
+.lightbox-overlay.active .lightbox-caption {
+    opacity: 1;
+}
+
+/* Close Button */
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border: 1px solid rgba(201,169,97,0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 100001;
+}
+
+.lightbox-close:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: rotate(90deg);
+}
+
+.lightbox-close::before,
+.lightbox-close::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 1px;
+    background: var(--gold);
+    transition: background 0.3s ease;
+}
+
+.lightbox-close::before {
+    transform: rotate(45deg);
+}
+
+.lightbox-close::after {
+    transform: rotate(-45deg);
+}
+
+.lightbox-close:hover::before,
+.lightbox-close:hover::after {
+    background: var(--bg);
+}
+
+/* Navigation Arrows (for multiple images) */
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    border: 1px solid rgba(201,169,97,0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.lightbox-overlay:hover .lightbox-nav {
+    opacity: 1;
+}
+
+.lightbox-nav:hover {
+    background: rgba(201,169,97,0.1);
+    border-color: var(--gold);
+}
+
+.lightbox-nav.prev { left: 30px; }
+.lightbox-nav.next { right: 30px; }
+
+.lightbox-nav::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-top: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+    transition: transform 0.3s ease;
+}
+
+.lightbox-nav.prev::before {
+    transform: rotate(-135deg);
+    margin-left: 4px;
+}
+
+.lightbox-nav.next::before {
+    transform: rotate(45deg);
+    margin-right: 4px;
+}
+
+/* Zoom cursor on story images */
+.small-image-single img,
+.before-after img,
+.small-image-left img,
+.profile-image {
+    cursor: zoom-in;
+}
+ @keyframes gentleFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+    
+@keyframes slowPulse {
+        0%, 100% { transform: scale(1); opacity: 0.5; }
+        50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    /* ===== DESKTOP ENHANCEMENTS (min-width: 769px) ===== */
+@media (min-width: 769px) {
+    
+    /* 1. SUBTLE PARALLAX HERO BACKGROUND */
+    .story-hero {
+        background: linear-gradient(180deg, 
+            rgba(201,169,97,0.15) 0%, 
+            rgba(201,169,97,0.05) 50%,
+            transparent 100%
+        );
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .story-hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle at 50% 50%, 
+            rgba(201,169,97,0.03) 0%, 
+            transparent 70%
+        );
+        animation: slowPulse 8s ease-in-out infinite;
+        pointer-events: none;
+    }
+    
+    /* 2. FLOATING PROFILE IMAGE WITH DEPTH */
+    .profile-image {
+        width: 140px;
+        height: 140px;
+        border: 3px solid var(--gold);
+        box-shadow: 
+            0 0 0 1px rgba(201,169,97,0.3),
+            0 20px 40px rgba(0,0,0,0.4),
+            0 0 60px rgba(201,169,97,0.1);
+        animation: gentleFloat 6s ease-in-out infinite;
+    }
+    
+    .profile-image:hover {
+        transform: scale(1.08) translateY(-5px);
+        box-shadow: 
+            0 0 0 2px var(--gold),
+            0 30px 60px rgba(0,0,0,0.5),
+            0 0 80px rgba(201,169,97,0.3);
+    }
+    
+    /* 3. INTRO WITH SIDE ORNAMENTS */
+    .story-intro {
+        position: relative;
+        padding: 50px 60px;
+        border-top: 1px solid rgba(201,169,97,0.2);
+        border-bottom: 1px solid rgba(201,169,97,0.2);
+    }
+    
+    .story-intro::before,
+    .story-intro::after {
+        content: '❧';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5rem;
+        color: var(--gold-muted);
+        opacity: 0.4;
+    }
+    
+    .story-intro::before {
+        left: 20px;
+    }
+    
+    .story-intro::after {
+        right: 20px;
+        transform: translateY(-50%) rotate(180deg);
+    }
+    
+    /* 4. ELEGANT SIDEBAR ACCENTS FOR CONTENT */
+    .story-container {
+        position: relative;
+    }
+    
+    .story-container::before {
+        content: '';
+        position: absolute;
+        left: -40px;
+        top: 200px;
+        bottom: 200px;
+        width: 1px;
+        background: linear-gradient(180deg, 
+            transparent 0%,
+            rgba(201,169,97,0.2) 20%,
+            rgba(201,169,97,0.2) 80%,
+            transparent 100%
+        );
+    }
+    
+    /* 5. PULL QUOTE WITH QUOTATION MARKS */
+    .pull-quote {
+        font-size: 2rem;
+        padding: 50px 60px;
+        position: relative;
+        border: none;
+        background: transparent;
+    }
+    
+    .pull-quote::before {
+        content: '"';
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 6rem;
+        color: var(--gold);
+        opacity: 0.15;
+        line-height: 1;
+    }
+    
+    .pull-quote::after {
+        content: '"';
+        position: absolute;
+        bottom: -20px;
+        right: 20px;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 6rem;
+        color: var(--gold);
+        opacity: 0.15;
+        line-height: 1;
+        transform: rotate(180deg);
+    }
+    
+    /* 6. IMAGE HOVER ZOOM EFFECT */
+    .small-image-single,
+    .before-after > div,
+    .small-image-left {
+        transition: transform 0.4s ease;
+    }
+    
+    .small-image-single:hover,
+    .before-after > div:hover,
+    .small-image-left:hover {
+        transform: translateY(-5px);
+    }
+    
+    .small-image-single img,
+    .before-after img,
+    .small-image-left img {
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .small-image-single:hover img,
+    .before-after > div:hover img,
+    .small-image-left:hover img {
+        transform: scale(1.03);
+        box-shadow: 0 20px 40px rgba(201,169,97,0.25);
+    }
+    
+    /* 7. HEADING WITH ANIMATED UNDERLINE */
+    .story-container h2 {
+        font-size: 2.6rem;
+    }
+    
+    .story-container h2::after {
+        width: 0;
+        animation: expandLine 1s ease forwards;
+        animation-delay: 0.3s;
+    }
+    
+    @keyframes expandLine {
+        to { width: 100px; }
+    }
+    
+    /* 8. PARAGRAPH FADE-IN ON SCROLL */
+    .story-container p {
+        opacity: 0.7;
+        transform: translateY(20px);
+        transition: all 0.6s ease;
+    }
+    
+    .story-container p.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* 9. BEFORE/AFTER WITH CONNECTING LINE */
+    .before-after {
+        position: relative;
+        gap: 40px;
+    }
+    
+    .before-after::before {
+        content: '→';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem;
+        color: var(--gold);
+        opacity: 0.5;
+        z-index: 10;
+        background: var(--bg);
+        padding: 0 15px;
+    }
+    
+    /* 10. GRADUATION IMAGE WITH GOLDEN FRAME */
+    .small-image-left img {
+        border: 2px solid var(--gold);
+        padding: 8px;
+        background: var(--bg);
+        box-shadow: 
+            inset 0 0 20px rgba(201,169,97,0.1),
+            0 15px 30px rgba(0,0,0,0.3);
+    }
+    
+    /* 11. PROGRESSIVE REVEAL FOR TIMELINE ITEMS */
+    .story-container h2:nth-of-type(2) ~ p strong {
+        position: relative;
+        padding-left: 20px;
+        border-left: 3px solid var(--gold);
+        border-bottom: none;
+        margin-left: -20px;
+    }
+    
+    /* 12. FOOTER WITH SUBTLE ANIMATION */
+    .ministry-footer {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .ministry-footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, 
+            transparent, 
+            var(--gold), 
+            transparent
+        );
+        animation: shimmer 3s infinite;
+    }
+    
+    @keyframes shimmer {
+        0% { left: -100%; }
+        100% { left: 100%; }
+    }
+    
+    /* 13. DESKTOP READING SIZE - BIGGER TEXT */
+    .story-container {
+        max-width: 740px;
+        padding: 0 40px;
+    }
+    
+    .story-container p {
+        font-size: 1.2rem;
+        line-height: 2;
+        margin-bottom: 2em;
+    }
+    
+    .story-intro {
+        font-size: 1.9rem;
+        padding: 60px 80px;
+        line-height: 1.7;
+    }
+    
+    .story-intro::first-letter {
+        font-size: 6rem;
+    }
+    
+    .story-hero h1 {
+        font-size: 3.2rem;
+        max-width: 700px;
+    }
+    
+    .story-hero .subtitle {
+        font-size: 0.85rem;
+        letter-spacing: 5px;
+    }
+    
+    .story-container h2 {
+        font-size: 2.8rem;
+        margin: 100px 0 35px 0;
+    }
+    
+    .pull-quote {
+        font-size: 2.2rem;
+        padding: 60px 80px;
+        line-height: 1.6;
+    }
+    
+    .story-container h2:nth-of-type(2) ~ p strong {
+        font-size: 0.95rem;
+        letter-spacing: 4px;
+    }
+    
+    .small-image-single .label,
+    .before-after .label,
+    .small-image-left .caption .label {
+        font-size: 0.8rem;
+        letter-spacing: 4px;
+    }
+    
+    .share-title {
+        font-size: 2.2rem;
+    }
+    
+    .share-subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .ministry-verse {
+        font-size: 1.25rem;
+    }
+}
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .lightbox-overlay {
+        padding: 20px;
+    }
+    
+    .lightbox-close {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .lightbox-nav {
+        display: none; /* Hide nav on mobile, use swipe */
+    }
+    
+    .lightbox-caption {
+        font-size: 0.7rem;
+        bottom: -40px;
+    }
+}
+
+    /* ===== MOBILE ===== */
+@media (max-width: 768px) {
+    /* Compact hero */
+    .story-hero {
+        padding: 20px 15px 25px;
+        min-height: auto;
+    }
+    
+    .story-hero h1 {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+    }
+    
+    .story-hero .subtitle {
+        font-size: 0.55rem;
+        letter-spacing: 2px;
+    }
+    
+    .profile-image {
+        width: 90px;
+        height: 90px;
+        margin: 12px 0 5px;
+        animation: gentleFloat 6s ease-in-out infinite; 
+    }
+    
+    /* Compact intro */
+    .story-intro {
+        font-size: 1.05rem;
+        padding: 20px 15px;
+        margin-bottom: 30px;
+        margin-top: 10px;
+    }
+    
+    .story-intro::first-letter {
+        font-size: 3rem;
+        margin-bottom: 10px;
+    }
+    
+    .story-container {
+        margin: 30px auto;
+        padding: 0 15px;
+    }
+    
+    .story-container p {
+        font-size: 0.95rem;
+        line-height: 1.8;
+    }
+    
+    .story-container h2 {
+        font-size: 1.5rem;
+        margin: 50px 0 20px 0;
+    }
+    
+    .story-container h2::before {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    
+    .pull-quote {
+        font-size: 1.15rem;
+        padding: 25px 15px;
+        margin: 35px 0;
+    }
+    
+    /* Small single image - FIXED FOR MOBILE */
+.small-image-single {
+    max-width: 260px;
+    margin: 25px auto;
+    padding: 0 15px; /* Add padding to prevent touching screen edges */
+    box-sizing: border-box;
+}
+
+.small-image-single img {
+    width: 100%;
+    height: 140px; /* Change from fixed 160px to auto to maintain aspect ratio */
+    max-height: 250px; /* But cap the height so it doesn't get too tall */
+    display: block; /* Removes extra space below image */
+    border-radius: 4px;
+}
+    /* BEFORE/AFTER - HORIZONTAL ON MOBILE */
+    .before-after {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        margin: 30px 0;
+    }
+    
+    .before-after > div {
+        flex: 1;
+    }
+    
+    .before-after img {
+        height: 160px;
+    }
+    
+    .before-after .label {
+        font-size: 0.65rem;
+        letter-spacing: 2px;
+        margin-top: 10px;
+    }
+    
+    /* Small left image */
+    .small-image-left {
+        flex-direction: column;
+        gap: 12px;
+        margin: 35px 0;
+    }
+    
+    .small-image-left img {
+        width: 100%;
+        height: 180px;
+    }
+    
+    .small-image-left .caption {
+        padding-top: 0;
+    }
+    
+    .small-image-left .caption p {
+        font-size: 0.9rem;
+    }
+    
+    /* Share section */
+    .share-container {
+        margin-bottom: 30px;
+        gap: 10px;
+    }
+    
+    .share-btn {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .share-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .share-title {
+        font-size: 1.2rem;
+    }
+    
+    .share-subtitle {
+        font-size: 0.7rem;
+        margin-bottom: 20px;
+    }
+    
+    .copy-link-btn {
+        margin-top: 15px;
+        padding: 10px 20px;
+        font-size: 0.7rem;
+    }
+    
+    .copy-link-btn svg {
+        width: 14px;
+        height: 14px;
+    }
+    
+    /* Footer */
+    .ministry-footer {
+        padding: 30px 15px;
+    }
+    
+    .ministry-logo {
+        font-size: 1rem;
+        margin-bottom: 12px;
+    }
+    
+    .ministry-verse {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+    
+    .footer-socials {
+        margin-top: 25px;
+        gap: 12px;
+    }
+    
+    .footer-socials a {
+        font-size: 0.65rem;
+    }
+    
+    .footer-section {
+        margin-top: 50px;
+    }
+    
+    .footer-divider {
+        margin-bottom: 30px;
+    }
+    
+    .footer-content {
+        padding: 0 15px 40px;
+    }
+    
+    .toast {
+        padding: 10px 20px;
+        font-size: 0.75rem;
+        bottom: 15px;
+    }
+    a, button {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+a:focus,
+a:active,
+button:focus,
+button:active {
+    outline: none;
+    box-shadow: none;
+}
+    
+    /* BACK BUTTON - SMOOTH EDGES */
+    .back-btn {
+        top: 10px;
+        left: 10px;
+        padding: 6px 12px;
+        font-size: 0.65rem;
+        letter-spacing: 1.5px;
+        border-radius: 20px;  /* Smooth rounded edges */
+        border: 1px solid rgba(248,246,243,0.2);
+        background: transparent;
+        backdrop-filter: blur(5px);
+    }
+}
+/* ===== ELEGANT LIGHTBOX/ZOOM ===== */
+
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="back-btn">← Back</a>
+
+<!-- COMPACT HERO -->
+<section class="story-hero">
+    <div class="subtitle">The Testimony of</div>
+    <h1>MCA Tricky{tricky sana}.</h1>
+    <div class="profile-image-wrapper">
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+     <img src="images/Mcatrickm.jpeg" alt="MCA-Tricky(Francis Munyao" class="profile-image">
+</div>
+   
+</section>
+
+<!-- STORY CONTENT -->
+<div class="story-container">
+    <p class="story-intro">
+       This is the story of MCA Tricky — a testimony of resilience, perseverance, and breakthrough beyond poverty into success in education and entertainment. Read and be inspired.
+    </p>
+     <p>Francis Munyao, popularly known as MCA Tricky, was born in Kibwezi Constituency (Makindu) as the last-born of three children. Life at home was difficult—so challenging that he once shared on radio, “Nilipata home nikunoma.” Despite these hardships, however, he never blamed his parents for the circumstances he grew up in.</p>
+
+<p>His journey of transformation began when people started noticing his potential. Truly, he was no ordinary child. As a young boy in a local school led by headteacher Mr. Mbatia, something special was recognized in him. Francis attended school with almost nothing—sometimes nearly lacking basic necessities—yet he consistently ranked number one in his class.</p>
+
+<p>Seeing a brilliance that defied his circumstances,Mr. Mbatia transferred him to Kiamani Boarding School, where a better learning environment would allow his potential to grow.</p>
+
+<p>His academic excellence continued at Kiamani Boarding School, where he sat for his KCPE examinations and scored an impressive 412 marks. The school’s headteacher, together with senior staff, helped “pull strings” that enabled him to join Masai High School on Ngong Road near Karen.</p>
+
+<p>It was here that he learned a profound lesson he still believes in today: “Mungu wangu hananga bedroom”—meaning God has no bedroom; He is everywhere and accessible to all who seek Him.</p>
+
+<div class="pull-quote">
+   "Mungu wangu hananga bedroom"
+</div>
+
+<p>Joining Form One at Masai High marked his first time in Nairobi, and as expected, he again emerged among the top students in his class. However, in Form Two, his sponsorship was suddenly withdrawn, and returning home felt impossible.</P>
+<P>He remained in Nairobi, surviving on the streets while occasionally staying with a cousin. During this period, he nearly lost direction and even began experimenting with drugs as an escape from the harsh realities of city life.</p>
+
+<p>In the midst of this dark season, he made a simple prayer to God, asking only for a chance to return to school. What seemed like a basic need to many became his deepest prayer. After months of struggling to survive on the streets, Nairobi proved too harsh, and he eventually decided to return home.</p>
+
+<p>When his parents saw him, they assumed he had dropped out of school and begun roaming aimlessly. As he recalls, “It was hard to convince them otherwise.” Fortunately, he later joined Kiangine Mixed Secondary School</p>
+
+
+    <h2>The Breaking Point</h2>
+
+    <p>
+       One day, while going about his business, he came across a school document containing the Maasai High School secretary’s phone number. He immediately called, secured an appointment, and traveled back to Nairobi.</p>
+
+       <p>Upon presenting his academic results, the school director happened to be present. After reviewing his performance, he made history by becoming the first student to be readmitted to Maasai High School.</p>
+    
+    <p>It was at Maasai High School that MCA Tricky discovered and recognized his talent for comedy after performing a skit that made parents laugh and genuinely enjoy the moment.</p>
+    </p>
+    <p><strong>His turning point</strong> came on a day that looked ordinary. He had escorted a friend to audition for Churchill Show, never imagining that destiny was quietly calling his own name. He was not on the list. He had not rehearsed. He had not even planned to step on that stage.
+    But opportunity has a way of locating courage.
+    When he was pushed to try, he stepped forward with nothing but raw talent and the stories of the streets he knew too well. His humor was not forced; it was lived. His jokes carried truth. The audience laughed, the judges noticed, and in that unexpected moment, a star was born.</p>
+
+    <!-- SMALL SINGLE IMAGE AT END OF BREAKING POINT -->
+    <div class="small-image-single">
+        <img src="images/michael-breaking-point.jpeg" alt="The Turning Point">
+        <div class="label">MCA-surely God saves</div>
+    </div>
+
+    <h2>Transformation</h2>
+
+    <p>
+        <strong>The First Show (2016)</strong>
+        January 16, 2016. Carnivore Grounds. Churchill Show auditions. Francis—now calling himself "MCA Tricky"—took the stage in second-hand shoes and borrowed confidence. No credits. No name. Just a boy who knew what hunger tasted like.
+    </p>
+
+    <p>
+        His set? <em>"How to Survive Nairobi Without Money."</em> He demonstrated entering a matatu like you own it. Eating at a kibanda while complaining about "too much salt" to get extra meat. Sleeping in cyber cafés with fake "America emails."
+    </p>
+
+    <p>
+        The crowd roared. Then he dropped the line that broke the internet:
+    </p>
+
+    <div class="pull-quote">
+        "Street boys don't beg. We negotiate with destiny."
+    </div>
+
+    <p>
+        A fan recorded it. Posted it. By morning, #MCATricky trended #1 in Kenya. By week's end: 2 million views. <strong>first show changed everything</strong>. The boy who begged for bread was now getting paid to be himself.
+    </p>
+
+    <!-- BEFORE AFTER SECTION (SAME SIZE IMAGES) -->
+    <div class="before-after">
+        <div>
+            <img src="images/mca-before.jpeg" alt="Before Faith">
+            <div class="label">Before</div>
+        </div>
+        <div>
+            <img src="images/mca-after.jpg" alt="After Faith">
+            <div class="label">After</div>
+        </div>
+    </div>
+
+    <p>
+        <strong>The Fame (2016–2019)</strong>
+        From that viral moment, MCA Tricky became unstoppable. Churchill Show regular—every weekend, national TV. Corporate MC gigs paying more than his mother's yearly income. Radio stations fighting to book him. Social media explosion—Kenyans shared his clips like gospel.
+    </p>
+
+    <p>
+        But here's what fans didn't see: while trending on stage, MCA Tricky was still grinding in class. JKUAT. Mechanical Engineering. 8 AM lectures after 2 AM shows. Assignments between sound checks. Exams during tour season.
+    </p>
+
+    <p>
+        <em>"People thought I was just a comedian,"</em> he says. <em>"They didn't know I had a deadline: graduation."</em>
+    </p>
+
+    <p>
+        <strong>The Graduation (2019)</strong>
+        December 2019. Jomo Kenyatta University. Francis Munyao walked across that stage in graduation gown—while holding his Churchill Show award. The photos broke the internet again. This time, the caption wrote itself: <em>"From Street Boy to Graduate."</em>
+    </p>
+
+    <p>
+        Class of 2019. BSc Mechanical Engineering. <em>"I graduated not because I was special, but because I refused to choose between my gift and my degree. Comedy fed my spirit. Education secured my future."</em>
+    </p>
+
+    <!-- SMALL LEFT IMAGE AFTER GRADUATION -->
+    <div class="small-image-left">
+        <img src="images/mca-graduation-moment.jpeg" alt="Graduation Day">
+        <div class="caption">
+            <span class="label">Graduation Day</span>
+            <p>"The same hands that once begged for bread now held a degree. The same mouth that knew hunger now spoke on national radio. What God has transformed, no one can undo."</p>
+        </div>
+    </div>
+
+    <p>
+        The same mouth that once begged for bread had spoken on radio. The same hands that slept on concrete now held a degree. The same boy who ran from poverty had run straight into his purpose.
+    </p>
+</div>
+<!-- LIGHTBOX OVERLAY -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close"></button>
+    
+    <button class="lightbox-nav prev" onclick="changeImage(-1, event)" aria-label="Previous"></button>
+    <button class="lightbox-nav next" onclick="changeImage(1, event)" aria-label="Next"></button>
+    
+    <div class="lightbox-container" onclick="event.stopPropagation()">
+        <img src="" alt="" class="lightbox-image" id="lightbox-img">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+</div>
+<!-- CLASSIC FOOTER WITH SHARE -->
+<section class="footer-section">
+    <div class="footer-divider"></div>
+    
+    <div class="footer-content">
+        <h3 class="share-title">Share This Story</h3>
+        <p class="share-subtitle">Spread hope by sharing Michael's testimony</p>
+        
+        <div class="share-container">
+            <!-- Facebook -->
+            <button class="share-btn" onclick="shareToFacebook()" aria-label="Share on Facebook">
+                <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </button>
+            
+            <!-- Twitter/X -->
+            <button class="share-btn" onclick="shareToTwitter()" aria-label="Share on Twitter">
+                <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </button>
+            
+            <!-- WhatsApp -->
+            <button class="share-btn" onclick="shareToWhatsApp()" aria-label="Share on WhatsApp">
+                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            </button>
+            
+            <!-- Email -->
+            <button class="share-btn" onclick="shareViaEmail()" aria-label="Share via Email">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </button>
+        </div>
+        
+        <button class="copy-link-btn" onclick="copyLink()">
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            <span>Copy Link</span>
+        </button>
+    </div>
+    
+    <!-- Ministry Footer -->
+    <div class="ministry-footer">
+        <div class="ministry-logo">Light to the World</div>
+        <p class="ministry-verse">You are the light of the world. A city set on a hill cannot be hidden. — Matthew 5:14</p>
+        
+        <div class="footer-socials">
+            <a href="https://instagram.com/" target="_blank">Instagram</a>
+            <a href="https://facebook.com/" target="_blank">Facebook</a>
+            <a href="https://twitter.com/" target="_blank">Twitter</a>
+            <a href="mailto:contact@lighttotheworld.org">Contact</a>
+        </div>
+        
+        <button class="back-to-top" onclick="scrollToTop()" aria-label="Back to top">
+            <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+        </button>
+    </div>
+</section>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast">Link copied to clipboard!</div>
+
+<script>
+// ===== LIGHTBOX FUNCTIONALITY =====
+let currentImageIndex = 0;
+let storyImages = [];
+
+// Collect all story images on load
+function initLightbox() {
+    // Find all images in story sections that should be zoomable
+    const selectors = [
+        '.small-image-single img',
+        '.before-after img', 
+        '.small-image-left img',
+        '.profile-image'
+    ];
+    
+    storyImages = [];
+    selectors.forEach(selector => {
+        document.querySelectorAll(selector).forEach(img => {
+            // Add click handler
+            img.addEventListener('click', function(e) {
+                e.preventDefault();
+                openLightbox(this);
+            });
+            
+            // Store reference with metadata
+            storyImages.push({
+                element: img,
+                src: img.src,
+                caption: getImageCaption(img)
+            });
+        });
+    });
+}
+
+function getImageCaption(img) {
+    // Try to find associated caption/label
+    const parent = img.closest('.small-image-single, .before-after > div, .small-image-left, .story-hero');
+    
+    if (parent) {
+        const label = parent.querySelector('.label');
+        if (label) return label.textContent;
+        
+        const caption = parent.querySelector('.caption p');
+        if (caption) return caption.textContent;
+        
+        // For profile image
+        if (img.classList.contains('profile-image')) {
+            return document.querySelector('.story-hero h1')?.textContent || 'Profile';
+        }
+    }
+    
+    return img.alt || 'Image';
+}
+
+function openLightbox(imgElement) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    
+    // Find current index
+    currentImageIndex = storyImages.findIndex(item => item.element === imgElement);
+    
+    // Set content
+    lightboxImg.src = imgElement.src;
+    lightboxCaption.textContent = getImageCaption(imgElement);
+    
+    // Show with animation
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent background scroll
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', handleKeydown);
+}
+
+function closeLightbox(event) {
+    // Only close if clicking overlay or close button, not the image
+    if (event && event.target.closest('.lightbox-container') && !event.target.closest('.lightbox-close')) {
+        return;
+    }
+    
+    const lightbox = document.getElementById('lightbox');
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', handleKeydown);
+}
+
+function changeImage(direction, event) {
+    event.stopPropagation();
+    
+    currentImageIndex += direction;
+    
+    // Loop around
+    if (currentImageIndex < 0) currentImageIndex = storyImages.length - 1;
+    if (currentImageIndex >= storyImages.length) currentImageIndex = 0;
+    
+    const item = storyImages[currentImageIndex];
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    
+    // Fade effect
+    lightboxImg.style.opacity = '0';
+    
+    setTimeout(() => {
+        lightboxImg.src = item.src;
+        lightboxCaption.textContent = item.caption;
+        lightboxImg.style.opacity = '1';
+    }, 200);
+}
+
+function handleKeydown(e) {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') changeImage(-1, {stopPropagation: () => {}});
+    if (e.key === 'ArrowRight') changeImage(1, {stopPropagation: () => {}});
+}
+
+// Touch/swipe support for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleTouchStart(e) {
+    touchStartX = e.changedTouches[0].screenX;
+}
+
+function handleTouchEnd(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}
+
+function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+            changeImage(1, {stopPropagation: () => {}}); // Swipe left = next
+        } else {
+            changeImage(-1, {stopPropagation: () => {}}); // Swipe right = prev
+        }
+    }
+}
+
+// ===== SHARE FUNCTIONS (keep your existing ones) =====
+function shareToFacebook() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("Read this powerful testimony of transformation and hope");
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`, '_blank', 'width=600,height=400');
+}
+
+function shareToTwitter() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("A story of redemption that will inspire you ✨");
+    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'width=600,height=400');
+}
+
+function shareToWhatsApp() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("Check out this amazing testimony: ");
+    window.open(`https://wa.me/?text=${text}${url}`, '_blank');
+}
+
+function shareViaEmail() {
+    const subject = encodeURIComponent("A Testimony of Hope and Transformation");
+    const body = encodeURIComponent(`I thought you'd be encouraged by this story:\n\n${window.location.href}`);
+    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+}
+
+function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+        showToast();
+    }).catch(() => {
+        const textArea = document.createElement("textarea");
+        textArea.value = window.location.href;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+        showToast();
+    });
+}
+
+function showToast() {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// ===== INITIALIZATION =====
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize lightbox
+    initLightbox();
+    
+    // Add touch events for mobile swipe
+    const lightbox = document.getElementById('lightbox');
+    lightbox.addEventListener('touchstart', handleTouchStart, {passive: true});
+    lightbox.addEventListener('touchend', handleTouchEnd, {passive: true});
+    
+    // Add this inside your DOMContentLoaded event listener, after initLightbox():
+
+// Scroll reveal for paragraphs
+const paragraphObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.story-container p').forEach(p => {
+    paragraphObserver.observe(p);
+});
+    // Existing scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    const animatedElements = document.querySelectorAll('.share-btn, .copy-link-btn');
+    animatedElements.forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = `all 0.6s ease ${index * 0.1}s`;
+        observer.observe(el);
+    });
+
+});
+
+// Add this inside your DOMContentLoaded event listener, after initLightbox():
+</script>
+
+
+</body>
+</html>
