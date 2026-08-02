@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morris K. | Testimony — Coming Soon</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #0a0a0a;
+    --gold: #c9a961;
+    --gold-light: #e8d5b5;
+    --gold-muted: #8b7355;
+    --text: #f8f6f3;
+    --text-muted: #a8a5a0;
+    --cream: #faf8f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+}
+
+/* ===== BACK BUTTON (matches other testimony pages) ===== */
+.back-btn {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.8rem;
+    z-index: 9999;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.back-btn::before {
+    content: '←';
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.back-btn:hover {
+    color: var(--gold);
+}
+
+.back-btn:hover::before {
+    transform: translateX(-4px);
+}
+
+/* ===== COMPACT ELEGANT HERO ===== */
+.story-hero {
+    height: auto;
+    min-height: unset;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 70px 20px 40px;
+    background: linear-gradient(180deg, 
+        rgba(201,169,97,0.1) 0%, 
+        transparent 100%
+    );
+    border-bottom: 1px solid rgba(201,169,97,0.15);
+}
+
+.story-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--cream);
+    letter-spacing: 0.03em;
+    max-width: 600px;
+    line-height: 1.3;
+    margin-bottom: 15px;
+}
+
+.story-hero .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--gold);
+    font-weight: 500;
+}
+
+/* ===== PROFILE IMAGE (configurable per page) ===== */
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--gold);
+    margin: 25px 0 10px;
+    filter: grayscale(20%);
+    transition: all 0.4s ease;
+}
+
+.profile-image:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(201,169,97,0.3);
+}
+
+/* ===== COMING SOON BADGE ===== */
+.coming-soon-badge {
+    display: inline-block;
+    padding: 8px 24px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+/* ===== CONTENT ===== */
+.story-container {
+    max-width: 680px;
+    margin: 60px auto;
+    padding: 0 25px;
+}
+
+.story-container p {
+    margin-bottom: 1.8em;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--text);
+    text-align: left;
+}
+
+.story-container h2 {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gold);
+    margin: 50px 0 25px 0;
+    font-size: 1.6rem;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.story-container h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+}
+
+/* ===== INTRO DROP CAP ===== */
+.story-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    text-align: left;
+    color: var(--gold-light);
+    font-weight: 400;
+    position: relative;
+    padding-left: 25px;
+    border-left: 1px solid var(--gold-muted);
+}
+
+/* ===== REQUEST CARD ===== */
+.request-card {
+    background: rgba(201,169,97,0.04);
+    border: 1px solid rgba(201,169,97,0.15);
+    border-radius: 4px;
+    padding: 40px 35px;
+    margin: 50px 0;
+    text-align: center;
+}
+
+.request-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    font-weight: 500;
+    font-style: italic;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.request-card p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.request-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    border: 1px solid rgba(201,169,97,0.4);
+    background: transparent;
+    color: var(--gold);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.request-email::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+    z-index: 0;
+}
+
+.request-email:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.request-email:hover {
+    color: var(--bg);
+    border-color: var(--gold);
+}
+
+.request-email span {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== FEEDBACK SECTION ===== */
+.feedback-section {
+    margin-top: 60px;
+    padding-top: 50px;
+    border-top: 1px solid rgba(201,169,97,0.1);
+}
+
+.feedback-section h2 {
+    margin-top: 0;
+}
+
+.feedback-section p {
+    color: var(--text-muted);
+}
+
+.feedback-list {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0;
+}
+
+.feedback-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 18px;
+    font-size: 1.05rem;
+    color: var(--text);
+    line-height: 1.7;
+}
+
+.feedback-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 500;
+}
+
+/* ===== BACK TO STORIES ===== */
+.back-stories {
+    text-align: center;
+    margin: 60px 0 30px;
+}
+
+.back-stories a {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 36px;
+    border: 1px solid rgba(201,169,97,0.4);
+    background: transparent;
+    color: var(--gold);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.back-stories a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+    z-index: 0;
+}
+
+.back-stories a:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.back-stories a:hover {
+    color: var(--bg);
+    border-color: var(--gold);
+}
+
+.back-stories a span {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== PULL QUOTE ===== */
+.pull-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--gold-light);
+    text-align: center;
+    margin: 50px 0;
+    padding: 30px 20px;
+    position: relative;
+    line-height: 1.5;
+    border-top: 1px solid rgba(201,169,97,0.2);
+    border-bottom: 1px solid rgba(201,169,97,0.2);
+}
+
+/* ===== CLASSIC FOOTER WITH SHARE ===== */
+.footer-section {
+    margin-top: 100px;
+    padding: 0;
+    position: relative;
+}
+
+.footer-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-muted), transparent);
+    margin-bottom: 60px;
+    opacity: 0.5;
+}
+
+.footer-content {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 25px 80px;
+    text-align: center;
+}
+
+.share-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: var(--cream);
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.share-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+/* Share Buttons Container */
+.share-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.share-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgba(201,169,97,0.3);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.share-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+}
+
+.share-btn:hover::before {
+    transform: translateY(0);
+}
+
+.share-btn:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(201,169,97,0.2);
+}
+
+.share-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--gold);
+    position: relative;
+    z-index: 1;
+    transition: fill 0.3s ease;
+}
+
+.share-btn:hover svg {
+    fill: var(--bg);
+}
+
+/* Copy Link Button */
+.copy-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+    padding: 14px 32px;
+    border: 1px solid rgba(201,169,97,0.4);
+    background: transparent;
+    color: var(--gold);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.copy-link-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+    z-index: 0;
+}
+
+.copy-link-btn:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.copy-link-btn:hover {
+    color: var(--bg);
+    border-color: var(--gold);
+}
+
+.copy-link-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+.copy-link-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    position: relative;
+    z-index: 1;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--gold);
+    color: var(--bg);
+    padding: 16px 32px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 10000;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* Ministry Footer */
+.ministry-footer {
+    background: linear-gradient(180deg, transparent, rgba(201,169,97,0.03));
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(201,169,97,0.1);
+}
+
+.ministry-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.ministry-verse {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    font-style: italic;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+    position: relative;
+    padding: 0 20px;
+}
+
+.ministry-verse::before,
+.ministry-verse::after {
+    content: '"';
+    font-size: 2rem;
+    color: var(--gold-muted);
+    opacity: 0.3;
+    position: absolute;
+    font-family: Georgia, serif;
+}
+
+.ministry-verse::before {
+    top: -10px;
+    left: 0;
+}
+
+.ministry-verse::after {
+    content: '"';
+    bottom: -20px;
+    right: 0;
+}
+
+/* Social Links in Footer */
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.footer-socials a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.footer-socials a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+}
+
+.footer-socials a:hover {
+    color: var(--gold);
+}
+
+.footer-socials a:hover::after {
+    width: 100%;
+}
+
+/* Back to Top */
+.back-to-top {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(201,169,97,0.3);
+    margin-top: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.back-to-top:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: translateY(-5px);
+}
+
+.back-to-top svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--gold);
+    transition: fill 0.3s ease;
+}
+
+.back-to-top:hover svg {
+    fill: var(--bg);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+    .back-btn {
+        top: 16px;
+        left: 16px;
+        font-size: 0.75rem;
+    }
+    
+    .story-hero {
+        padding: 50px 20px 30px;
+    }
+    
+    .story-hero h1 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    .story-hero .subtitle {
+        font-size: 0.6rem;
+        letter-spacing: 3px;
+    }
+    .profile-image {
+        width: 80px;
+        height: 80px;
+        margin: 15px 0 5px;
+    }
+    
+    .story-container {
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+    
+    .story-intro {
+        font-size: 1.15rem;
+        padding-left: 15px;
+        margin-bottom: 35px;
+    }
+    
+    .story-container p {
+        font-size: 1rem;
+    }
+    
+    .story-container h2 {
+        font-size: 1.4rem;
+        margin: 45px 0 20px 0;
+    }
+    
+    .pull-quote {
+        font-size: 1.2rem;
+        padding: 25px 15px;
+        margin: 40px 0;
+    }
+    
+    .request-card {
+        padding: 30px 20px;
+    }
+    
+    .request-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .share-container {
+         margin-bottom: 35px; 
+        gap: 12px;
+    }
+    
+    .share-btn {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .share-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+    .share-subtitle {
+        font-size: 0.75rem;
+        margin-bottom: 25px;
+    }
+    
+    .share-title {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    .copy-link-btn {
+        margin-top: 20px;
+        padding: 12px 24px;
+        font-size: 0.75rem;
+    }
+    
+    .copy-link-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+     .ministry-footer {
+        padding: 40px 15px;
+    }
+    .ministry-logo {
+        font-size: 1.1rem;
+         margin-bottom: 15px;
+    }
+    .ministry-verse {
+        font-size: 0.95rem;
+        padding: 0 15px;
+    }
+    
+    .footer-socials {
+         margin-top: 30px;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+    .footer-socials a {
+        font-size: 0.7rem;
+    }
+    .footer-section {
+        margin-top: 60px;
+    }
+    
+    .footer-divider {
+        margin-bottom: 40px;
+    }
+    
+    .footer-content {
+        padding: 0 20px 50px;
+    }
+    .toast {
+        padding: 12px 24px;
+        font-size: 0.8rem;
+        bottom: 20px;
+        min-width: auto;
+        white-space: nowrap;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACK BUTTON: now matches other testimony pages (text-only, subtle, absolute) -->
+<a href="index.html" class="back-btn">Back to Stories</a>
+
+<!-- COMPACT HERO -->
+<section class="story-hero">
+    <div class="subtitle">The Testimony of</div>
+    <h1>Morris K.</h1>
+    
+    <!-- CHANGE IMAGE HERE: update src for each testimony page -->
+    <img src="images/Bettyy.jpeg" alt="Morris K." class="profile-image" id="profileImage">
+    
+    <div class="coming-soon-badge">Coming Soon</div>
+</section>
+
+<!-- STORY CONTENT -->
+<div class="story-container">
+    <p class="story-intro">
+        Morris Kinywa Kathi is the founder of Light to the World, and his testimony is currently being prepared with the care and reverence it deserves. His story will be shared when the time is right — a testimony of grace, vision, and the very foundation upon which this ministry was built.
+    </p>
+
+    <p>
+        We are thoughtfully preparing Morris's story to ensure it speaks powerfully to everyone who reads it. As our founder, his journey carries a unique weight and significance, and we want to present it in a way that truly honors God and encourages your heart.
+    </p>
+
+    <div class="pull-quote">
+        Every testimony is a seed of hope. Morris's story will be planted here when the season is ripe.
+    </div>
+
+    <!-- REQUEST CARD -->
+    <div class="request-card">
+        <h3>When Would You Like to Read It?</h3>
+        <p>
+            We would love to hear from you. If you have a preferred date or occasion when you would like Morris's testimony to be published, kindly let us know. Your input helps us plan and prepare meaningful content that serves our community well.
+        </p>
+        <a href="mailto:lighttotheworldministries6@gmail.com?subject=Preferred%20Date%20for%20Morris%20K.%20Testimony&body=Hello%20Light%20to%20the%20World%20Team,%0A%0AI%20would%20love%20to%20see%20Morris%20K.'s%20testimony%20published%20on%20or%20around:%0A%0A[Please%20enter%20your%20preferred%20date%20here]%0A%0ABlessings," class="request-email">
+            <span>Suggest a Date</span>
+        </a>
+    </div>
+
+    <div class="back-stories">
+        <a href="index.html">
+            <span>← Explore Other Stories</span>
+        </a>
+    </div>
+
+    <!-- FEEDBACK SECTION -->
+    <div class="feedback-section">
+        <h2>Help Us Grow</h2>
+        <p>
+            While you wait, we invite you to enjoy the other testimonies on our site. Each story is a testament to God's grace and transforming power.
+        </p>
+        <p>
+            We also welcome your honest feedback. Your thoughts and suggestions help us improve, advance, and serve you better. Here are a few ways you can share your input:
+        </p>
+        <ul class="feedback-list">
+            <li>What changes would you like to see on our website?</li>
+            <li>Are there features or sections you feel we should add?</li>
+            <li>How can we make your experience here more meaningful?</li>
+            <li>Is there anything we can do to advance this ministry's reach?</li>
+        </ul>
+        <p style="text-align: center; margin-top: 30px;">
+            <a href="mailto:lighttotheworldministries6@gmail.com?subject=Website%20Feedback%20%26%20Suggestions&body=Hello%20Light%20to%20the%20World%20Team,%0A%0AI%20have%20some%20feedback%20and%20suggestions%20for%20your%20website:%0A%0A[Please%20share%20your%20thoughts%20here]%0A%0ABlessings," class="request-email">
+                <span>Send Feedback</span>
+            </a>
+        </p>
+    </div>
+
+</div>
+
+<!-- CLASSIC FOOTER WITH SHARE -->
+<section class="footer-section">
+    <div class="footer-divider"></div>
+    
+    <div class="footer-content">
+        <h3 class="share-title">Share This Page</h3>
+        <p class="share-subtitle">Let others know that Morris's testimony is on its way</p>
+        
+        <div class="share-container">
+            <!-- Facebook -->
+            <button class="share-btn" onclick="shareToFacebook()" aria-label="Share on Facebook">
+                <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </button>
+            
+            <!-- Twitter/X -->
+            <button class="share-btn" onclick="shareToTwitter()" aria-label="Share on Twitter">
+                <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </button>
+            
+            <!-- WhatsApp -->
+            <button class="share-btn" onclick="shareToWhatsApp()" aria-label="Share on WhatsApp">
+                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            </button>
+            
+            <!-- Email -->
+            <button class="share-btn" onclick="shareViaEmail()" aria-label="Share via Email">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </button>
+        </div>
+        
+        <button class="copy-link-btn" onclick="copyLink()">
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            <span>Copy Link</span>
+        </button>
+    </div>
+    
+    <!-- Ministry Footer -->
+    <div class="ministry-footer">
+        <div class="ministry-logo">Light to the World</div>
+        <p class="ministry-verse">You are the light of the world. A city set on a hill cannot be hidden. — Matthew 5:14</p>
+        
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/light.totheworldministries?igsh=N2Y5MjBnc201N3Bo" target="_blank"  aria-label="Instagram">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61592299003204" target="_blank"aria-label="Facebook">Facebook</a>
+            <a href="https://www.tiktok.com/@12_truth?_r=1&_t=ZS-98O3VmbmaxN" target="_blank" aria-label="TikTok">Tiktok</a>
+  
+            <a href="mailto:lighttotheworldministries6@gmail.com">Contact</a>
+        </div>
+        
+        <button class="back-to-top" onclick="scrollToTop()" aria-label="Back to top">
+            <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+        </button>
+    </div>
+</section>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast">Link copied to clipboard!</div>
+
+<script>
+// Share Functions
+function shareToFacebook() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("Morris K.'s testimony is coming soon — a story of grace and transformation.");
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`, '_blank', 'width=600,height=400');
+}
+
+function shareToTwitter() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("Looking forward to Morris K.'s testimony on Light to the World ✨");
+    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'width=600,height=400');
+}
+
+function shareToWhatsApp() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("Morris K.'s testimony is coming soon. Check it out: ");
+    window.open(`https://wa.me/?text=${text}${url}`, '_blank');
+}
+
+function shareViaEmail() {
+    const subject = encodeURIComponent("Morris K.'s Testimony — Coming Soon");
+    const body = encodeURIComponent(`I thought you'd be interested in this upcoming testimony:\n\n${window.location.href}`);
+    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+}
+
+function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+        showToast();
+    }).catch(() => {
+        const textArea = document.createElement("textarea");
+        textArea.value = window.location.href;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+        showToast();
+    });
+}
+
+function showToast() {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Smooth reveal animation on scroll
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const animatedElements = document.querySelectorAll('.share-btn, .copy-link-btn, .request-card, .back-stories');
+    animatedElements.forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = `all 0.6s ease ${index * 0.1}s`;
+        observer.observe(el);
+    });
+});
+</script>
+
+</body>
+</html>
